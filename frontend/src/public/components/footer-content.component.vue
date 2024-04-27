@@ -1,11 +1,11 @@
 <script>
 export default {
-name: "footer-content.component"
+  name: "footer-content"
 }
 </script>
 
 <template>
-  $END$
+
 </template>
 
 <style scoped>

@@ -1,11 +1,11 @@
 <script>
 export default {
-name: "navbar-content.component"
+  name: "navbar-content"
 }
 </script>
 
 <template>
-  $END$
+
 </template>
 
 <style scoped>
