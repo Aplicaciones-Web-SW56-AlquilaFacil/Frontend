@@ -43,7 +43,7 @@ export default {
   </div>
   <router-link to="/create-space-describe">
     <pv-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute
-      bottom-36 right-12">Comencemos</pv-button>
+      bottom-0 right-12">Comencemos</pv-button>
   </router-link>
 </template>
 
