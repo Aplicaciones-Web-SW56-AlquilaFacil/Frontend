@@ -11,6 +11,8 @@ export default {
     <input type="number" class="border border-gray-400 p-2 rounded-md mb-6 w-64 h-12 text-center" placeholder="Precio">
     <p>Precio para el organizador (sin incluir impuestos)</p>
   </div>
-  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute
-    bottom-36 right-12">Siguiente</button>
+  <router-link to="/create-space-finish">
+    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute
+      bottom-36 right-12">Siguiente</button>
+  </router-link>
 </template>

@@ -10,12 +10,15 @@ import InputText from "primevue/inputtext";
 import Sidebar from "primevue/sidebar";
 import i18n from "./locale/i18n.js";
 
+import router from "./router/index.js";
+
 import 'primeflex/primeflex.css';
 import 'primevue/resources/themes/aura-light-green/theme.css'
 import 'primeicons/primeicons.css'
 import 'primevue/resources/primevue.min.css'
 
 const app = createApp(App);
+app.use(router);
 app.use(PrimeVue);
 app.component('pv-button', Button);
 app.component('pv-toolbar', Toolbar);

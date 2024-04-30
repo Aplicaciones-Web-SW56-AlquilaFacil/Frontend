@@ -1,6 +1,7 @@
 <script>
+
 export default {
-  name: "create-space-finish"
+  name: "create-space-finish",
 }
 </script>
 
@@ -20,5 +21,6 @@ export default {
       </div>
     </div>
   </div>
+
   <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute bottom-0 right-12">Siguiente</button>
 </template>

@@ -15,6 +15,8 @@
         <img src="../../assets/image-paso3.jpg" alt="Descripción de la imagen" class="w-96 h-96 ml-8">
       </div>
     </div>
-    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute
-      bottom-20 right-12">Siguiente</button>
+    <router-link to="/create-space-price">
+      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute
+      bottom-36 right-12">Siguiente</button>
+    </router-link>
   </template>
