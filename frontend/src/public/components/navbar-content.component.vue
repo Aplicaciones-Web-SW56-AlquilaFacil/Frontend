@@ -38,7 +38,9 @@ export default {
           <div  class=" hidden  text-center lg:flex lg:flex-row text-xs gap-5 align-items-center navbar-links " aria-label="toolbar features content" >
             <h2> Inicio </h2>
             <h2> Subscripciones </h2>
-            <pv-button class="bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
+            <router-link to="/create-space-start">
+              <pv-button class="bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
+            </router-link>
           </div>
         </div>
         <div aria-label="login button" class="hidden  text-centeralign-items-center">

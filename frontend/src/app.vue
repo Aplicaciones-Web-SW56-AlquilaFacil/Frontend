@@ -24,7 +24,6 @@ const handleShowCreateSpace = (value) => {
     <navbar-content :showCreateSpace="showCreateSpace"
                       @update:showCreateSpace="handleShowCreateSpace"></navbar-content>
     <router-view></router-view> <!-- Muestra el componente de la ruta actual -->
-    <!-- Solo renderiza el componente CreateSpaceTitle si no estás en la ruta '/create-space-post' -->
     <footer-content></footer-content>
   </div>
 </template>
