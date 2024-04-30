@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "añadir-espacio-precio"
+  name: "create-space-price"
 }
 </script>
 

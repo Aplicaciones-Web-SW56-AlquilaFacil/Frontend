@@ -1,6 +1,6 @@
   <script>
   export default {
-    name: "añadir-espacio-terminar-publicar"
+    name: "create-space-post"
   }
   </script>
 

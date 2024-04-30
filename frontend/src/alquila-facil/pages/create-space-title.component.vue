@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "añadir-espacio-titulo"
+  name: "create-space-title"
 }
 </script>
 

@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "añadir-espacio-final"
+  name: "create-space-finish"
 }
 </script>
 
