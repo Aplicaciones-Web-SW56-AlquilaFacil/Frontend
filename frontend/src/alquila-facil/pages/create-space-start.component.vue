@@ -1,6 +1,13 @@
 <script>
 export default {
-  name: "create-space-start.component"
+  name: "create-space-start.component",
+  props: ['showCreateSpace'],
+  methods: {
+    createSpaceStart () {
+      this.$emit('update:showCreateSpace', true);
+    }
+  },
+  emits: ['update:showCreateSpace'],
 }
 </script>
 
@@ -35,8 +42,8 @@ export default {
     </div>
   </div>
   <router-link to="/create-space-describe">
-    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute
-      bottom-36 right-12">Comencemos</button>
+    <pv-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute
+      bottom-36 right-12">Comencemos</pv-button>
   </router-link>
 </template>
 

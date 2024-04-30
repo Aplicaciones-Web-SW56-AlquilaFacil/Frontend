@@ -12,7 +12,7 @@ export default {
     <p>Precio para el organizador (sin incluir impuestos)</p>
   </div>
   <router-link to="/create-space-finish">
-    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute
-      bottom-36 right-12">Siguiente</button>
+    <pv-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute
+      bottom-36 right-12">Siguiente</pv-button>
   </router-link>
 </template>
