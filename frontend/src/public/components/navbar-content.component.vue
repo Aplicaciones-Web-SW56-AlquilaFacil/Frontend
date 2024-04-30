@@ -41,7 +41,7 @@ export default {
             <pv-button class="bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
           </div>
         </div>
-        <div aria-label="login button" class="hidden  text-centeralign-items-center">
+        <div aria-label="login button" class="hidden md:flex text-centeralign-items-center">
           <pv-button class="button-custom" label="Inicia sesión">Iniciar Sesión</pv-button>
         </div>
       </div>
