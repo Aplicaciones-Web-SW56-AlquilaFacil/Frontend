@@ -1,21 +1,41 @@
 <script>
+import TheUserLoginEmail from "../../user/components/the-user-login-email.component.vue";
+import TheUserLogin from "../../user/components/the-user-login.component.vue";
 export default {
   name: 'navbar-content',
-  data() {
-    return {
-      items: [
-        {
-          label: 'Update',
-          icon: 'pi pi-refresh'
-        },
-        {
-          label: 'Delete',
-          icon: 'pi pi-times'
-        }
-      ],
-      visible:false,
-    };
-  }
+  components: {
+    TheUserLogin,
+    TheUserLoginEmail,
+
+  },
+  props: {
+    showLogin: {
+      type: Boolean,
+      default: false
+    },
+    showEmailLogin: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    openLogin() {
+      this.$emit('update:showLogin', true);
+    },
+    handleCloseLogin() {
+      this.$emit('update:showLogin', false);
+    },
+    handleShowEmailLogin() {
+      this.$emit('update:showEmailLogin', true);
+    },
+    handleHideEmailLogin() {
+      this.$emit('update:showEmailLogin', false);
+    },
+    handleGoBack() {
+      this.$emit('update:showLogin', true);
+      this.$emit('update:showEmailLogin', false);
+    },
+  },
 };
 </script>
 
@@ -30,7 +50,7 @@ export default {
               <img class="md:hidden" src="../../assets/logo.png" width="40" height="40" alt="ArtCollab Logo"/>
               <h2> Inicio </h2>
               <h2> Subscripciones </h2>
-              <pv-button class="md:hidden bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
+              <pv-button @click="openLogin" class="md:hidden bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
               <pv-button class="button-custom md:hidden" label="Inicia sesión">Iniciar Sesión</pv-button>
             </pv-sidebar>
             <pv-button class="bg-transparent text-black-alpha-80 border-transparent text-2xl hover:text-cyan-600"  icon="pi pi-bars"  @click="visible = true" aria-label="Menu" />
@@ -42,11 +62,19 @@ export default {
           </div>
         </div>
         <div aria-label="login button" class="hidden md:flex text-centeralign-items-center">
-          <pv-button class="button-custom" label="Inicia sesión">Iniciar Sesión</pv-button>
+          <pv-button  @click="openLogin" class="button-custom" label="Inicia sesión">Iniciar Sesión</pv-button>
+          <the-user-login ref="login"/>
         </div>
       </div>
     </template>
   </pv-toolbar>
+  <the-user-login
+      :showLogin="showLogin"
+      v-if="showLogin"
+      @update:showLogin="handleCloseLogin"
+      @update:showEmailLogin="handleShowEmailLogin"/>
+
+  <the-user-login-email v-if="showEmailLogin" :showEmailLogin="showEmailLogin" @back="handleGoBack" @update:showEmailLogin="handleHideEmailLogin" />
 </template>
 
 <style scoped>
