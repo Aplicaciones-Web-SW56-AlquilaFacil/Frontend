@@ -5,6 +5,7 @@ import CreateSpacePriceComponent from "../alquila-facil/pages/create-space-price
 import CreateSpaceTitleComponent from "../alquila-facil/pages/create-space-title.component.vue";
 import CreateSpaceDescribeComponent from "../alquila-facil/pages/create-space-describe.component.vue";
 import CreateSpaceStartComponent from "../alquila-facil/pages/create-space-start.component.vue";
+import PropertyDetailComponent from "../alquila-facil/pages/property-detail.component.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -15,6 +16,7 @@ const router = createRouter({
         { path: '/create-space-finish', component: CreateSpaceFinishComponent},
         { path: '/create-space-start', component: CreateSpaceStartComponent },
         { path: '/create-space-describe', component: CreateSpaceDescribeComponent},
+        { path: '/property-detail', component: PropertyDetailComponent}
     ]
 });
 
