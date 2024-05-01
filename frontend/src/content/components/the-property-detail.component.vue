@@ -1,6 +1,11 @@
 <script>
 export default {
-  name: "property-detail"
+  name: "the-property-detail",
+  data() {
+    return {
+      property: "Property"
+    };
+  }
 }
 </script>
 
