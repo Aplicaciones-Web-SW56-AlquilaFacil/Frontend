@@ -7,6 +7,7 @@ import CreateSpaceDescribeComponent from "../alquila-facil/pages/create-space-de
 import CreateSpaceStartComponent from "../alquila-facil/pages/create-space-start.component.vue";
 import CreateSpaceDescribeOptionComponent from "../alquila-facil/pages/create-space-describe-option.component.vue";
 import CreateSpaceStandOutComponent from "../alquila-facil/pages/create-space-stand-out.component.vue";
+import CreateSpaceAddPhotoComponent from "../alquila-facil/pages/create-space-add-photo.component.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -19,6 +20,7 @@ const router = createRouter({
         { path: '/create-space-describe', component: CreateSpaceDescribeComponent},
         { path: '/create-space-describe-option', component: CreateSpaceDescribeOptionComponent},
         { path: '/create-space-stand-out', component: CreateSpaceStandOutComponent},
+        { path: '/create-space-add-photo', component: CreateSpaceAddPhotoComponent},
     ]
 });
 
