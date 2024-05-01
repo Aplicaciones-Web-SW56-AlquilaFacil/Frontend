@@ -102,7 +102,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 30vh;
+  height: 25vh;
   margin: 0;
   font-size: 45px;
 }
@@ -114,7 +114,7 @@ export default {
 
 .subscription-card {
   width: 400px;
-  margin: 0 auto auto auto;
+  margin: 0 auto 9vh auto;
   padding: 1rem;
   border: 1px solid #faefef;
   border-radius: 23px;
@@ -148,6 +148,8 @@ export default {
 .price {
   display: flex;
   justify-content: center;
+  font-weight: bold;
+  font-size: 30px;
 
 }
 
