@@ -10,12 +10,13 @@ import CreateSpacePostComponent from "./space/components/create-space-post.compo
 import CreateSpaceAddPhotoComponent from "./space/components/create-space-add-photo.component.vue";
 import CreateSpaceStandOutComponent from "./space/components/create-space-stand-out.component.vue";
 import CreateSpaceFinishComponent from "./space/components/create-space-finish.component.vue";
+import CreateSpaceConfirmDirectionComponent from "./space/components/create-space-confirm-direction.component.vue";
 import FooterContent from "./public/components/footer-content.component.vue";
 
 export default defineComponent({
   components: {FooterContent, CreateSpaceStartComponent, CreateSpaceDescribeComponent,
     CreateSpaceDescribeOptionComponent, CreateSpaceTitleComponent, CreateSpacePriceComponent, CreateSpacePostComponent,
-    CreateSpaceAddPhotoComponent, CreateSpaceStandOutComponent, CreateSpaceFinishComponent, NavbarContent}
+    CreateSpaceAddPhotoComponent, CreateSpaceStandOutComponent, CreateSpaceFinishComponent, CreateSpaceConfirmDirectionComponent, NavbarContent}
 })
 
 const showCreateSpace = ref(false);
@@ -29,7 +30,7 @@ const handleShowCreateSpace = (value) => {
   <div>
     <navbar-content :showCreateSpace="showCreateSpace"
                       @update:showCreateSpace="handleShowCreateSpace"></navbar-content>
-
+    <CreateSpaceConfirmDirectionComponent></CreateSpaceConfirmDirectionComponent>
     <footer-content></footer-content>
   </div>
 </template>
