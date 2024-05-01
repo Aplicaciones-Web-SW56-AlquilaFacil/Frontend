@@ -1,18 +1,13 @@
 <script setup>
-import FooterContent from "./public/components/footer-content.component.vue";
-import NavbarContent from "./public/components/navbar-content.component.vue";
-import {ref} from "vue";
-import ForgotPassword from "./user/components/the-user-forgot-password.component.vue";
-import UserEditProfile from "./user/pages/user-edit-profile.vue";
-import TheUserEditProfile from "./user/components/the-user-edit-profile.component.vue";
-import TheUserForgotPassword from "./user/components/the-user-forgot-password.component.vue";
-import UserForgotPassword from "./user/pages/user-forgot-password.vue";
+import { ref } from 'vue'
 
+import NavbarContent from "../../public/components/navbar-content.component.vue";
+import FooterContent from "../../public/components/footer-content.component.vue";
 
+import TheUserForgotPassword from "../components/the-user-forgot-password.component.vue";
 
 const showLogin = ref(false); //Esta variable se encarga de mostrar el componente de inicio de sesión
 const showEmailLogin = ref(false); //Esta variable se encarga de mostrar el componente de inicio de sesión con correo electrónico
-
 
 const handleShowLoginUpdate = (value) => {
   showLogin.value = value;
@@ -20,12 +15,13 @@ const handleShowLoginUpdate = (value) => {
 const handleShowEmailLoginUpdate = (value) => {
   showEmailLogin.value = value;
 }; //Esta función se encarga de actualizar el valor de la variable showEmailLogin
+
 </script>
 
 <template>
   <navbar-content :showLogin="showLogin" :showEmailLogin="showEmailLogin"
                   @update:showLogin="handleShowLoginUpdate" @update:showEmailLogin="handleShowEmailLoginUpdate"/>
-  <user-forgot-password/>
+  <the-user-forgot-password/>
   <footer-content/>
 
 </template>
