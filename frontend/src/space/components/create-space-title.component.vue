@@ -12,8 +12,5 @@ export default {
               focus:outline-none focus:ring focus:border-gray-700"
               placeholder="Escribe algo aquí" rows="4" cols="50"></textarea>
   </div>
-  <router-link to="/create-space-post">
-    <pv-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded absolute
-      bottom-36 right-12">Siguiente</pv-button>
-  </router-link>
+    <pv-button class="back-next" style="left: 80%;">Siguiente</pv-button>
 </template>

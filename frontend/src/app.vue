@@ -30,7 +30,7 @@ const handleShowCreateSpace = (value) => {
   <div>
     <navbar-content :showCreateSpace="showCreateSpace"
                       @update:showCreateSpace="handleShowCreateSpace"></navbar-content>
-    <CreateSpaceStartComponent></CreateSpaceStartComponent>
+    <CreateSpacePriceComponent></CreateSpacePriceComponent>
   </div>
   <footer-content></footer-content>
 </template>

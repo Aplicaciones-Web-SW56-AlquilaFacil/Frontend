@@ -5,42 +5,68 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen">
+  <div class="container-add-photo">
     <h2 class="text-2xl font-medium mb-6">¿Cuál de estas opciones describe mejor tu espacio?</h2>
-
-    <div class="grid grid-rows-2 gap-8">
-      <div class="border border-gray-300 rounded-2xl p-8 max-w-xs">
-        <pv-button class="flex flex-col items-center justify-center mb-4">
-          <img src="../../assets/describe-option-icon1.png" class="w-20 h-20 mb-4" alt="icon1" />
-        </pv-button>
-        <p class="mb-2 text-center">Casa de playa</p>
+  </div>
+  <div class="container-add-photo">
+    <div class="container-describe-option">
+      <div class="">
+        <pv-button class="options-button">
+          <img src="../../assets/describe-option-icon1.png" class="img-option-button" alt="icon1" />
+          Casa de playa</pv-button>
       </div>
-      <div class="border border-gray-300 rounded-2xl p-8 max-w-xs">
-        <pv-button class="flex flex-row items-center justify-center mb-4">
-          <img src="../../assets/describe-option-icon2.png" class="w-20 h-20 mb-4" alt="icon2" />
-        </pv-button>
-        <p class="mb-2 text-center">Casa Urbana</p>
-      </div>
-
-      <div class="border border-gray-300 rounded-2xl p-8 max-w-xs">
-        <pv-button class="flex flex-col items-center justify-center mb-4">
-          <img src="../../assets/describe-option-icon3.png" class="w-20 h-20 mb-4" alt="icon3" />
-        </pv-button>
-        <p class="mb-2 text-center">Salones elegantes</p>
-      </div>
-      <div class="border border-gray-300 rounded-2xl p-8 max-w-xs">
-        <pv-button class="flex flex-row items-center justify-center mb-4">
-          <img src="../../assets/describe-option-icon4.png" class="w-20 h-20 mb-4" alt="icon4" />
-        </pv-button>
-        <p class="mb-2 text-center">Casa de campo</p>
+      <div class="">
+        <pv-button class="options-button">
+          <img src="../../assets/describe-option-icon2.png" class="img-option-button" alt="icon2" />
+          Casa Urbana</pv-button>
       </div>
     </div>
   </div>
-  <router-link to="/create-space-describe">
-    <pv-button class="bg-white-200 border border-red-500 text-red-600 px-4 py-2 rounded fixed bottom-4 left-4">Atrás</pv-button>
-  </router-link>
-  <router-link to="/create-space-stand-out">
-    <pv-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded fixed bottom-4 right-4">Siguiente</pv-button>
-  </router-link>
+  <div class="container-add-photo">
+    <div class="container-describe-option">
+      <div class="">
+        <pv-button class="options-button">
+          <img src="../../assets/describe-option-icon3.png" class="img-option-button" alt="icon3" />
+          Salones elegantes</pv-button>
+      </div>
+      <div class="">
+        <pv-button class="options-button">
+          <img src="../../assets/describe-option-icon4.png" class="img-option-button" alt="icon4" />
+          Casa de campo
+        </pv-button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <pv-button class="back-next" style="left: 0%; margin-left:6%;">Atrás</pv-button>
+  <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Siguiente</pv-button>
 </template>
+
+<style>
+.container-describe-option {
+  display: flex;
+}
+
+.options-button {
+  background-color: #ffffff;
+  color: black;
+  border-radius: 8px;
+  padding: 10px 20px;
+  border-color: grey;
+  border-width: 2px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 50px 30% auto;
+}
+
+.img-option-button {
+  width: 10vh;
+  height: 10vh;
+  margin-bottom: 15px;
+}
+
+</style>
 
