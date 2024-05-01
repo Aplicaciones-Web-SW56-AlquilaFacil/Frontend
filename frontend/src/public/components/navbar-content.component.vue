@@ -1,12 +1,13 @@
 <script>
 import TheUserLoginEmail from "../../user/components/the-user-login-email.component.vue";
 import TheUserLogin from "../../user/components/the-user-login.component.vue";
+import TheUserForgotPasswordComponent from "../../user/components/the-user-forgot-password.component.vue";
 export default {
   name: 'navbar-content',
   components: {
     TheUserLogin,
     TheUserLoginEmail,
-
+    TheUserForgotPasswordComponent
   },
   props: {
     showLogin: {

@@ -2,6 +2,9 @@
 import FooterContent from "./public/components/footer-content.component.vue";
 import NavbarContent from "./public/components/navbar-content.component.vue";
 import {ref} from "vue";
+import ForgotPassword from "./user/components/the-user-forgot-password.component.vue";
+
+
 
 const showLogin = ref(false); //Esta variable se encarga de mostrar el componente de inicio de sesión
 const showEmailLogin = ref(false); //Esta variable se encarga de mostrar el componente de inicio de sesión con correo electrónico
@@ -21,7 +24,9 @@ const handleShowProfileUpdte = (value) => {
 <template>
   <navbar-content :showLogin="showLogin" :showEmailLogin="showEmailLogin"
                   @update:showLogin="handleShowLoginUpdate" @update:showEmailLogin="handleShowEmailLoginUpdate"/>
+  <forgot-password></forgot-password>
   <footer-content/>
+
 </template>
 
 <style scoped>
