@@ -9,7 +9,6 @@ export default {
   },
   emits: ['update:showProfile'],
 }
-
 </script>
 <template>
   <div class="flex flex-col items-center justify-center min-h-screen">

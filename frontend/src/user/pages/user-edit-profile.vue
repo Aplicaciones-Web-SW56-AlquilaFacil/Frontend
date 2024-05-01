@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue'
+import NavbarContent from "../../public/components/navbar-content.component.vue";
+import FooterContent from "../../public/components/footer-content.component.vue";
 
-
+import TheUserEditProfileComponent from "../components/the-user-edit-profile.component.vue";
 const showLogin = ref(false); //Esta variable se encarga de mostrar el componente de inicio de sesión
 const showEmailLogin = ref(false); //Esta variable se encarga de mostrar el componente de inicio de sesión con correo electrónico
 
@@ -15,10 +17,10 @@ const handleShowEmailLoginUpdate = (value) => {
 </script>
 
 <template>
-   <navbar-content :showLogin="showLogin" :showEmailLogin="showEmailLogin"
-                    @update:showLogin="handleShowLoginUpdate" @update:showEmailLogin="handleShowEmailLoginUpdate"/>
-    <the-user-edit-profile/>
-    <footer-content/>
+  <navbar-content :showLogin="showLogin" :showEmailLogin="showEmailLogin"
+                  @update:showLogin="handleShowLoginUpdate" @update:showEmailLogin="handleShowEmailLoginUpdate"></navbar-content>
+  <the-user-edit-profile-component></the-user-edit-profile-component>
+  <footer-content></footer-content>
 </template>
 
 <style scoped>
