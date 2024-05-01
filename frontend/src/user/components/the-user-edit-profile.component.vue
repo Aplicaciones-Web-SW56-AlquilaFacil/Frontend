@@ -1,7 +1,15 @@
 <script>
 export default {
-  name: "the-user-edit-profile.component"
+  name: "the-user-edit-profile.component",
+  props: ['showProfile'],
+  methods: {
+    openProfile() {
+      this.$emit('update:showProfile', true);
+    }
+  },
+  emits: ['update:showProfile'],
 }
+
 </script>
 <template>
   <div class="flex flex-col items-center justify-center min-h-screen">
