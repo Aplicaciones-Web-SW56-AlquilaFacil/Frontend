@@ -6,7 +6,7 @@ export default {
 </script>
 
 <template>
-  <h2 style="left:10%; margin-top:50px;">Recupera tu contraseña</h2>
+  <h2 style="margin: 2% 5% auto 5%">Recupera tu contraseña</h2>
     <div>
       <img class="forgot-pass-image" src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/feature/bounded-user/frontend/src/assets/forgot-password.png?raw=true" alt="forgot-password">
     </div>

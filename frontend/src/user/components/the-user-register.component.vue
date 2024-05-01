@@ -63,7 +63,7 @@ export default {
 
           <div class="flex align-items-center">
             <pv-checkbox v-model="artist" inputId="is_artist" :binary="true" aria-label="Artista"/>
-            <label for="is_artist" class="ml-2"> Al registrarme, acepto los Términos de uso y la Política de privacidad de ArtCollab</label>
+            <label for="is_artist" class="ml-2"> Al registrarme, acepto los Términos de uso y la Política de privacidad de AlquilaFacil</label>
           </div>
 
           <h4>AlquilaFacil recopila y procesa su dirección de correo electrónico con fines de marketing. Puede darse de baja fácilmente en cualquier momento a través del enlace de exclusión en los correos electrónicos de marketing.</h4>

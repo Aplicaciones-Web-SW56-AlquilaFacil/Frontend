@@ -8,8 +8,9 @@ import TheUserEditProfile from "./user/components/the-user-edit-profile.componen
 import TheUserForgotPassword from "./user/components/the-user-forgot-password.component.vue";
 import UserForgotPassword from "./user/pages/user-forgot-password.vue";
 import UserRegister from "./user/pages/user-register.vue";
-
-
+import TheUserLogin from "./user/components/the-user-login.component.vue";
+import TheUserLoginEmail from "./user/components/the-user-login-email.component.vue";
+import TheUserRegister from "./user/components/the-user-register.component.vue";
 
 const showLogin = ref(false); //Esta variable se encarga de mostrar el componente de inicio de sesión
 const showEmailLogin = ref(false); //Esta variable se encarga de mostrar el componente de inicio de sesión con correo electrónico
@@ -26,7 +27,6 @@ const handleShowEmailLoginUpdate = (value) => {
 <template>
   <navbar-content :showLogin="showLogin" :showEmailLogin="showEmailLogin"
                   @update:showLogin="handleShowLoginUpdate" @update:showEmailLogin="handleShowEmailLoginUpdate"/>
-  <the-user-edit-profile/>
   <footer-content/>
 
 </template>
