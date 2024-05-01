@@ -19,12 +19,8 @@ export default {
   <router-link to="/create-space-start">
     <pv-button class="bg-white-200 border border-red-500 text-red-600 px-4 py-2 rounded fixed bottom-4 left-4">Atrás</pv-button>
   </router-link>
-  <router-link to="/create-space-stand-out">
+  <router-link to="/create-space-describe-option">
     <pv-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded fixed bottom-4 right-4">Siguiente</pv-button>
   </router-link>
 
 </template>
-
-<style scoped>
-
-</style>

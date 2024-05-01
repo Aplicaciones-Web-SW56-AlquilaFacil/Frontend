@@ -16,6 +16,7 @@ import 'primeflex/primeflex.css';
 import 'primevue/resources/themes/aura-light-green/theme.css'
 import 'primeicons/primeicons.css'
 import 'primevue/resources/primevue.min.css'
+import AutoComplete from "primevue/autocomplete";
 
 const app = createApp(App);
 app.use(router);
@@ -26,6 +27,7 @@ app.component('pv-iconfield', IconField);
 app.component('pv-inputicon', InputIcon);
 app.component('pv-inputtext', InputText);
 app.component('pv-sidebar', Sidebar);
+app.component('pv-autocomplete', AutoComplete);
 app.use(i18n);
 
 app.mount('#app')

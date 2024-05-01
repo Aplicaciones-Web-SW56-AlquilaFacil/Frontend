@@ -3,13 +3,14 @@ import {defineComponent, ref} from "vue";
 import NavbarContent from "./public/components/navbar-content.component.vue";
 import CreateSpaceStart from "./alquila-facil/pages/create-space-start.component.vue";
 import CreateSpaceDescribe from "./alquila-facil/pages/create-space-describe.component.vue";
+import CreateSpaceDescribeOptionComponent from "./alquila-facil/pages/create.space-describe-option.component.vue";
 import CreateSpaceTitle from "./alquila-facil/pages/create-space-title.component.vue";
 import CreateSpacePrice from "./alquila-facil/pages/create-space-price.component.vue";
 import CreateSpacePost from "./alquila-facil/pages/create-space-post.component.vue";
 import FooterContent from "./public/components/footer-content.component.vue";
 
 export default defineComponent({
-  components: {FooterContent, CreateSpaceStart, CreateSpaceDescribe, CreateSpaceTitle, CreateSpacePrice, CreateSpacePost, NavbarContent}
+  components: {FooterContent, CreateSpaceStart, CreateSpaceDescribe, CreateSpaceDescribeOptionComponent, CreateSpaceTitle, CreateSpacePrice, CreateSpacePost, NavbarContent}
 })
 
 const showCreateSpace = ref(false);

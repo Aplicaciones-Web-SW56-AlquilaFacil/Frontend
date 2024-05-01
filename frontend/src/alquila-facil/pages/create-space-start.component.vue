@@ -46,7 +46,3 @@ export default {
       bottom-0 right-12">Comencemos</pv-button>
   </router-link>
 </template>
-
-<style scoped>
-
-</style>
