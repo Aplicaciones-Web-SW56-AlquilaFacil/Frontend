@@ -8,6 +8,7 @@ import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import InputText from "primevue/inputtext";
 import Sidebar from "primevue/sidebar";
+import Card from "primevue/card";
 import i18n from "./locale/i18n.js";
 
 
@@ -27,6 +28,7 @@ app.component('pv-inputtext', InputText);
 app.component('pv-sidebar', Sidebar);
 app.component('pv-autocomplete', AutoComplete);
 app.component('pv-inputtext', InputText);
+app.component('pv-card', Card);
 app.use(i18n);
 
 app.mount('#app')
