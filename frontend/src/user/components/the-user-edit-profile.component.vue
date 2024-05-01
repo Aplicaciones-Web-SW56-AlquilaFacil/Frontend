@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "the-user-edit-profile.component",
+  name: "the-user-edit-profile",
   props: ['showProfile'],
   methods: {
     openProfile() {
