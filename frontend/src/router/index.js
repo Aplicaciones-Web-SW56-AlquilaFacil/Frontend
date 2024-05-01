@@ -5,7 +5,8 @@ import CreateSpacePriceComponent from "../alquila-facil/pages/create-space-price
 import CreateSpaceTitleComponent from "../alquila-facil/pages/create-space-title.component.vue";
 import CreateSpaceDescribeComponent from "../alquila-facil/pages/create-space-describe.component.vue";
 import CreateSpaceStartComponent from "../alquila-facil/pages/create-space-start.component.vue";
-import CreateSpaceDescribeOptionComponent from "../alquila-facil/pages/create.space-describe-option.component.vue";
+import CreateSpaceDescribeOptionComponent from "../alquila-facil/pages/create-space-describe-option.component.vue";
+import CreateSpaceStandOutComponent from "../alquila-facil/pages/create-space-stand-out.component.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -16,7 +17,8 @@ const router = createRouter({
         { path: '/create-space-finish', component: CreateSpaceFinishComponent},
         { path: '/create-space-start', component: CreateSpaceStartComponent },
         { path: '/create-space-describe', component: CreateSpaceDescribeComponent},
-        { path: '/create-space-describe-option', component: CreateSpaceDescribeOptionComponent}
+        { path: '/create-space-describe-option', component: CreateSpaceDescribeOptionComponent},
+        { path: '/create-space-stand-out', component: CreateSpaceStandOutComponent},
     ]
 });
 

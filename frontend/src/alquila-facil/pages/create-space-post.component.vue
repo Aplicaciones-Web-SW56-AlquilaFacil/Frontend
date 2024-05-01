@@ -12,7 +12,7 @@
           <h1 class="text-4xl mb-12 font-bold">Terminar y publicar</h1>
           <p class= "text-gray-500 mb-12">Por último, vas a elegir el precio y publicitar tu espacio</p>
         </div>
-        <img src="../../assets/image-paso3.jpg" alt="Descripción de la imagen" class="w-96 h-96 ml-8">
+        <img src="../../assets/image-step3.jpg" alt="Descripción de la imagen" class="w-96 h-96 ml-8">
       </div>
     </div>
     <router-link to="/create-space-price">

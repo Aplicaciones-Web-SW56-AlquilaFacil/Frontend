@@ -13,7 +13,7 @@ export default {
         <p class= "text-gray-500 mb-12">En este paso, te preguntaremos qué tipo de propiedad tienes.
           <br> A continuación, indicanos la ubicación y algunas cosas más.</p>
       </div>
-      <img src="../../assets/image-paso1.jpg" alt="Descripción de la imagen" class="w-96 h-96 ml-8">
+      <img src="../../assets/image-step1.jpg" alt="Descripción de la imagen" class="w-96 h-96 ml-8">
     </div>
   </div>
   <router-link to="/create-space-start">
