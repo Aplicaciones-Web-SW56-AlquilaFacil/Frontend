@@ -28,6 +28,7 @@ app.component('pv-inputicon', InputIcon);
 app.component('pv-inputtext', InputText);
 app.component('pv-sidebar', Sidebar);
 app.component('pv-autocomplete', AutoComplete);
+app.component('pv-inputtext', InputText);
 app.use(i18n);
 
 app.mount('#app')
