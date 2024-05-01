@@ -9,7 +9,7 @@ export default {
 <template>
   <h2 style="position:relative; left:10%; margin-top:50px;">Recupera tu contraseña</h2>
     <div>
-      <img class="forgot-pass-image" src="C:\Users\Augusto\WebstormProjects\Frontend-AlquilaFacil\frontend\src\assets\forgot-password.png" alt="forgot-password">
+      <img class="forgot-pass-image" src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/feature/bounded-user/frontend/src/assets/forgot-password.png?raw=true" alt="forgot-password">
     </div>
       <h2 class="strong-subtitle">¿Olvidaste tu contraseña? No te preocupes</h2>
     <h4 style="text-align: center; font-weight: normal;">Le enviaremos una URL para restablecer su contraseña.
