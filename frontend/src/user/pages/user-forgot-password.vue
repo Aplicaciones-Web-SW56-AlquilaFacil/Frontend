@@ -19,11 +19,7 @@ const handleShowEmailLoginUpdate = (value) => {
 </script>
 
 <template>
-  <navbar-content :showLogin="showLogin" :showEmailLogin="showEmailLogin"
-                  @update:showLogin="handleShowLoginUpdate" @update:showEmailLogin="handleShowEmailLoginUpdate"/>
   <the-user-forgot-password/>
-  <footer-content/>
-
 </template>
 
 <style scoped>

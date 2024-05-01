@@ -17,10 +17,9 @@ const handleShowEmailLoginUpdate = (value) => {
 </script>
 
 <template>
-  <navbar-content :showLogin="showLogin" :showEmailLogin="showEmailLogin"
-                  @update:showLogin="handleShowLoginUpdate" @update:showEmailLogin="handleShowEmailLoginUpdate"></navbar-content>
+
   <the-user-edit-profile-component></the-user-edit-profile-component>
-  <footer-content></footer-content>
+
 </template>
 
 <style scoped>

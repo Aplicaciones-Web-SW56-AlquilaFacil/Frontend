@@ -11,57 +11,76 @@ export default {
 }
 </script>
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen">
-    <div class="text-left mb-8">
-      <h2 class="text-4xl font-semibold mb-4">Cuenta</h2>
-      <p class="text-gray-600">Cambia la información de tu cuenta y la configuración de privacidad.</p>
-    </div>
+  <h1 style="margin: 2% 5% auto 5%">Cuenta</h1>
+  <h3 style="margin: 2% 5% auto 5%; font-weight: normal;">Cambia la informacion de tu cuenta y la configuracion de privacidad</h3>
+  <pv-card  class="edit-profile-card">
+    <template #content>
+      <div class="edit-profile-container">
+        <div class="edit-profile-props">
+          <label>Nombre de usuario</label>
+          <label>juan_perez01</label>
+          <label>Cambiar</label>
+        </div>
+      </div>
+      <div class="edit-profile-container">
+        <div class="edit-profile-props">
+          <label>Contraseña</label>
+          <label>*******</label>
+          <label>Cambiar</label>
+        </div>
+      </div>
+      <div class="edit-profile-container">
+        <div class="edit-profile-props">
+          <label>Correo electronico</label>
+          <label>juanperez@gmail.com</label>
+          <label>Cambiar</label>
+        </div>
+      </div>
+      <div class="edit-profile-container">
+        <div class="edit-profile-props">
+          <label>Suscripcion</label>
+          <label>Propietario</label>
+          <label>Cambiar</label>
+        </div>
+      </div>
+      <div class="edit-profile-container">
+        <div class="edit-profile-props">
+          <label>Tipo</label>
+          <label>Estandar</label>
+          <label>Cambiar</label>
+          <label>Cancelar</label>
+        </div>
+      </div>
+    </template>
+  </pv-card>
 
-    <div class="border border-gray-300 rounded-3xl p-8 mb-8 w-full max-w-4xl">
-      <div class="md:w-full flex flex-col justify-start">
-        <div class="flex justify-between items-center mb-4">
-          <p class="mr-2 p-8">Nombre de usuario</p>
-          <p class="mr-2 p-8">juan_perez01</p>
-          <a href="" class="text-orange-500 hover:text-orange-700 mr-2 p-8">Cambiar</a>
-        </div>
-      </div>
-      <div class="md:w-full flex flex-col justify-start">
-        <div class="flex justify-between items-center mb-4">
-          <p class="mr-2 p-8">Contraseña</p>
-          <p class="mr-2 p-8">*******</p>
-          <a href="" class="text-orange-500 hover:text-orange-700 mr-2 p-8">Cambiar</a>
-        </div>
-      </div>
-      <div class="md:w-full flex flex-col justify-start">
-        <div class="flex justify-between items-center mb-4">
-          <p class="mr-2 p-8">Correo electrónico</p>
-          <p class="mr-2 p-8">juanperez@gmail.com</p>
-          <a href="" class="text-orange-500 hover:text-orange-700 mr-2 p-8">Cambiar</a>
-        </div>
-      </div>
-      <div class="md:w-full flex flex-col justify-start">
-        <div class="flex justify-between items-center mb-4">
-          <div class="flex justify-start items-center gap-60 mb-4">
-            <p class="p-8">Suscripción</p>
-            <p class="p-button-group-28">Propietario</p>
-          </div>
-          <a href="" class="text-orange-500 hover:text-orange-700">Cambiar</a>
-          <a href="" class="text-red-800 hover:text-red-950 mr-1">Cancelar</a>
-        </div>
-      </div>
-      <div class="md:w-full flex flex-col justify-start">
-        <div class="flex justify-between items-center mb-4">
-          <p class="mr-2 p-8">Tipo</p>
-          <p class="mr-2 p-8">Estandar</p>
-          <a href="" class="text-orange-500 hover:text-orange-700 mr-2 p-8">Cambiar</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <pv-button class="forpass-button">Actualizar</pv-button>
 </template>
 
 
-<style scoped>
+<style>
+.edit-profile-card {
+   border: solid black 2px;
+   width: 800px;
+   height: 400px;
+   margin: 5% auto 5% auto;
+
+}
+
+.edit-profile-props {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: auto auto 8% 0px;
+}
+
+.edit-profile-container {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-profile-props label {
+  margin-right: 50px;
+}
 
 </style>
