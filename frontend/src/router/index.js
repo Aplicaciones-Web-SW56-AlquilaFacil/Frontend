@@ -22,12 +22,12 @@ import PropertyDetail from "../content/pages/property-detail.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {path: '/type-subscription', component: TypePremiumComponent, meta: {title: 'Type'},},
+        {path: '/type-subscription', component: TypePremiumComponent, meta: {title: 'Subscriptions'},},
         {path: '/organizer', component: OrganizatorCardComponent, meta: {title: 'Organizer'},},
         {path: '/proprietary', component: PropietaryCardComponent, meta: {title: 'Proprietary'},},
 
         {path: '/home', component: Home, meta: {title: 'Home'},},
-        {path: '/home-detail', component: PropertyDetail, meta: {title: 'Home Detail'},},
+        {path: '/home-detail', component: PropertyDetail, meta: {title: 'Detail'},},
 
         {path: '/add-photo', component: CreateSpaceAddPhotoComponent, meta: {title: 'Add Photo'},},
         {path: '/confirm-direction', component: CreateSpaceConfirmDirectionComponent, meta: {title: 'Confirm Direction'},},
@@ -37,12 +37,12 @@ const router = createRouter({
         {path: '/post', component: CreateSpacePostComponent, meta: {title: 'Post'},},
         {path: '/price', component: CreateSpacePriceComponent, meta: {title: 'Price'},},
         {path: '/stand-out', component: CreateSpaceStandOutComponent, meta: {title: 'Stand Out'},},
-        {path: '/start', component: CreateSpaceStartComponent, meta: {title: 'Start'},},
+        {path: '/start', component: CreateSpaceStartComponent, meta: {title: 'Create'},},
         {path: '/title', component: CreateSpaceTitleComponent, meta: {title: 'Title'},},
 
-        {path: '/user-edit', component: UserEditProfile, meta: {title: 'User Edit Profile'},},
-        {path: '/forgot-password', component: UserForgotPassword, meta: {title: 'User Forgot Password'},},
-        {path: '/register', component: UserRegister, meta: {title: 'User Register'},},
+        {path: '/user-edit', component: UserEditProfile, meta: {title: 'Edit Profile'},},
+        {path: '/forgot-password', component: UserForgotPassword, meta: {title: 'Forgot Password'},},
+        {path: '/register', component: UserRegister, meta: {title: 'Register'},},
 
 
         {path: '/', redirect: 'home'}
@@ -51,7 +51,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next)=>
 {
-    let baseTitle = 'Elegir Tipo de Subscription';
+    let baseTitle = 'AlquilaFácil';
     document.title = `${baseTitle} | ${to.meta["title"]}`;
     next();
 })

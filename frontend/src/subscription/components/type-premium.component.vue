@@ -29,7 +29,7 @@ export default {
     <pv-card class="subscription-card">
       <template #content>
         <img class="card-image"
-             src="C:\Users\Augusto\WebstormProjects\appweb-feature-pcard\src\assets\proprietary-image.png"
+             src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/develop/frontend/src/assets/organizer-image.png?raw=true"
              alt="Propietario">
       </template>
       <template #footer>
@@ -45,7 +45,7 @@ export default {
     <pv-card class="subscription-card">
       <template #content>
         <img class="card-image"
-             src="C:\Users\Augusto\WebstormProjects\appweb-feature-pcard\src\assets\organizer-image.png"
+             src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/develop/frontend/src/assets/proprietary-image.png?raw=true"
              alt="Organizador">
       </template>
       <template #footer>
