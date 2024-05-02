@@ -24,6 +24,9 @@ import UserRegister from "./user/pages/user-register.vue";
 import TheUserLogin from "./user/components/the-user-login.component.vue";
 import TheUserLoginEmail from "./user/components/the-user-login-email.component.vue";
 import TheUserRegister from "./user/components/the-user-register.component.vue";
+import PropertyDetail from "./content/pages/property-detail.vue";
+import Home from "./content/pages/home.vue";
+import TheHome from "./content/components/the-home.component.vue";
 import Router from "./router/index.js";
 
 const showLogin = ref(false); //Esta variable se encarga de mostrar el componente de inicio de sesión

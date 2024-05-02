@@ -46,8 +46,6 @@ app.component('pv-toast', Toast);
 app.component('pv-sidebar', Sidebar);
 app.component('pv-divider', Divider);
 app.component('pv-autocomplete', AutoComplete);
-app.component('pv-inputtext', InputText);
-app.component('pv-card', Card);
 
 app.use(i18n);
 
