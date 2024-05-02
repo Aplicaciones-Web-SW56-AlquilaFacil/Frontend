@@ -37,7 +37,8 @@ const handleShowEmailLoginUpdate = (value) => {
 }; //Esta función se encarga de actualizar el valor de la variable showEmailLogin
 
 export default defineComponent({
-  name:'App'
+  name:'App',
+
   components: {FooterContent, CreateSpaceStartComponent, CreateSpaceDescribeComponent,
     CreateSpaceDescribeOptionComponent, CreateSpaceTitleComponent, CreateSpacePriceComponent, CreateSpacePostComponent,
     CreateSpaceAddPhotoComponent, CreateSpaceStandOutComponent, CreateSpaceFinishComponent, CreateSpaceConfirmDirectionComponent,
@@ -71,7 +72,7 @@ const handleShowCreateSpace = (value) => {
                       
     <navbar-content :showLogin="showLogin" :showEmailLogin="showEmailLogin"
                       @update:showLogin="handleShowLoginUpdate" @update:showEmailLogin="handleShowEmailLoginUpdate"/>
-    
+
   </div>
   <router-view></router-view>
   <footer-content></footer-content>

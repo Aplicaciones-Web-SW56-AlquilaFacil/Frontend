@@ -9,7 +9,6 @@ import InputIcon from "primevue/inputicon";
 import InputText from "primevue/inputtext";
 import Sidebar from "primevue/sidebar";
 import Password from 'primevue/password';
-import Card from 'primevue/card';
 import Checkbox from 'primevue/checkbox'
 import Card from "primevue/card";
 import Toast from "primevue/toast";
