@@ -64,26 +64,34 @@ export default {
   <pv-toolbar class="flex justify-content-center items-center toolbar" aria-label="Toolbar content">
     <template #start>
       <div class=" flex flex-row gap-7 justify-content-center" aria-label="Main navigation section">
-        <img class="md:block hidden" src="../../assets/logo.png" width="40" height="40" alt="ArtCollab Logo"/>
+        <img class="md:block hidden" src="../../assets/logo.png" width="40" height="40" alt="AlquilaFacil Logo"/>
         <div class="flex justify-content-center">
           <div  class=" block lg:hidden card flex justify-content-center" aria-label="toolbar features content">
             <pv-sidebar   v-model:visible="visible" header="AlquilaFácil">
-              <img class="md:hidden" src="../../assets/logo.png" width="40" height="40" alt="ArtCollab Logo"/>
+              <img class="md:hidden" src="../../assets/logo.png" width="40" height="40" alt="AlquilaFacil Logo"/>
+
+
               <h2> Inicio </h2>
               <router-link v-for="item in items1" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
                 <h2 :href="href" @click="navigate"> Subscripciones </h2>
               </router-link>
               <pv-button @click="openLogin" class="md:hidden bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
               <pv-button class="button-custom md:hidden" label="Inicia sesión">Iniciar Sesión</pv-button>
+
+
             </pv-sidebar>
             <pv-button class="bg-transparent text-black-alpha-80 border-transparent text-2xl hover:text-cyan-600"  icon="pi pi-bars"  @click="visible = true" aria-label="Menu" />
           </div>
           <div  class=" hidden  text-center lg:flex lg:flex-row text-xs gap-5 align-items-center navbar-links " aria-label="toolbar features content" >
+
+
             <h2> Inicio </h2>
             <router-link v-for="item in items1" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
             <h2 :href="href" @click="navigate"> Subscripciones </h2>
             </router-link>
             <pv-button class="bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
+
+
           </div>
         </div>
         <div aria-label="login button" class="hidden md:flex text-centeralign-items-center">
