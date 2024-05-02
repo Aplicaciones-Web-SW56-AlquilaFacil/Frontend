@@ -57,4 +57,19 @@ export default {
 .login-card{
   background-color: #c53030;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .login-card {
+    width: 90%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    width: 100%;
+  }
+}
+
 </style>

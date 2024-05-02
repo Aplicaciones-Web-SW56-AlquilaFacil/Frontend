@@ -50,4 +50,18 @@ export default {
 .copyright p {
   text-align: center;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .footer-logo, .footer-links, .copyright {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-logo h2 {
+    font-size: 0.8rem;
+  }
+}
+
 </style>

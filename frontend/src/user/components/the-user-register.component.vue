@@ -104,5 +104,23 @@ export default {
   border-bottom: 1px solid #d1d1d1;
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .register-container {
+    width: 90%;
+  }
+  .input-text, .register-button {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    width: 100%;
+  }
+  .input-text, .register-button {
+    width: 100%;
+  }
+}
 
 </style>

@@ -24,7 +24,6 @@ export default {
   margin: 2% auto 2% auto;
   width: 30%;
   border-color: #d13333 !important;
-
 }
 
 .forgot-pass-image {
@@ -51,4 +50,24 @@ export default {
   margin: auto auto 6% auto;
   border: #d13333;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .forpass-input {
+    width: 90%;
+  }
+  .forpass-button {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .forpass-input {
+    width: 100%;
+  }
+  .forpass-button {
+    width: 70%;
+  }
+}
+
 </style>
