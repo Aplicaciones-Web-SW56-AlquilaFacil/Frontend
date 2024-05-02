@@ -12,5 +12,8 @@ export default {
               focus:outline-none focus:ring focus:border-gray-700"
               placeholder="Escribe algo aquí" rows="4" cols="50"></textarea>
   </div>
+
+  <router-link to="/post">
     <pv-button class="back-next" style="left: 80%;">Siguiente</pv-button>
+  </router-link>
 </template>

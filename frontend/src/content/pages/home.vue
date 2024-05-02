@@ -9,15 +9,19 @@ export default defineComponent({
 </script>
 
 <template>
+
   <div class="card-container">
 
     <div class="card-row" v-for="rowIndex in 3" :key="rowIndex">
 
       <div class="card-column" v-for="colIndex in 4" :key="colIndex">
+
         <the-home></the-home>
+
       </div>
     </div>
   </div>
+
 </template>
 
 <style>

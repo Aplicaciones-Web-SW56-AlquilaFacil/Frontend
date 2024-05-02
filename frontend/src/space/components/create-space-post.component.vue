@@ -17,5 +17,7 @@
         <img src="../../assets/image-step3.jpg" alt="Descripción de la imagen" class="img-confirm-dir">
       </div>
     </div>
-      <pv-button class="back-next">Siguiente</pv-button>
+    <router-link to="/price">
+      <pv-button class="back-next " style="left: 80%;">Siguiente</pv-button>
+    </router-link>
   </template>

@@ -23,10 +23,18 @@
       </template>
       <template #footer>
         <div class="flex justify-content-center flex-column">
-          <h5 class="text-center cursor-pointer" v-html="'¿Olvidaste tu contraseña?'"/>
+
+          <router-link to="/forgot-password">
+          <h5 class="text-center cursor-pointer" v-html="'¿Olvidaste tu contraseña?'" @click="closeLogin"/>
+          </router-link>
+
           <div class="flex justify-content-center gap-2">
             <h5 class="text-center" v-html="'¿No tienes una cuenta?'"/>
-            <h5 class="text-center cursor-pointer text-white" v-html="'Regístrarse'"/>
+
+          <router-link to="/register">
+          <h5 class="text-center cursor-pointer text-white" v-html="'Regístrarse'" @click="closeLogin"/>
+          </router-link>
+
           </div>
         </div>
       </template>

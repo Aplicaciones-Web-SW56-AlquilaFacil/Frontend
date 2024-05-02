@@ -11,5 +11,8 @@ export default {
     <pv-inputtext type="number" class="border border-gray-400 p-2 rounded-md mb-6 w-64 h-12 text-center" placeholder="Precio"/>
     <p>Precio para el organizador (sin incluir impuestos)</p>
   </div>
+
+  <router-link to="/finish">
     <pv-button class="back-next" style="left: 80%;">Siguiente</pv-button>
+  </router-link>
 </template>

@@ -24,7 +24,7 @@ export default {
       </template>
       <template #content>
         <h5 class="text-center">
-          ¡Sumérgete en una aventura única de la mano de libros ilustrados!
+          ¡Sumérgete en una gran variedad de locales y pon a alquilar el tuyo!
         </h5>
         <div class ="mt-3 login-buttons flex flex-column gap-3">
           <pv-button class="w-full bg-white" icon="pi pi-envelope" :label="'Iniciar sesión con Email'" plain text @click="openEmailLogin"/>
@@ -35,7 +35,9 @@ export default {
       </template>
       <template #footer>
         <div class="flex justify-content-center">
-          <h5 class="text-center" v-html="'O <span class=\'register-link cursor-pointer text-white\'>regístrate</span> si aún no tienes una cuenta'"/>
+          <router-link to="/register">
+          <h5 class="text-center" v-html="'O <span class=\'register-link cursor-pointer text-white\'>regístrate</span> si aún no tienes una cuenta'" @click="closeLogin"/>
+          </router-link>
         </div>
       </template>
     </pv-card>

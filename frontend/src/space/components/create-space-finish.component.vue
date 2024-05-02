@@ -30,7 +30,9 @@ export default {
   </pv-card>
   </div>
   <hr>
-    <pv-button class="back-next" style="left: 0%; margin-left:6%;">Siguiente</pv-button>
+  <router-link to="/home">
+    <pv-button class="back-next" style="left: 80%;">Siguiente</pv-button>
+  </router-link>
 </template>
 
 <style>

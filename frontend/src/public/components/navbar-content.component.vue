@@ -48,10 +48,22 @@ export default {
           label: 'Delete',
           icon: 'pi pi-times'
         }],
-      items1: [
+      subscriptions: [
         {
           label: 'Type',
           to: '/type-subscription'
+        },
+      ],
+      createspace: [
+        {
+          label: 'Start',
+          to: '/start'
+        },
+      ],
+      gohome: [
+        {
+          label: 'Home',
+          to: '/home'
         },
       ],
       visible:false,
@@ -64,39 +76,53 @@ export default {
   <pv-toolbar class="flex justify-content-center items-center toolbar" aria-label="Toolbar content">
     <template #start>
       <div class=" flex flex-row gap-7 justify-content-center" aria-label="Main navigation section">
+        <router-link to="/user-edit">
         <img class="md:block hidden" src="../../assets/logo.png" width="40" height="40" alt="AlquilaFacil Logo"/>
+        </router-link>
         <div class="flex justify-content-center">
           <div  class=" block lg:hidden card flex justify-content-center" aria-label="toolbar features content">
             <pv-sidebar   v-model:visible="visible" header="AlquilaFácil">
               <img class="md:hidden" src="../../assets/logo.png" width="40" height="40" alt="AlquilaFacil Logo"/>
 
 
-              <h2> Inicio </h2>
-              <router-link v-for="item in items1" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
+              <router-link v-for="item in gohome" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
+                <h2 :href="href" @click="navigate"> Inicio </h2>
+              </router-link>
+
+              <router-link v-for="item in subscriptions" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
                 <h2 :href="href" @click="navigate"> Subscripciones </h2>
               </router-link>
-              <pv-button @click="openLogin" class="md:hidden bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
-              <pv-button class="button-custom md:hidden" label="Inicia sesión">Iniciar Sesión</pv-button>
+
+              <pv-button class="md:hidden bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
+              <pv-button @click="openLogin" class="button-custom md:hidden" label="Inicia sesión">Iniciar Sesión</pv-button>
 
 
             </pv-sidebar>
             <pv-button class="bg-transparent text-black-alpha-80 border-transparent text-2xl hover:text-cyan-600"  icon="pi pi-bars"  @click="visible = true" aria-label="Menu" />
           </div>
-          <div  class=" hidden  text-center lg:flex lg:flex-row text-xs gap-5 align-items-center navbar-links " aria-label="toolbar features content" >
+          <div  class="hidden  text-center lg:flex lg:flex-row text-xs gap-5 align-items-center navbar-links " aria-label="toolbar features content" >
 
+            <router-link v-for="item in gohome" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
+            <h2 :href="href" @click="navigate"> Inicio </h2>
+            </router-link>
 
-            <h2> Inicio </h2>
-            <router-link v-for="item in items1" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
+            <router-link v-for="item in subscriptions" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
             <h2 :href="href" @click="navigate"> Subscripciones </h2>
             </router-link>
-            <pv-button class="bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
+
+            <router-link v-for="item in createspace" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
+            <pv-button :href="href" @click="navigate" class="bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
+            </router-link>
 
 
           </div>
         </div>
         <div aria-label="login button" class="hidden md:flex text-centeralign-items-center">
+
+          <router-link to="/register"></router-link>
           <pv-button  @click="openLogin" class="button-custom" label="Inicia sesión">Iniciar Sesión</pv-button>
           <the-user-login ref="login"/>
+
         </div>
       </div>
     </template>
@@ -106,8 +132,8 @@ export default {
       v-if="showLogin"
       @update:showLogin="handleCloseLogin"
       @update:showEmailLogin="handleShowEmailLogin"/>
-
   <the-user-login-email v-if="showEmailLogin" :showEmailLogin="showEmailLogin" @back="handleGoBack" @update:showEmailLogin="handleHideEmailLogin" />
+
 </template>
 
 <style scoped>

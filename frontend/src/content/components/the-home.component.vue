@@ -7,6 +7,7 @@ export default {
 <template>
   <pv-card class="home-card">
     <template #content>
+      <router-link to="/home-detail">
       <div class="container-img-home">
           <img src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/feature/bounded-content/frontend/src/assets/image-detail2.png?raw=true"
                class="img-home">
@@ -18,6 +19,7 @@ export default {
             <p><strong>S/. 1000 </strong>por noche</p>
           </div>
       </div>
+      </router-link>
     </template>
   </pv-card>
 </template>

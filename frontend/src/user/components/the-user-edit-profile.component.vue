@@ -53,8 +53,9 @@ export default {
       </div>
     </template>
   </pv-card>
-
+  <router-link to="/home">
   <pv-button class="forpass-button">Actualizar</pv-button>
+  </router-link>
 </template>
 
 
