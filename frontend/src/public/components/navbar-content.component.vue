@@ -73,7 +73,7 @@ export default {
 </script>
 
 <template>
-  <pv-toolbar class="flex justify-content-center items-center toolbar" aria-label="Toolbar content">
+  <pv-toolbar class="flex justify-content-center items-center toolbar border-transparent" aria-label="Toolbar content">
     <template #start>
       <div class=" flex flex-row gap-7 justify-content-center" aria-label="Main navigation section">
         <router-link to="/user-edit">
