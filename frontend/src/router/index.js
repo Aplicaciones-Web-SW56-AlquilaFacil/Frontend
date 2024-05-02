@@ -1,8 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
 
-import PropietaryCardComponent from "../premiumcards/components/propietary-card.component.vue";
-import OrganizatorCardComponent from "../premiumcards/components/organizator-card.component.vue";
-import TypePremiumComponent from "../premiumcards/components/type-premium.component.vue";
+import PropietaryCardComponent from "../subscription/components/propietary-card.component.vue";
+import OrganizatorCardComponent from "../subscription/components/organizator-card.component.vue";
+import TypePremiumComponent from "../subscription/components/type-premium.component.vue";
 import Home from "../content/pages/home.vue";
 import CreateSpaceAddPhotoComponent from "../space/components/create-space-add-photo.component.vue";
 import CreateSpaceDescribeComponent from "../space/components/create-space-describe.component.vue";
