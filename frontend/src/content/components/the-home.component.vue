@@ -32,7 +32,7 @@ export default {
           <img :src="card.imgUrl" alt="home" class="img-home">
         </div>
         <div class="container-text-home">
-          <div>
+          <div style="color: black;">
             <p class="mb-1">{{ card.title }}</p>
             <p class="mb-1 text-gray-500">{{ card.description }}</p>
             <p><strong>S/. {{ card.price }} </strong> por noche</p>
