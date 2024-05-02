@@ -61,11 +61,10 @@ export default {
 
 <style>
 .edit-profile-card {
-   border: solid black 2px;
-   width: 800px;
-   height: 400px;
-   margin: 5% auto 5% auto;
-
+  border: solid black 2px;
+  width: 800px;
+  height: 400px;
+  margin: 5% auto 5% auto;
 }
 
 .edit-profile-props {
@@ -83,5 +82,28 @@ export default {
 .edit-profile-props label {
   margin-right: 50px;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .edit-profile-card {
+    width: 90%;
+    height: auto;
+  }
+  .edit-profile-props {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .edit-profile-props label {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-profile-card {
+    width: 100%;
+  }
+}
+
 
 </style>
