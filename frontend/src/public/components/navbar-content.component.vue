@@ -11,7 +11,12 @@ export default {
         {
           label: 'Delete',
           icon: 'pi pi-times'
-        }
+        }],
+      items1: [
+        {
+          label: 'Type',
+          to: '/type-subscription'
+        },
       ],
       visible:false,
     };
@@ -29,7 +34,9 @@ export default {
             <pv-sidebar   v-model:visible="visible" header="AlquilaFácil">
               <img class="md:hidden" src="../../assets/logo.png" width="40" height="40" alt="ArtCollab Logo"/>
               <h2> Inicio </h2>
-              <h2> Subscripciones </h2>
+              <router-link v-for="item in items1" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
+                <h2 :href="href" @click="navigate"> Subscripciones </h2>
+              </router-link>
               <pv-button class="md:hidden bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
               <pv-button class="button-custom md:hidden" label="Inicia sesión">Iniciar Sesión</pv-button>
             </pv-sidebar>
@@ -37,7 +44,9 @@ export default {
           </div>
           <div  class=" hidden  text-center lg:flex lg:flex-row text-xs gap-5 align-items-center navbar-links " aria-label="toolbar features content" >
             <h2> Inicio </h2>
-            <h2> Subscripciones </h2>
+            <router-link v-for="item in items1" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
+            <h2 :href="href" @click="navigate"> Subscripciones </h2>
+            </router-link>
             <pv-button class="bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
           </div>
         </div>
