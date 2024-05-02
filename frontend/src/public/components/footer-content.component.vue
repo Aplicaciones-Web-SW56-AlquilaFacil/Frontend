@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-red-600 p-5 text-white border-0">
+  <footer class="bg-red-600 p-5 text-white border-transparent">
     <div aria-label="The footer content" class="flex flex-row justify-content-center align-items-center md:flex-column md:gap-3 gap-5">
       <div aria-label="Company logo and name" class="footer-logo flex md:flex-row flex-column md:align-items-center align-items-start justify-content-center gap-3 ">
         <img src="../../assets/logo.png" alt="AlquilaFácil Logo" width="50" />

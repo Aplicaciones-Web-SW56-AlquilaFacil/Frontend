@@ -73,14 +73,17 @@ export default {
 </script>
 
 <template>
-  <pv-toolbar class="flex justify-content-center items-center toolbar border-transparent" aria-label="Toolbar content">
+  <pv-toolbar class="flex md:justify-content-center md:max-w-7xl justify-content-start items-center toolbar border-transparent" aria-label="Toolbar content">
     <template #start>
-      <div class=" flex flex-row gap-7 justify-content-center" aria-label="Main navigation section">
+      <div class=" flex md:gap-7 justify-content-center" aria-label="Main navigation section">
         <router-link to="/user-edit">
         <img class="md:block hidden" src="../../assets/logo.png" width="40" height="40" alt="AlquilaFacil Logo"/>
         </router-link>
         <div class="flex justify-content-center">
-          <div  class=" block lg:hidden card flex justify-content-center" aria-label="toolbar features content">
+          <div  class="block lg:hidden flex justify-content-center align-items-center" aria-label="toolbar features content">
+            <img class="md:hidden p-mr-2" src="../../assets/logo.png" width="40" height="40" alt="AlquilaFacil Logo"/>
+            <p class="font-bold ml-2">AlquilaFácil</p>
+            <pv-button class="bg-transparent text-black-alpha-90 border-transparent text-2xl hover:text-red-600"  icon="pi pi-bars"  @click="visible = true" aria-label="Menu" />
             <pv-sidebar   v-model:visible="visible" header="AlquilaFácil">
               <img class="md:hidden" src="../../assets/logo.png" width="40" height="40" alt="AlquilaFacil Logo"/>
 
@@ -94,11 +97,11 @@ export default {
               </router-link>
 
               <pv-button class="md:hidden bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
+
               <pv-button @click="openLogin" class="button-custom md:hidden" label="Inicia sesión">Iniciar Sesión</pv-button>
 
 
             </pv-sidebar>
-            <pv-button class="bg-transparent text-black-alpha-80 border-transparent text-2xl hover:text-cyan-600"  icon="pi pi-bars"  @click="visible = true" aria-label="Menu" />
           </div>
           <div  class="hidden  text-center lg:flex lg:flex-row text-xs gap-5 align-items-center navbar-links " aria-label="toolbar features content" >
 
@@ -156,5 +159,6 @@ h2{
   background-color: white;
   border: 2px solid red;
   color: red;
+  padding: 1px 10px;
 }
 </style>
