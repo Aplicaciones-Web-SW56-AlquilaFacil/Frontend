@@ -12,10 +12,12 @@ import Card from "primevue/card";
 import Toast from "primevue/toast";
 import i18n from "./locale/i18n.js";
 
+
 import 'primeflex/primeflex.css';
 import 'primevue/resources/themes/aura-light-green/theme.css'
 import 'primeicons/primeicons.css'
 import 'primevue/resources/primevue.min.css'
+import AutoComplete from "primevue/autocomplete";
 import router from "./router/index.js";
 import DialogService from "primevue/dialogservice";
 import ConfirmationService from "primevue/confirmationservice";
@@ -35,6 +37,9 @@ app.component('pv-inputtext', InputText);
 app.component('pv-card', Card);
 app.component('pv-toast', Toast);
 app.component('pv-sidebar', Sidebar);
+app.component('pv-autocomplete', AutoComplete);
+app.component('pv-inputtext', InputText);
+app.component('pv-card', Card);
 app.use(i18n);
 
 app.mount('#app')
