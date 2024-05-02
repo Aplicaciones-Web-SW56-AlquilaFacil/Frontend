@@ -6,9 +6,9 @@ import FooterContent from "../../public/components/footer-content.component.vue"
 </script>
 
 <template>
-    <navbar-content/>
+
     <the-property-detail/>
-    <footer-content/>
+
 </template>
 
 <style scoped>

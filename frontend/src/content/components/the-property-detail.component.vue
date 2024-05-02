@@ -1,81 +1,167 @@
 <script>
 export default {
   name: "the-property-detail",
-  data() {
-    return {
-      property: "Property"
-    };
-  }
 }
 </script>
 
 <template>
-  <div class="flex flex-col items-center mb-28">
-    <h1 class="text-2xl font-bold mb-2 mt-6 mr-64">Casa en la playa con patio</h1>
+  <div class="container">
+    <h1>Casa en la playa con patio</h1>
 
-    <div class="flex justify-center items-center mb-4">
+    <div class="image-grid">
       <!-- La primera imagen más grande -->
-      <img src="../../assets/image-detail.png" alt="Paso 1" class="rounded w-72 h-72 object-cover mr-2 mb-4">
-
-      <div class="flex flex-col">
-        <!-- Dos imágenes arriba -->
-        <img src="../../assets/image-detail2.png" alt="Paso 2" class="w-36 h-34 object-cover mb-2 mr-2">
-        <img src="../../assets/image-detail2.png" alt="Paso 3" class="w-36 h-34 object-cover mb-4">
+      <div class="large-image">
+        <img src="../../assets/image-detail.png" alt="Paso 1" class="rounded-image">
       </div>
 
-      <div class="flex flex-col">
+      <div class="image-column">
+        <!-- Dos imágenes arriba -->
+        <img src="../../assets/image-detail2.png" alt="Paso 2" class="small-image">
+        <img src="../../assets/image-detail2.png" alt="Paso 3" class="small-image">
+      </div>
+
+      <div class="image-column">
         <!-- Dos imágenes abajo -->
-        <img src="../../assets/image-detail2.png" alt="Paso 2" class="w-36 h-34 object-cover mb-2">
-        <img src="../../assets/image-detail2.png" alt="Paso 3" class="w-36 h-34 object-cover mb-4">
+        <img src="../../assets/image-detail2.png" alt="Paso 2" class="small-image">
+        <img src="../../assets/image-detail2.png" alt="Paso 3" class="small-image">
       </div>
     </div>
 
-    <div class="flex">
-      <div class="w-96">
-        <h2 class="text-4xl font-bold mb-2">Asia, Lima</h2>
-        <p class="text-gray-500 mb-2">100 Aforo - 3 habitaciones - 3 camas - 2 baños</p>
+    <div class="details">
+      <div class="description">
+        <h2 class="subtitle">Asia, Lima</h2>
+        <p class="info">100 Aforo - 3 habitaciones - 3 camas - 2 baños</p>
         <img src="../../assets/italo-photo.png" alt="Foto de Italo">
-        <p class="mb-2">Propietario: Italo</p>
-        <p class="text-gray-500 mb-2">Plan estándar</p>
+        <p class="info">Propietario: Italo</p>
+        <p class="info">Plan estándar</p>
 
-        <p class="font-bold mb-2">Descripción:</p>
-        <p class="mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac nisi ac neque ultricies tincidunt. Proin eget vestibulum lorem. Sed fermentum tortor non libero consequat lacinia. Sed vel justo at nunc commodo luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras auctor velit id libero lobortis, sit amet maximus tortor suscipit. Null</p>
+        <p class="bold">Descripción:</p>
+        <p style="width: 630px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac nisi ac neque ultricies tincidunt. Proin eget vestibulum lorem. Sed fermentum tortor non libero consequat lacinia. Sed vel justo at nunc commodo luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras auctor</p>
       </div>
 
-      <div class="border-2 border-gray-300 rounded p-4">
-        <h2 class="text-lg font-bold mb-2">CONTACTA</h2>
+      <div class="contact">
+        <h2 class="contact-title">CONTACTA</h2>
 
-        <div class="flex items-center mb-4">
-          <div class="mr-2">
-            <pv-inputtext type="text" placeholder="Nombre" class="border border-gray-300 px-3 py-2 rounded w-32"/>
-          </div>
-          <div class="mr-2">
-            <pv-inputtext type="text" placeholder="Apellido" class="border border-gray-300 px-3 py-2 rounded w-32"/>
-          </div>
-          <div class="mr-2">
-            <pv-inputtext type="tel" placeholder="Teléfono" class="border border-gray-300 px-3 py-2 rounded w-32"/>
-          </div>
+        <div class="input-group">
+          <input type="text" placeholder="Nombre" class="input-field">
+          <input type="text" placeholder="Apellido" class="input-field">
+          <input type="text" placeholder="Teléfono" class="input-field">
         </div>
 
-
-        <div class="flex items-center mb-4 w-full">
-          <div class="mr-4 w-full">
-            <pv-inputtext type="email" placeholder="Correo electrónico" class="border border-gray-300 px-3 py-2 rounded w-full"/>
-          </div>
+        <div class="input-group">
+          <input type="email" placeholder="Correo electrónico" class="input-field full-width">
         </div>
 
-
-        <div class="flex items-center mb-4 w-full">
-          <div class="mr-4 w-full">
-            <textarea placeholder="Mensaje (opcional)" class="border border-gray-300 px-3 py-2 rounded w-full h-44"></textarea>
-          </div>
+        <div class="input-group">
+          <textarea placeholder="Mensaje (opcional)" class="input-field full-width"></textarea>
         </div>
 
-        <pv-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-36">
-          Reserva
-        </pv-button>
+        <button class="button">Reserva</button>
       </div>
-
     </div>
   </div>
+
 </template>
+
+<style>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.image-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.large-image {
+  margin-right: 8px;
+}
+
+.image-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.large-image img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.small-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 4px;
+  margin-right: 4px;
+  border-radius: 8px;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  margin: 2% 16% 2% 16%;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.info {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.bold {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.contact {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: 100%;
+}
+
+.contact-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-field {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  margin-right: 8px;
+  width: 30%;
+}
+
+.full-width {
+  width: 95%;
+}
+
+.button {
+  background-color: #d13333;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: solid #d13333;
+}
+
+</style>

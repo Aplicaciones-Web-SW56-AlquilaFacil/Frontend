@@ -8,7 +8,7 @@ import TheHome from "./content/components/the-home.component.vue";
 
 <template>
   <navbar-content />
-    <home></home>
+  <property-detail></property-detail>
   <footer-content/>
 </template>
 
