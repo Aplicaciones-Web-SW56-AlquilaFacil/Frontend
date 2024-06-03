@@ -76,8 +76,7 @@ export default {
 </script>
 
 <template>
-  <pv-toolbar class="flex justify-between items-center toolbar border-transparent"
-              aria-label="Toolbar content">
+  <pv-toolbar class="flex justify-between items-center toolbar border-transparent" aria-label="Toolbar content">
     <template #start>
       <div class="flex items-center" aria-label="Main navigation section">
         <router-link to="/user-edit" class="flex items-center no-underline">
@@ -90,37 +89,39 @@ export default {
     </template>
     <template #center>
       <div class="flex justify-center">
-        <div class="block md:hidden flex justify-content-center align-items-center"
-             aria-label="toolbar features content">
-          <img class="md:hidden p-mr-2" src="../../assets/logo.png" width="50" height="50" alt="AlquilaFacil Logo"/>
-          <p class="font-bold ml-2 text-black">AlquilaFácil</p>
-          <pv-button class="bg-transparent text-black-alpha-90 border-transparent text-2xl hover:text-red-600"
-                     icon="pi pi-bars" @click="visible = true" aria-label="Menu"/>
-          <pv-sidebar v-model:visible="visible" header="AlquilaFácil">
-            <img class="md:hidden" src="../../assets/logo.png" width="50" height="50" alt="AlquilaFacil Logo"/>
-
-            <router-link v-for="item in gohome" :key="item.label" :to="item.to" custom>
-              <template v-slot="{ navigate, href, isActive, isExactActive }">
-                <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">Inicio</h2>
-              </template>
-            </router-link>
-
-            <router-link v-for="item in subscriptions" :key="item.label" :to="item.to" custom>
-              <template v-slot="{ navigate, href, isActive, isExactActive }">
-                <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">Subscripciones</h2>
-              </template>
-            </router-link>
-
-            <router-link v-for="item in createspace" :key="item.label" :to="item.to" custom>
-              <template v-slot="{ navigate, href, isActive, isExactActive }">
-                <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }" class="nav-link">Publica tu espacio</h2>
-              </template>
-            </router-link>
-
-            <pv-button @click="openLogin" class="custom-button md:hidden" label="Inicia sesión">Iniciar Sesión
-            </pv-button>
-          </pv-sidebar>
+        <div class="toolbar-mini block md:hidden flex justify-between align-items-center" aria-label="toolbar features content">
+          <div class="flex items-center">
+            <img class="p-mr-2" src="../../assets/logo.png" width="50" height="50" alt="AlquilaFacil Logo" />
+            <p class="font-bold ml-2 text-black">AlquilaFácil</p>
+          </div>
+          <pv-button class="bg-transparent text-black-alpha-90 border-transparent text-2xl hover:text-red-600" icon="pi pi-bars" @click="visible = true" aria-label="Menu"></pv-button>
         </div>
+
+
+        <pv-sidebar v-model:visible="visible" header="AlquilaFácil">
+          <img class="md:hidden" src="../../assets/logo.png" width="50" height="50" alt="AlquilaFacil Logo"/>
+
+          <router-link v-for="item in gohome" :key="item.label" :to="item.to" custom>
+            <template v-slot="{ navigate, href, isActive, isExactActive }">
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">Inicio</h2>
+            </template>
+          </router-link>
+
+          <router-link v-for="item in subscriptions" :key="item.label" :to="item.to" custom>
+            <template v-slot="{ navigate, href, isActive, isExactActive }">
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">Subscripciones</h2>
+            </template>
+          </router-link>
+
+          <router-link v-for="item in createspace" :key="item.label" :to="item.to" custom>
+            <template v-slot="{ navigate, href, isActive, isExactActive }">
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }" class="nav-link">Publica tu espacio</h2>
+            </template>
+          </router-link>
+
+          <pv-button @click="openLogin" class="custom-button md:hidden" label="Inicia sesión">Iniciar Sesión
+          </pv-button>
+        </pv-sidebar>
 
         <div class="hidden text-center md:flex lg:flex-row lg:gap-5 gap-3 align-items-center navbar-links"
              aria-label="toolbar features content">
@@ -150,8 +151,9 @@ export default {
         <the-user-login ref="login"/>
       </div>
     </template>
-
   </pv-toolbar>
+  <hr class="border-1 shadow-2">
+
   <the-user-login
       :showLogin="showLogin"
       v-if="showLogin"
@@ -204,6 +206,34 @@ h2 {
   font-size: 1rem;
   font-weight: bold;
 }
+
+.toolbar-mini {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 376px) and (max-width: 625px) {
+  .toolbar-mini {
+    font-size: 14px;
+    gap: 140px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 376px) {
+  .toolbar-mini {
+    font-size: 14px;
+    gap: 100px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .toolbar-mini {
+    font-size: 14px;
+    gap: 50px;
+  }
+}
+
 
 .navbar-links img {
   cursor: pointer;
