@@ -49,9 +49,9 @@ export default {
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
   margin: 20px 0;
-  display: inline-flex; /* Hacer que la tarjeta se ajuste a su contenido */
+  display: inline-flex;
   flex-direction: column;
-  width: auto; /* Ajustar el ancho al contenido */
+  width: auto;
 
 }
 
@@ -65,8 +65,8 @@ export default {
 
 .img-home {
   width: 100%;
-  max-width: 100%; /* Cambiado a 100% para ajustar el tamaño máximo */
-  height: auto; /* Ajusta la altura automáticamente */
+  max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -76,8 +76,8 @@ export default {
   flex-direction: column;
   align-items: start;
   text-align: left;
-  width: 100%; /* Ajusta el ancho al 100% del contenedor */
-  box-sizing: border-box; /* Asegura que el padding no aumente el tamaño del contenedor */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .router-link {
@@ -87,10 +87,10 @@ export default {
 @media (min-width: 1200px) {
 
   .home-card {
-    display: inline-flex; /* Hacer que la tarjeta se ajuste a su contenido */
-    width: auto; /* Ajustar el ancho al contenido */
-    max-width: 270px; /* Establecer el tamaño máximo de la tarjeta */
-    max-height: 370px; /* Corregido aquí */
+    display: inline-flex;
+    width: auto;
+    max-width: 270px;
+    max-height: 370px;
   }
 
   .container-img-home {
@@ -99,15 +99,15 @@ export default {
 
   .img-home {
     width: 100%;
-    max-width: 100%; /* Reducir el ancho máximo de la imagen */
+    max-width: 100%;
     height: auto;
   }
 
   .container-text-home {
-    max-width: 100%; /* Reducir el ancho máximo del contenedor de texto */
-    box-sizing: border-box; /* Asegurar que el relleno no afecte el tamaño total */
-    text-align: left; /* Alinear el texto a la izquierda */
-    margin: 0 auto; /* Centrar el contenedor de texto horizontalmente */
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    margin: 0 auto;
     font-size: 15px;
   }
 }
@@ -115,10 +115,10 @@ export default {
 @media (min-width: 769px) and (max-width: 1024px) {
 
   .home-card {
-    display: inline-flex; /* Hacer que la tarjeta se ajuste a su contenido */
-    width: auto; /* Ajustar el ancho al contenido */
-    max-width: 170px; /* Establecer el tamaño máximo de la tarjeta */
-    max-height: 270px; /* Corregido aquí */
+    display: inline-flex;
+    width: auto;
+    max-width: 170px;
+    max-height: 270px;
   }
 
   .container-img-home {
@@ -127,15 +127,15 @@ export default {
 
   .img-home {
     width: 100%;
-    max-width: 100%; /* Reducir el ancho máximo de la imagen */
+    max-width: 100%;
     height: auto;
   }
 
   .container-text-home {
-    max-width: 100%; /* Reducir el ancho máximo del contenedor de texto */
-    box-sizing: border-box; /* Asegurar que el relleno no afecte el tamaño total */
-    text-align: left; /* Alinear el texto a la izquierda */
-    margin: 0 auto; /* Centrar el contenedor de texto horizontalmente */
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    margin: 0 auto;
     font-size: 13px;
   }
 }
@@ -143,10 +143,10 @@ export default {
 @media (min-width: 601px) and (max-width: 768px) {
 
   .home-card {
-    display: inline-flex; /* Hacer que la tarjeta se ajuste a su contenido */
-    width: auto; /* Ajustar el ancho al contenido */
-    max-width: 205px; /* Establecer el tamaño máximo de la tarjeta */
-    max-height: 309px; /* Corregido aquí */
+    display: inline-flex;
+    width: auto;
+    max-width: 205px;
+    max-height: 309px;
   }
 
   .container-img-home {
@@ -155,15 +155,15 @@ export default {
 
   .img-home {
     width: 100%;
-    max-width: 100%; /* Reducir el ancho máximo de la imagen */
+    max-width: 100%;
     height: auto;
   }
 
   .container-text-home {
-    max-width: 100%; /* Reducir el ancho máximo del contenedor de texto */
-    box-sizing: border-box; /* Asegurar que el relleno no afecte el tamaño total */
-    text-align: left; /* Alinear el texto a la izquierda */
-    margin: 0 auto; /* Centrar el contenedor de texto horizontalmente */
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    margin: 0 auto;
     font-size: 15px;
   }
 }
@@ -171,10 +171,10 @@ export default {
 @media (max-width: 600px) {
 
   .home-card {
-    display: inline-flex; /* Hacer que la tarjeta se ajuste a su contenido */
-    width: auto; /* Ajustar el ancho al contenido */
-    max-width: 150px; /* Establecer el tamaño máximo de la tarjeta */
-    max-height: 250px; /* Corregido aquí */
+    display: inline-flex;
+    width: auto;
+    max-width: 150px;
+    max-height: 250px;
   }
 
   .container-img-home {
@@ -183,15 +183,15 @@ export default {
 
   .img-home {
     width: 100%;
-    max-width: 80%; /* Reducir el ancho máximo de la imagen */
+    max-width: 80%;
     height: auto;
   }
 
   .container-text-home {
-    max-width: 80%; /* Reducir el ancho máximo del contenedor de texto */
-    box-sizing: border-box; /* Asegurar que el relleno no afecte el tamaño total */
-    text-align: left; /* Alinear el texto a la izquierda */
-    margin: 0 auto; /* Centrar el contenedor de texto horizontalmente */
+    max-width: 80%;
+    box-sizing: border-box;
+    text-align: left;
+    margin: 0 auto;
     font-size: 13px;
   }
 }
