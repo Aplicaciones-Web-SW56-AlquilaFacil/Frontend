@@ -1,48 +1,66 @@
-<script>
-export default {
-
-  name: 'the-user-login',
-  props: ['showLogin', 'showEmailLogin'],
-  methods: {
-    closeLogin() {
-      this.$emit('update:showLogin', false);
-    },
-    openEmailLogin() {
-      this.$emit('update:showEmailLogin', true);
-      this.$emit('update:showLogin', false);
-    },
-  },
-  emits: ['update:showLogin', 'update:showEmailLogin'],
-}
-</script>
-
 <template>
   <section v-if="showLogin" class="user-login w-full flex justify-content-center align-items-center fixed" @click.self="closeLogin">
     <pv-card class="login-card h-30rem w-20rem">
       <template #title>
-        <h4 class="text-center font-bold"> Inicia sesión ahora </h4>
+        <h4 class="text-center font-bold">Iniciar sesión con correo electrónico</h4>
       </template>
       <template #content>
-        <h5 class="text-center">
-          ¡Sumérgete en una gran variedad de locales y pon a alquilar el tuyo!
-        </h5>
-        <div class ="mt-3 login-buttons flex flex-column gap-3">
-          <pv-button class="w-full bg-white" icon="pi pi-envelope" :label="'Iniciar sesión con Email'" plain text @click="openEmailLogin"/>
-          <pv-button class="w-full bg-white" icon="pi pi-google" :label="'Iniciar sesión con Google'" plain text/>
-          <pv-button class="w-full bg-white" icon="pi pi-facebook" :label="'Iniciar sesión con Facebook'" plain text/>
-          <pv-button class="w-full bg-white" icon="pi pi-twitter" :label="'Iniciar sesión con Twitter'" plain text/>
+        <div class="card flex justify-content-center">
+          <div class="flex flex-column gap-1">
+            <label class="text-sm" for="email">Correo electrónico</label>
+            <pv-inputtext class="text-sm" id="email" placeholder="Ingresa tu correo" aria-label="Correo electrónico"/>
+
+            <label class="text-sm" for="password">Contraseña</label>
+            <pv-password :input-style="{ fontSize: '0.875rem' }" class="text-sm" id="password" toggle-mask v-model="password" placeholder="Ingresar contraseña" aria-label="Contraseña"/>
+
+            <div class="flex justify-content-center gap-2 mt-3">
+              <pv-button class="w-full bg-white text-sm" label="Atrás" plain text @click="goBack" aria-label="Cerrar inicio de sesión"/>
+              <pv-button class="w-full bg-white text-sm" label="Iniciar sesión" plain text aria-label="Iniciar sesión"/>
+            </div>
+          </div>
         </div>
       </template>
       <template #footer>
-        <div class="flex justify-content-center">
-          <router-link to="/register">
-          <h5 class="text-center" v-html="'O <span class=\'register-link cursor-pointer text-white\'>regístrate</span> si aún no tienes una cuenta'" @click="closeLogin"/>
+        <div class="flex justify-content-center flex-column">
+          <router-link to="/forgot-password">
+            <h5 class="text-center cursor-pointer" @click="closeLogin">¿Olvidaste tu contraseña?</h5>
           </router-link>
+          <div class="flex justify-content-center gap-2">
+            <h5 class="text-center">¿No tienes una cuenta?</h5>
+            <router-link to="/register">
+              <h5 class="text-center cursor-pointer text-white" @click="closeLogin">Regístrate</h5>
+            </router-link>
+          </div>
         </div>
       </template>
     </pv-card>
   </section>
 </template>
+
+<script>
+export default {
+  name: 'the-user-login',
+  props: {
+    showLogin: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      password: '',
+    };
+  },
+  methods: {
+    closeLogin() {
+      this.$emit('update:showLogin', false);
+    },
+    goBack() {
+      this.$emit('update:showLogin', false);
+    }
+  }
+}
+</script>
 
 <style scoped>
 .user-login {
@@ -54,22 +72,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.login-card{
+.login-card {
   background-color: #c53030;
 }
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .login-card {
-    width: 90%;
-    height: auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-card {
-    width: 100%;
-  }
-}
-
 </style>

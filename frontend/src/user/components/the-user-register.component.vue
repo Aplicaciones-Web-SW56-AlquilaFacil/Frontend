@@ -72,16 +72,6 @@ export default {
             <pv-button class="register-button w-full w-12rem" @click="register" :label="'Regístrate ahora'" plain text aria-label="Botón de registro" :disabled="!isFormValid" />
           </div>
 
-          <pv-divider align="center" type="solid" >
-            <b>Regístrate ahora</b>
-          </pv-divider>
-
-          <div class="flex justify-content-center gap-5">
-            <i class="pi pi-google text-7xl cursor-pointer" aria-label="Google"></i>
-            <i class="pi pi-facebook text-7xl cursor-pointer" aria-label="Facebook"></i>
-            <i class="pi pi-twitter text-7xl cursor-pointer" aria-label="Twitter"></i>
-          </div>
-
         </div>
       </div>
     </div>
