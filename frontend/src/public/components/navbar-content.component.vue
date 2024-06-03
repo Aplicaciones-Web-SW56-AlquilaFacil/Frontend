@@ -2,6 +2,7 @@
 import TheUserLoginEmail from "../../user/components/the-user-login-email.component.vue";
 import TheUserLogin from "../../user/components/the-user-login.component.vue";
 import TheUserForgotPasswordComponent from "../../user/components/the-user-forgot-password.component.vue";
+
 export default {
   name: 'navbar-content',
   components: {
@@ -35,10 +36,11 @@ export default {
     handleGoBack() {
       this.$emit('update:showLogin', true);
       this.$emit('update:showEmailLogin', false);
-    },
+    }
   },
   data() {
     return {
+      isLg: window.innerWidth >= 1024,
       items: [
         {
           label: 'Update',
@@ -47,118 +49,199 @@ export default {
         {
           label: 'Delete',
           icon: 'pi pi-times'
-        }],
+        }
+      ],
       subscriptions: [
         {
           label: 'Type',
           to: '/type-subscription'
-        },
+        }
       ],
       createspace: [
         {
           label: 'Start',
           to: '/start'
-        },
+        }
       ],
       gohome: [
         {
           label: 'Home',
           to: '/home'
-        },
+        }
       ],
-      visible:false,
+      visible: false
     };
   }
 };
 </script>
 
 <template>
-  <pv-toolbar class="flex md:justify-content-center md:max-w-7xl justify-content-start items-center toolbar border-transparent" aria-label="Toolbar content">
+  <pv-toolbar class="flex justify-between items-center toolbar border-transparent"
+              aria-label="Toolbar content">
     <template #start>
-      <div class=" flex md:gap-7 justify-content-center" aria-label="Main navigation section">
-        <router-link to="/user-edit">
-        <img class="md:block hidden" src="../../assets/logo.png" width="40" height="40" alt="AlquilaFacil Logo"/>
+      <div class="flex items-center" aria-label="Main navigation section">
+        <router-link to="/user-edit" class="flex items-center no-underline">
+          <div class="flex align-items-center">
+            <img class="md:block hidden" src="../../assets/logo.png" :width="isLg ? '50' : '40'" :height="isLg ? '50' : '40'" alt="AlquilaFacil Logo"/>
+            <span class="font-bold lg:text-xl text-sm ml-2 text-black-alpha-90 md:block hidden">AlquilaFácil</span>
+          </div>
         </router-link>
-        <div class="flex justify-content-center">
-          <div  class="block lg:hidden flex justify-content-center align-items-center" aria-label="toolbar features content">
-            <img class="md:hidden p-mr-2" src="../../assets/logo.png" width="40" height="40" alt="AlquilaFacil Logo"/>
-            <p class="font-bold ml-2">AlquilaFácil</p>
-            <pv-button class="bg-transparent text-black-alpha-90 border-transparent text-2xl hover:text-red-600"  icon="pi pi-bars"  @click="visible = true" aria-label="Menu" />
-            <pv-sidebar   v-model:visible="visible" header="AlquilaFácil">
-              <img class="md:hidden" src="../../assets/logo.png" width="40" height="40" alt="AlquilaFacil Logo"/>
+      </div>
+    </template>
+    <template #center>
+      <div class="flex justify-center">
+        <div class="block md:hidden flex justify-content-center align-items-center"
+             aria-label="toolbar features content">
+          <img class="md:hidden p-mr-2" src="../../assets/logo.png" width="50" height="50" alt="AlquilaFacil Logo"/>
+          <p class="font-bold ml-2 text-black">AlquilaFácil</p>
+          <pv-button class="bg-transparent text-black-alpha-90 border-transparent text-2xl hover:text-red-600"
+                     icon="pi pi-bars" @click="visible = true" aria-label="Menu"/>
+          <pv-sidebar v-model:visible="visible" header="AlquilaFácil">
+            <img class="md:hidden" src="../../assets/logo.png" width="50" height="50" alt="AlquilaFacil Logo"/>
 
-
-              <router-link v-for="item in gohome" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
-                <h2 :href="href" @click="navigate"> Inicio </h2>
-              </router-link>
-
-              <router-link v-for="item in subscriptions" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
-                <h2 :href="href" @click="navigate"> Subscripciones </h2>
-              </router-link>
-
-              <pv-button class="md:hidden bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
-
-              <pv-button @click="openLogin" class="button-custom md:hidden" label="Inicia sesión">Iniciar Sesión</pv-button>
-
-
-            </pv-sidebar>
-          </div>
-          <div  class="hidden  text-center lg:flex lg:flex-row text-xs gap-5 align-items-center navbar-links " aria-label="toolbar features content" >
-
-            <router-link v-for="item in gohome" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
-            <h2 :href="href" @click="navigate"> Inicio </h2>
+            <router-link v-for="item in gohome" :key="item.label" :to="item.to" custom>
+              <template v-slot="{ navigate, href, isActive, isExactActive }">
+                <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">Inicio</h2>
+              </template>
             </router-link>
 
-            <router-link v-for="item in subscriptions" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
-            <h2 :href="href" @click="navigate"> Subscripciones </h2>
+            <router-link v-for="item in subscriptions" :key="item.label" :to="item.to" custom>
+              <template v-slot="{ navigate, href, isActive, isExactActive }">
+                <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">Subscripciones</h2>
+              </template>
             </router-link>
 
-            <router-link v-for="item in createspace" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
-            <pv-button :href="href" @click="navigate" class="bg-red-600" label="Publica tu espacio">Publica tu espacio</pv-button>
+            <router-link v-for="item in createspace" :key="item.label" :to="item.to" custom>
+              <template v-slot="{ navigate, href, isActive, isExactActive }">
+                <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }" class="nav-link">Publica tu espacio</h2>
+              </template>
             </router-link>
 
-
-          </div>
+            <pv-button @click="openLogin" class="custom-button md:hidden" label="Inicia sesión">Iniciar Sesión
+            </pv-button>
+          </pv-sidebar>
         </div>
-        <div aria-label="login button" class="hidden md:flex text-centeralign-items-center">
 
-          <router-link to="/register"></router-link>
-          <pv-button  @click="openLogin" class="button-custom" label="Inicia sesión">Iniciar Sesión</pv-button>
-          <the-user-login ref="login"/>
+        <div class="hidden text-center md:flex lg:flex-row lg:gap-5 gap-3 align-items-center navbar-links"
+             aria-label="toolbar features content">
+          <router-link v-for="item in gohome" :key="item.label" :to="item.to" custom>
+            <template v-slot="{ navigate, href, isActive, isExactActive }">
+              <h2 :href="href" @click="navigate" :class="{'router-link-active': isActive, 'router-link-exact-active': isExactActive, 'text-xs': true, 'lg:text-base': true}">Inicio</h2></template>
+          </router-link>
 
+          <router-link v-for="item in subscriptions" :key="item.label" :to="item.to" custom>
+            <template v-slot="{ navigate, href, isActive, isExactActive }">
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive, 'text-xs': true, 'lg:text-base': true}">Subscripciones</h2>
+            </template>
+          </router-link>
+
+          <router-link v-for="item in createspace" :key="item.label" :to="item.to" custom>
+            <template v-slot="{ navigate, href, isActive, isExactActive }">
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive, 'text-xs': true, 'lg:text-base': true}" class="nav-link">Publica tu espacio</h2>
+            </template>
+          </router-link>
         </div>
       </div>
     </template>
+    <template #end>
+      <div aria-label="login button" class="hidden md:flex text-center items-center md:text-xs lg:text-base md:space-x-2 lg:space-x-4">
+        <router-link to="/register"></router-link>
+        <pv-button @click="openLogin" class="custom-button md:text-xs lg:text-base" label="Inicia sesión">Iniciar Sesión</pv-button>
+        <the-user-login ref="login"/>
+      </div>
+    </template>
+
   </pv-toolbar>
   <the-user-login
       :showLogin="showLogin"
       v-if="showLogin"
       @update:showLogin="handleCloseLogin"
-      @update:showEmailLogin="handleShowEmailLogin"/>
-  <the-user-login-email v-if="showEmailLogin" :showEmailLogin="showEmailLogin" @back="handleGoBack" @update:showEmailLogin="handleHideEmailLogin" />
-
+      @update:showEmailLogin="handleShowEmailLogin"
+  />
+  <the-user-login-email
+      v-if="showEmailLogin"
+      :showEmailLogin="showEmailLogin"
+      @back="handleGoBack"
+      @update:showEmailLogin="handleHideEmailLogin"
+  />
 </template>
 
 <style scoped>
-.toolbar{
-  border-radius:0;
+.toolbar {
+  border-radius: 0;
+  width: 85%;
+  margin: 0 auto;
 }
-h2:hover{
-  cursor:pointer;
+
+/* Large screens (lg) */
+@media (min-width: 1200px) {
+  .toolbar {
+    width: 85%; /* Adjust this value if necessary */
+  }
+}
+
+/* Medium screens (md) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .toolbar {
+    width: 85%; /* Adjust this value according to your needs */
+  }
+}
+
+/* Small screens (sm) */
+@media (max-width: 767px) {
+  .toolbar {
+    width: 90%; /* Adjust this value according to your needs */
+  }
+}
+
+h2:hover, .router-link-active, .router-link-exact-active {
+  cursor: pointer;
   color: red;
 }
-h2{
-  color:black;
+
+h2 {
+  color: black;
   font-size: 1rem;
   font-weight: bold;
 }
+
 .navbar-links img {
   cursor: pointer;
 }
-.button-custom {
+
+.no-underline * {
+  text-decoration: none;
+}
+
+.nav-link {
+  color: gold;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-link:hover, .router-link-active, .router-link-exact-active {
+  color: red;
+}
+
+.custom-button {
   background-color: white;
   border: 2px solid red;
   color: red;
-  padding: 1px 10px;
+  padding: 8px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-button:hover {
+  background-color: red;
+  color: white;
+}
+
+.text-black {
+  color: black;
 }
 </style>

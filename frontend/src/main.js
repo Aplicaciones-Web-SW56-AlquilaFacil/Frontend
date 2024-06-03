@@ -16,7 +16,9 @@ import i18n from "./locale/i18n.js";
 
 
 import 'primeflex/primeflex.css';
-import 'primevue/resources/themes/aura-light-green/theme.css'
+import 'primevue/resources/themes/md-light-indigo/theme.css';
+import 'primevue/resources/primevue.min.css';
+import 'primeicons/primeicons.css';
 import 'primeicons/primeicons.css'
 import 'primevue/resources/primevue.min.css'
 import Divider from "primevue/divider";
