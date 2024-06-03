@@ -1,37 +1,53 @@
 <script>
-
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 import TheHome from "../components/the-home.component.vue";
 
 export default defineComponent({
-  components: {TheHome}
-})
+  components: { TheHome }
+});
 </script>
 
 <template>
-
-  <div class="grid">
-        <the-home></the-home>
+  <div class="container">
+    <div class="grid">
+      <the-home class="home-card"></the-home>
+    </div>
   </div>
-
 </template>
 
 <style>
-.card-container {
+.container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 20px;
 }
 
-.card-row {
-  width: 100%;
-  display: flex;
-  margin: auto 40px auto 40px;
+@media (min-width: 1200px) {
+  .grid {
+    width: 90%;
+    gap: 50px;
+  }
+}
+
+/* Medium screens (md) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .grid {
+    width: 95%;
+    gap: 20px;
+  }
+}
+
+/* Small screens (sm) */
+@media (max-width: 767px) {
+  .grid {
+    width: 95%;
+    gap: 30px;
+  }
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px; /* Espacio entre las tarjetas */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
 }
 </style>
