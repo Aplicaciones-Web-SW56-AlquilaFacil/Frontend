@@ -64,4 +64,10 @@ export default {
   display: block;
   margin: 20px auto auto auto;
 }
+
+@media (max-width: 768px) {
+  .card-image {
+    width: 150px;
+  }
+}
 </style>

@@ -9,19 +9,16 @@ export default {
     <h1>Casa en la playa con patio</h1>
 
     <div class="image-grid">
-      <!-- La primera imagen más grande -->
       <div class="large-image">
         <img src="../../assets/image-detail.png" alt="Paso 1" class="rounded-image">
       </div>
 
       <div class="image-column">
-        <!-- Dos imágenes arriba -->
         <img src="../../assets/image-detail2.png" alt="Paso 2" class="small-image">
         <img src="../../assets/image-detail2.png" alt="Paso 3" class="small-image">
       </div>
 
       <div class="image-column">
-        <!-- Dos imágenes abajo -->
         <img src="../../assets/image-detail2.png" alt="Paso 2" class="small-image">
         <img src="../../assets/image-detail2.png" alt="Paso 3" class="small-image">
       </div>

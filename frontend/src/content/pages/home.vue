@@ -32,6 +32,6 @@ export default defineComponent({
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px; /* Espacio entre las tarjetas */
+  gap: 20px;
 }
 </style>

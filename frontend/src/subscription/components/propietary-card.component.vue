@@ -13,7 +13,7 @@ export default {
         benefits: [
           "Listado ilimitados de espacios.",
           "Destaque de listados en los resultados de búsqueda.",
-          "Acceso a herramientas analíticas básicasasd.",
+          "Acceso a herramientas analíticas básicas.",
         ],
       },
       standarPlan: {
@@ -68,7 +68,7 @@ export default {
         <p class="planname">{{ standarPlan.planName }}</p>
         <hr>
         <ul class="benefits">
-          <li v-for="benefits in premiumPlan.benefits" :key="standarPlan.benefits" style="margin-bottom: 20px;">
+          <li v-for="benefits in standarPlan.benefits" :key="standarPlan.benefits" style="margin-bottom: 20px;">
             <i class="pi pi-check-circle"></i>{{ benefits }}</li>
         </ul>
       </template>
