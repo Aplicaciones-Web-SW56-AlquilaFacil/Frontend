@@ -41,7 +41,7 @@ export default defineComponent({
 </template>
 
 <style>
-/* General Container Styling */
+
 .search-container {
   display: flex;
   justify-content: center;
@@ -114,30 +114,9 @@ export default defineComponent({
   padding: 20px;
 }
 
-@media (min-width: 1200px) {
-  .grid {
-    width: 90%;
-    gap: 50px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  .grid {
-    width: 95%;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 767px) {
-  .grid {
-    width: 95%;
-    gap: 30px;
-  }
-}
-
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 </style>
