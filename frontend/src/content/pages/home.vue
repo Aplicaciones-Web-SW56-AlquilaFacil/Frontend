@@ -3,24 +3,34 @@ import { defineComponent } from "vue";
 import TheHome from "../components/the-home.component.vue";
 
 export default defineComponent({
-  components: { TheHome }
+  components: { TheHome },
+  data() {
+    return {
+      query: ''
+    };
+  },
+  methods: {
+    search() {
+      // Lógica para manejar la búsqueda con Axios
+      console.log("Searching for:", this.query);
+    }
+  }
 });
 </script>
 
 <template>
-
   <div class="search-container">
-      <div class="search-bar">
-        <div class="search-text-column">
-          <label for="search" class="search-label">Donde</label>
-          <div class="search-input-container">
+    <div class="search-bar">
+      <div class="search-text-column">
+        <label for="search" class="search-label">Donde</label>
+        <div class="search-input-container">
           <input type="text" id="search" class="search-input" v-model="query" placeholder="Solo ingresa el lugar" />
-          </div>
         </div>
-        <button @click="search" class="search-button">
-          <i class="pi pi-search"></i>
-        </button>
       </div>
+      <button @click="search" class="search-button">
+        <i class="pi pi-search"></i>
+      </button>
+    </div>
   </div>
 
   <div class="container">
@@ -31,29 +41,40 @@ export default defineComponent({
 </template>
 
 <style>
+/* General Container Styling */
 .search-container {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.search-text-column {
-  flex-direction: column;
-  align-items: flex-start;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .search-bar {
   display: flex;
+  align-items: center;
   border: 2px solid #D13333;
   border-radius: 50px;
   padding: 10px;
-  width: 20%;
+  width: 100%;
+  max-width: 400px;
   background-color: white;
 }
 
+.search-text-column {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
 .search-label {
-  margin-left: 25px;
   font-weight: bold;
+  margin-left: 25px;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
 }
 
 .search-input {
@@ -63,12 +84,6 @@ export default defineComponent({
   margin-left: 20px;
   flex: 1;
   border-radius: 4px;
-}
-
-.search-input-container {
-  display: flex;
-  align-items: center;
-  width: 100%;
 }
 
 .search-button {
@@ -82,7 +97,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-left: 30%;
+  margin-left: 110px;
 }
 
 .search-button:hover {
@@ -92,9 +107,6 @@ export default defineComponent({
 .search-button i {
   font-size: 1.2em;
 }
-
-
-
 
 .container {
   display: flex;
@@ -108,7 +120,6 @@ export default defineComponent({
     gap: 50px;
   }
 }
-
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .grid {
