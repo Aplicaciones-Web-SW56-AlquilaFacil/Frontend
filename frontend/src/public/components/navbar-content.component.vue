@@ -146,24 +146,24 @@ export default {
   margin: 0 auto;
 }
 
-/* Large screens (lg) */
+
 @media (min-width: 1200px) {
   .toolbar {
-    width: 85%; /* Adjust this value if necessary */
+    width: 85%;
   }
 }
 
-/* Medium screens (md) */
+
 @media (min-width: 768px) and (max-width: 1199px) {
   .toolbar {
-    width: 85%; /* Adjust this value according to your needs */
+    width: 85%;
   }
 }
 
-/* Small screens (sm) */
+
 @media (max-width: 767px) {
   .toolbar {
-    width: 90%; /* Adjust this value according to your needs */
+    width: 90%;
   }
 }
 

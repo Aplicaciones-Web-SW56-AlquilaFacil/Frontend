@@ -29,7 +29,7 @@ export default defineComponent({
   }
 }
 
-/* Medium screens (md) */
+
 @media (min-width: 768px) and (max-width: 1199px) {
   .grid {
     width: 95%;
@@ -37,7 +37,6 @@ export default defineComponent({
   }
 }
 
-/* Small screens (sm) */
 @media (max-width: 767px) {
   .grid {
     width: 95%;
