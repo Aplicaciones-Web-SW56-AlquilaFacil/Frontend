@@ -150,7 +150,24 @@ export default {
   justify-content: center;
   font-weight: bold;
   font-size: 30px;
+}
 
+@media (max-width: 768px) {
+  .subscription-card {
+    width: 200px;
+    height: 400px;
+    margin-top: 5%;
+  }
+  .choose-plan {
+    width: 100%;
+    padding: 10px 10px;
+    margin-top: 0;
+  }
+  .benefits {
+    font-size: 8px;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
 }
 
 </style>

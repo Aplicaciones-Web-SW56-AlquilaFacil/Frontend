@@ -87,4 +87,14 @@ export default {
 .label-conf-dir {
   margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+
+  .back-next {
+    width: 20%;
+    padding: 10px 10px;
+    margin-top: 0;
+    margin-right: -20.5%;
+  }
+}
 </style>
