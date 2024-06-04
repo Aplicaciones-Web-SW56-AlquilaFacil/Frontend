@@ -17,7 +17,7 @@
             <img class="p-mr-2" src="../../assets/logo.png" width="50" height="50" alt="AlquilaFacil Logo" />
             <p class="font-bold ml-2 text-black">AlquilaFácil</p>
           </div>
-          <pv-button class="bg-transparent text-black-alpha-90 border-transparent text-2xl hover:text-red-600" icon="pi pi-bars" @click="visible = true" aria-label="Menu"></pv-button>
+          <pv-button class="bg-transparent text-red-600 border-transparent text-2xl hover:text-red-600" icon="pi pi-bars" @click="visible = true" aria-label="Menu"></pv-button>
         </div>
 
         <pv-sidebar v-model:visible="visible" header="AlquilaFácil">
@@ -41,7 +41,11 @@
             </template>
           </router-link>
 
-          <pv-button @click="openLogin" class="custom-button md:hidden" label="Inicia sesión">Iniciar Sesión</pv-button>
+          <pv-button v-if="!isLoggedIn" @click="openLogin" class="custom-button md:hidden" label="Inicia sesión">Iniciar Sesión</pv-button>
+          <div v-else class="user-display flex items-center border-rounded">
+            <i class="pi pi-bars text-red-600 mr-2"></i>
+            <span class="font-bold">{{ user.name }}</span>
+          </div>
         </pv-sidebar>
 
         <div class="hidden text-center md:flex lg:flex-row lg:gap-5 gap-3 align-items-center navbar-links" aria-label="toolbar features content">
@@ -68,14 +72,18 @@
     <template #end>
       <div aria-label="login button" class="hidden md:flex text-center items-center md:text-xs lg:text-base md:space-x-2 lg:space-x-4">
         <router-link to="/register"></router-link>
-        <pv-button @click="openLogin" class="custom-button md:text-xs lg:text-base" label="Inicia sesión">Iniciar Sesión</pv-button>
-        <TheUserLogin ref="login" :showLogin="showLogin" @update:showLogin="handleCloseLogin"/>
+        <pv-button v-if="!isLoggedIn" @click="openLogin" class="custom-button md:text-xs lg:text-base" label="Inicia sesión">Iniciar Sesión</pv-button>
+        <div v-else class="user-display flex items-center">
+          <i class="pi pi-bars text-red-600 mr-3"></i>
+          <span class="font-bold">{{ user.name }}</span>
+        </div>
+        <TheUserLogin ref="login" :showLogin="showLogin" @login-success="handleLoginSuccess" @update:showLogin="handleCloseLogin"/>
       </div>
     </template>
   </pv-toolbar>
   <hr class="border-1 shadow-2">
 
-  <TheUserLogin :showLogin="showLogin" @update:showLogin="handleCloseLogin"/>
+  <TheUserLogin :showLogin="showLogin" @login-success="handleLoginSuccess" @update:showLogin="handleCloseLogin"/>
 </template>
 
 <script>
@@ -94,17 +102,14 @@ export default {
       default: false
     }
   },
-  methods: {
-    openLogin() {
-      this.$emit('update:showLogin', true);
-    },
-    handleCloseLogin() {
-      this.$emit('update:showLogin', false);
-    },
-  },
   data() {
     return {
       isLg: window.innerWidth >= 1024,
+      isLoggedIn: false,
+      user: {
+        name: '',
+        email: ''
+      },
       items: [
         {
           label: 'Update',
@@ -135,6 +140,30 @@ export default {
       ],
       visible: false
     };
+  },
+  methods: {
+    openLogin() {
+      this.$emit('update:showLogin', true);
+    },
+    handleCloseLogin() {
+      this.$emit('update:showLogin', false);
+    },
+    handleLoginSuccess(user) {
+      this.isLoggedIn = true;
+      this.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
+      this.handleCloseLogin();
+    },
+    checkLoginStatus() {
+      const user = localStorage.getItem('user');
+      if (user) {
+        this.user = JSON.parse(user);
+        this.isLoggedIn = true;
+      }
+    }
+  },
+  mounted() {
+    this.checkLoginStatus();
   }
 };
 </script>
@@ -146,20 +175,17 @@ export default {
   margin: 0 auto;
 }
 
-
 @media (min-width: 1200px) {
   .toolbar {
     width: 85%;
   }
 }
 
-
 @media (min-width: 768px) and (max-width: 1199px) {
   .toolbar {
     width: 85%;
   }
 }
-
 
 @media (max-width: 767px) {
   .toolbar {
@@ -243,5 +269,15 @@ h2 {
 
 .text-black {
   color: black;
+}
+
+.user-display {
+  border: 2px solid red;
+  padding: 8px 20px;
+  border-radius: 0.5rem;
+}
+
+.pi.pi-bars::before {
+  color: red;
 }
 </style>
