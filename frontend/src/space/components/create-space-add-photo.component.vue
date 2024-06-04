@@ -26,7 +26,9 @@ export default {
   </div>
 
   <hr>
-  <pv-button class="back-next" style="left: 0%; margin-left:6%;">Atrás</pv-button>
+  <router-link to="/stand-out">
+    <pv-button class="back-next" style="left: 0%; margin-left:6%;">Atrás</pv-button>
+  </router-link>
 
   <router-link to="title">
   <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Siguiente</pv-button>

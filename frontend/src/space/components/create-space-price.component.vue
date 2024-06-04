@@ -12,7 +12,11 @@ export default {
     <p>Precio para el organizador (sin incluir impuestos)</p>
   </div>
 
+  <router-link to="/post">
+    <pv-button class="back-next" style="left: 0%; margin-left:6%;">Atrás</pv-button>
+  </router-link>
+
   <router-link to="/finish">
-    <pv-button class="back-next" style="left: 80%;">Siguiente</pv-button>
+    <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Siguiente</pv-button>
   </router-link>
 </template>
