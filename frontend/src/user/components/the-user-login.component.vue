@@ -8,17 +8,17 @@
         <div class="card flex justify-content-center w-full">
           <div class="flex flex-column w-full px-4">
             <label class="text-sm mb-1" for="email">Correo electrónico</label>
-            <pv-inputtext class="text-sm mb-2 w-full" id="email" placeholder="Ingresa tu correo" aria-label="Correo electrónico"/>
+            <pv-inputtext v-model="email" class="text-sm mb-2 w-full" id="email" placeholder="Ingresa tu correo" aria-label="Correo electrónico"/>
 
             <label class="text-sm mb-1" for="password">Contraseña</label>
-            <pv-inputtext class="text-sm mb-2 w-full" id="password" placeholder="Ingresar contraseña" aria-label="Contraseña">
+            <pv-inputtext v-model="password" class="text-sm mb-2 w-full" id="password" placeholder="Ingresar contraseña" aria-label="Contraseña">
               <template #prepend>
                 <i class="pi pi-lock"></i>
               </template>
             </pv-inputtext>
 
             <div class="flex justify-content-center mt-4 w-full">
-              <pv-button class="styled-button text-sm w-full" label="Iniciar sesión" plain text aria-label="Iniciar sesión"/>
+              <pv-button class="styled-button text-sm w-full" label="Iniciar sesión" plain text aria-label="Iniciar sesión" @click="login"/>
             </div>
             <router-link to="/forgot-password" class="mt-2">
               <h5 class="text-center m-1" @click="closeLogin">¿Olvidaste tu contraseña?</h5>
@@ -52,20 +52,24 @@ export default {
   },
   data() {
     return {
-      password: '',
+      email: 'italo@web.com',
+      password: '123456',
     };
   },
   methods: {
     closeLogin() {
       this.$emit('update:showLogin', false);
     },
-    goBack() {
-      this.$emit('update:showLogin', false);
+    login() {
+      if (this.email === 'italo@web.com' && this.password === '123456') {
+        this.$emit('login-success', { name: 'Italo', email: this.email });
+      } else {
+        alert('Credenciales incorrectas');
+      }
     }
   }
 }
 </script>
-
 <style scoped>
 .user-login {
   height: 100vh;
