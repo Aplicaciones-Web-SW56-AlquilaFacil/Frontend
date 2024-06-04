@@ -12,6 +12,8 @@ import Password from 'primevue/password';
 import Checkbox from 'primevue/checkbox'
 import Card from "primevue/card";
 import Toast from "primevue/toast";
+import  SplitButton  from 'primevue/splitbutton';
+
 import i18n from "./locale/i18n.js";
 
 
@@ -48,6 +50,7 @@ app.component('pv-toast', Toast);
 app.component('pv-sidebar', Sidebar);
 app.component('pv-divider', Divider);
 app.component('pv-autocomplete', AutoComplete);
+app.component('pv-splitbutton', SplitButton);
 
 app.use(i18n);
 

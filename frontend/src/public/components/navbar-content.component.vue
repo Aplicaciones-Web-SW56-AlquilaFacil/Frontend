@@ -70,18 +70,22 @@
       </div>
     </template>
     <template #end>
-      <div aria-label="login button" class="hidden md:flex text-center items-center md:text-xs lg:text-base md:space-x-2 lg:space-x-4">
-        <router-link to="/register"></router-link>
-        <pv-button v-if="!isLoggedIn" @click="openLogin" class="custom-button md:text-xs lg:text-base" label="Inicia sesión">Iniciar Sesión</pv-button>
-        <div v-else class="user-display flex items-center">
-          <i class="pi pi-bars text-red-600 mr-3"></i>
-          <span class="font-bold">{{ user.name }}</span>
+      <pv-splitbutton :model="items">
+        <div aria-label="login button" class="hidden md:flex text-center items-center md:text-xs lg:text-base md:space-x-2 lg:space-x-4">
+          <router-link to="/register"></router-link>
+          <pv-button v-if="!isLoggedIn" @click="openLogin" class="custom-button md:text-xs lg:text-base" label="Inicia sesión">Iniciar Sesión</pv-button>
+          <div v-else class="user-display flex items-center">
+            <span @click="toggleSplitButton" class="font-bold mr-3">{{ user.name }}</span>
+            <i class="pi pi-bars text-red-600"></i>
+          </div>
+          <TheUserLogin ref="login" :showLogin="showLogin" @login-success="handleLoginSuccess" @update:showLogin="handleCloseLogin"/>
         </div>
         <TheUserLogin ref="login" :showLogin="showLogin" @login-success="handleLoginSuccess" @update:showLogin="handleCloseLogin"/>
-      </div>
+      </pv-splitbutton>
     </template>
+
   </pv-toolbar>
-  <hr class="border-1 shadow-2">
+  <hr class="border-1 shadow-1 border-gray-200">
 
   <TheUserLogin :showLogin="showLogin" @login-success="handleLoginSuccess" @update:showLogin="handleCloseLogin"/>
 </template>
@@ -104,6 +108,7 @@ export default {
   },
   data() {
     return {
+      showSplitButton: false,
       isLg: window.innerWidth >= 1024,
       isLoggedIn: false,
       user: {
@@ -112,12 +117,13 @@ export default {
       },
       items: [
         {
-          label: 'Update',
-          icon: 'pi pi-refresh'
+          label: 'Mis propiedades',
         },
         {
-          label: 'Delete',
-          icon: 'pi pi-times'
+          label: 'Cuenta',
+        },
+        {
+          label: 'Cerrar sesión',
         }
       ],
       subscriptions: [
@@ -160,7 +166,7 @@ export default {
         this.user = JSON.parse(user);
         this.isLoggedIn = true;
       }
-    }
+    },
   },
   mounted() {
     this.checkLoginStatus();
