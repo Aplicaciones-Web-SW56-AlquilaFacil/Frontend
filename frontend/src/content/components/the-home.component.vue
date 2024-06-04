@@ -84,6 +84,15 @@ export default {
   text-decoration: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 @media (min-width: 1200px) {
 
   .home-card {

@@ -12,10 +12,20 @@
         <pv-inputicon class="pi pi-youtube text-2xl" aria-label="Link to Youtube" />
       </div>
       <div aria-label="Enlaces de navegación del pie de página" class="flex md:gap-5 gap-3 footer-links flex md:flex-row flex-column md:items-center items-start">
+
         <p>Acerca de</p>
+        <router-link to="/home">
         <p>Inicio</p>
+        </router-link>
+
+        <router-link to="/type-subscription">
         <p>Subscripciones</p>
+        </router-link>
+
+        <router-link to="/start">
         <p>Publica tu espacio</p>
+        </router-link>
+
       </div>
     </div>
     <div  class="copyright mt-3" aria-label="Copyright Information">
