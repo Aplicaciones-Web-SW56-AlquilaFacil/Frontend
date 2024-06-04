@@ -38,7 +38,9 @@ export default {
     </div>
   </div>
   <hr>
+  <router-link to="/describe">
   <pv-button class="back-next" style="left: 0%; margin-left:6%;">Atrás</pv-button>
+  </router-link>
 
   <router-link to="/confirm-direction">
   <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Siguiente</pv-button>
