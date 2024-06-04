@@ -41,9 +41,9 @@ export default {
       </div>
     </div>
   </div>
-<hr>
+  <hr>
   <router-link to="/describe">
-  <pv-button class="back-next" style="left: 80%; margin-left:0%;">Comencemos</pv-button>
+    <pv-button class="back-next" style="left: 80%; margin-left:0%;">Comencemos</pv-button>
   </router-link>
 
 </template>

@@ -33,7 +33,11 @@ export default {
         <p class="info">Plan estándar</p>
 
         <p class="bold">Descripción:</p>
-        <p style="width: 630px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac nisi ac neque ultricies tincidunt. Proin eget vestibulum lorem. Sed fermentum tortor non libero consequat lacinia. Sed vel justo at nunc commodo luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras auctor</p>
+        <p style="width: 90%">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+          eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+          mollit anim id est laborum. </p>
       </div>
 
       <div class="contact">
@@ -57,7 +61,6 @@ export default {
       </div>
     </div>
   </div>
-
 </template>
 
 <style>
@@ -70,6 +73,7 @@ export default {
 
 .image-grid {
   display: flex;
+  flex-wrap: wrap; /* Added flex-wrap */
   justify-content: center;
   align-items: center;
   margin-bottom: 16px;
@@ -85,15 +89,17 @@ export default {
 }
 
 .large-image img {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
   object-fit: cover;
   border-radius: 8px;
 }
 
 .small-image {
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
   object-fit: cover;
   margin-bottom: 4px;
   margin-right: 4px;
@@ -102,8 +108,15 @@ export default {
 
 .details {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: 2% 16% 2% 16%;
+  width: 70%;
+}
+
+.description {
+  flex: 1;
+  min-width: 300px; /* Ensure minimum width for smaller screens */
 }
 
 .subtitle {
@@ -127,6 +140,7 @@ export default {
   border-radius: 8px;
   padding: 16px;
   width: 100%;
+  max-width: 400px; /* Ensure contact form doesn't stretch too wide */
 }
 
 .contact-title {
@@ -144,11 +158,11 @@ export default {
   border-radius: 8px;
   padding: 8px;
   margin-right: 8px;
-  width: 30%;
+  width: calc(100% - 16px); /* Adjust width to account for padding */
 }
 
 .full-width {
-  width: 95%;
+  width: 100%;
 }
 
 .button {

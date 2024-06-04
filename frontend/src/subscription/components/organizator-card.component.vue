@@ -110,10 +110,12 @@ export default {
 .card-container{
   display: flex;
   flex-grow: 1;
+  flex-wrap: wrap;
 }
 
 .subscription-card {
   width: 400px;
+  min-width: 400px;
   margin: 0 auto 9vh auto;
   padding: 1rem;
   border: 1px solid #faefef;

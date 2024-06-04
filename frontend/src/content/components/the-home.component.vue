@@ -51,8 +51,7 @@ export default {
   margin: 20px 0;
   display: inline-flex;
   flex-direction: column;
-  width: auto;
-
+  min-width: 200px;
 }
 
 

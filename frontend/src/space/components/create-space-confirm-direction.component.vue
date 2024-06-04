@@ -46,7 +46,7 @@ export default {
   </router-link>
 
   <router-link to="/stand-out">
-  <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Siguiente</pv-button>
+    <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Siguiente</pv-button>
   </router-link>
 </template>
 
