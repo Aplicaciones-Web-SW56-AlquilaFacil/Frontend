@@ -70,20 +70,20 @@
       </div>
     </template>
     <template #end>
-      <pv-splitbutton :model="items">
-        <div aria-label="login button" class="hidden md:flex text-center items-center md:text-xs lg:text-base md:space-x-2 lg:space-x-4">
-          <router-link to="/register"></router-link>
-          <pv-button v-if="!isLoggedIn" @click="openLogin" class="custom-button md:text-xs lg:text-base" label="Inicia sesión">Iniciar Sesión</pv-button>
-          <div v-else class="user-display flex items-center">
-            <span @click="toggleSplitButton" class="font-bold mr-3">{{ user.name }}</span>
-            <i class="pi pi-bars text-red-600"></i>
+      <div v-if="!isLoggedIn" class="hidden md:flex text-center items-center md:text-xs lg:text-base md:space-x-2 lg:space-x-4">
+        <router-link to="/register"></router-link>
+        <pv-button @click="openLogin" class="custom-button md:text-xs lg:text-base" label="Inicia sesión">Iniciar Sesión</pv-button>
+      </div>
+      <div v-else class="user-display md:flex items-center hidden">
+        <span class="font-bold mr-3">{{ user.name }}</span>
+        <div class="relative">
+          <i class="pi pi-bars text-red-600 cursor-pointer" @click="toggleDropdown"></i>
+          <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
+            <router-link v-for="item in items" :key="item.label" :to="item.to" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" @click.native="item.label === 'Cerrar sesión' ? logout() : ''">{{ item.label }}</router-link>
           </div>
-          <TheUserLogin ref="login" :showLogin="showLogin" @login-success="handleLoginSuccess" @update:showLogin="handleCloseLogin"/>
         </div>
-        <TheUserLogin ref="login" :showLogin="showLogin" @login-success="handleLoginSuccess" @update:showLogin="handleCloseLogin"/>
-      </pv-splitbutton>
+      </div>
     </template>
-
   </pv-toolbar>
   <hr class="border-1 shadow-1 border-gray-200">
 
@@ -118,12 +118,15 @@ export default {
       items: [
         {
           label: 'Mis propiedades',
+          to: '/mis-propiedades'
         },
         {
           label: 'Cuenta',
+          to: '/user-edit'
         },
         {
           label: 'Cerrar sesión',
+          to: '/login'
         }
       ],
       subscriptions: [
@@ -144,7 +147,8 @@ export default {
           to: '/home'
         }
       ],
-      visible: false
+      visible: false,
+      dropdownOpen: false
     };
   },
   methods: {
@@ -167,6 +171,16 @@ export default {
         this.isLoggedIn = true;
       }
     },
+    toggleDropdown() {
+      this.dropdownOpen = !this.dropdownOpen;
+    },
+    logout() {
+      localStorage.removeItem('user');
+      this.isLoggedIn = false;
+      this.user = {name: '', email: ''};
+      this.$router.push('/home');
+      this.dropdownOpen= false;
+    }
   },
   mounted() {
     this.checkLoginStatus();
@@ -285,5 +299,9 @@ h2 {
 
 .pi.pi-bars::before {
   color: red;
+}
+
+.relative {
+  position: relative;
 }
 </style>

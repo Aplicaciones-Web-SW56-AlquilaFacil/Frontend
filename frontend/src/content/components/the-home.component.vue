@@ -55,7 +55,6 @@ export default {
 
 }
 
-
 .container-img-home {
   display: flex;
   justify-content: center;
@@ -69,7 +68,6 @@ export default {
   height: auto;
   display: block;
 }
-
 
 .container-text-home {
   display: flex;
@@ -154,8 +152,8 @@ a:hover {
   .home-card {
     display: inline-flex;
     width: auto;
-    max-width: 205px;
-    max-height: 309px;
+    max-width: 210px;
+    max-height: 270px;
   }
 
   .container-img-home {
@@ -173,7 +171,7 @@ a:hover {
     box-sizing: border-box;
     text-align: left;
     margin: 0 auto;
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 
@@ -183,7 +181,7 @@ a:hover {
     display: inline-flex;
     width: auto;
     max-width: 150px;
-    max-height: 250px;
+    max-height: 200px;
   }
 
   .container-img-home {
@@ -201,7 +199,7 @@ a:hover {
     box-sizing: border-box;
     text-align: left;
     margin: 0 auto;
-    font-size: 13px;
+    font-size: 10px;
   }
 }
 

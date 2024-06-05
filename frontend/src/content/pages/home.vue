@@ -21,15 +21,13 @@ export default defineComponent({
 <template>
   <div class="search-container">
     <div class="search-bar">
-      <div class="search-text-column">
-        <label for="search" class="search-label">Donde</label>
-        <div class="search-input-container">
-          <input type="text" id="search" class="search-input" v-model="query" placeholder="Solo ingresa el lugar" />
-        </div>
+      <label for="search" class="search-label">Donde</label>
+      <div class="search-input-container">
+        <input type="text" id="search" class="search-input" v-model="query" placeholder="Solo ingresa el lugar" />
+        <button @click="search" class="search-button">
+          <i class="pi pi-search"></i>
+        </button>
       </div>
-      <button @click="search" class="search-button">
-        <i class="pi pi-search"></i>
-      </button>
     </div>
   </div>
 
@@ -40,12 +38,16 @@ export default defineComponent({
   </div>
 </template>
 
-<style>
+<style scoped>
+* {
+  box-sizing: border-box;
+}
 
 .search-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   padding: 20px;
   margin-top: 20px;
 }
@@ -54,34 +56,29 @@ export default defineComponent({
   display: flex;
   align-items: center;
   border: 2px solid #D13333;
-  border-radius: 50px;
+  border-radius: 35px;
   padding: 10px;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   background-color: white;
-}
-
-.search-text-column {
-  display: flex;
-  flex-direction: column;
-  margin-right: 10px;
 }
 
 .search-label {
   font-weight: bold;
-  margin-left: 25px;
+  margin-left: 15px;
 }
 
 .search-input-container {
   display: flex;
   align-items: center;
+  flex: 1;
+  margin-left: 15px;
 }
 
 .search-input {
   border: none;
   outline: none;
   padding: 5px;
-  margin-left: 20px;
   flex: 1;
   border-radius: 4px;
 }
@@ -97,7 +94,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-left: 110px;
+  margin-left: 10px;
 }
 
 .search-button:hover {
@@ -118,5 +115,118 @@ export default defineComponent({
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+}
+
+@media (min-width: 1200px) {
+  .search-bar {
+    max-width: 500px;
+    padding: 8px;
+  }
+
+  .search-input {
+    margin-left: 10px;
+  }
+
+  .search-button i {
+    font-size: 1em;
+  }
+
+  .search-button {
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+  }
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 45px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .search-bar {
+    max-width: 500px;
+    padding: 8px;
+  }
+
+  .search-input {
+    margin-left: 10px;
+  }
+
+  .search-button i {
+    font-size: 1em;
+  }
+
+  .search-button {
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+  }
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 45px;
+  }
+
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+  .search-bar {
+    max-width: 320px;
+    border-radius: 35px;
+    padding: 5px;
+  }
+
+  .search-input {
+    margin-left: 5px;
+  }
+
+  .search-button i {
+    font-size: 1em;
+  }
+
+  .search-button {
+    width: 35px;
+    height: 35px;
+    margin-left: 1px;
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-bar {
+    max-width: 250px;
+    padding: 5px;
+  }
+
+  .search-label {
+    margin-left: 5px;
+    font-size: 12px;
+  }
+
+  .search-input-container {
+    margin-left: 1px;
+  }
+
+  .search-input {
+    margin-left: 5px;
+    font-size: 12px;
+  }
+
+  .search-button {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+  }
+
+  .search-button i {
+    font-size: 0.8em;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }
 </style>
