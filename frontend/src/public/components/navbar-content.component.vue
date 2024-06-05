@@ -2,12 +2,12 @@
   <pv-toolbar class="flex justify-between items-center toolbar border-transparent" aria-label="Toolbar content">
     <template #start>
       <div class="flex items-center" aria-label="Main navigation section">
-        <router-link to="/user-edit" class="flex items-center no-underline">
+        <div class="flex items-center no-underline">
           <div class="flex align-items-center">
             <img class="md:block hidden" src="../../assets/logo.png" :width="isLg ? '50' : '40'" :height="isLg ? '50' : '40'" alt="AlquilaFacil Logo"/>
             <span class="font-bold lg:text-xl text-sm ml-2 text-black-alpha-90 md:block hidden">AlquilaFácil</span>
           </div>
-        </router-link>
+        </div>
       </div>
     </template>
     <template #center>
@@ -25,23 +25,23 @@
 
           <router-link v-for="item in gohome" :key="item.label" :to="item.to" custom>
             <template v-slot="{ navigate, href, isActive, isExactActive }">
-              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">Inicio</h2>
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">Home</h2>
             </template>
           </router-link>
 
           <router-link v-for="item in subscriptions" :key="item.label" :to="item.to" custom>
             <template v-slot="{ navigate, href, isActive, isExactActive }">
-              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">Subscripciones</h2>
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">Subscriptions</h2>
             </template>
           </router-link>
 
           <router-link v-for="item in createspace" :key="item.label" :to="item.to" custom>
             <template v-slot="{ navigate, href, isActive, isExactActive }">
-              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }" class="nav-link">Publica tu espacio</h2>
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }" class="nav-link">Post Your Space</h2>
             </template>
           </router-link>
 
-          <pv-button v-if="!isLoggedIn" @click="openLogin" class="custom-button md:hidden" label="Inicia sesión">Iniciar Sesión</pv-button>
+          <pv-button v-if="!isLoggedIn" @click="openLogin" class="custom-button md:hidden" label="Log In">Log In</pv-button>
           <div v-else class="user-display flex items-center border-rounded">
             <i class="pi pi-bars text-red-600 mr-2"></i>
             <span class="font-bold">{{ user.name }}</span>
@@ -51,19 +51,19 @@
         <div class="hidden text-center md:flex lg:flex-row lg:gap-5 gap-3 align-items-center navbar-links" aria-label="toolbar features content">
           <router-link v-for="item in gohome" :key="item.label" :to="item.to" custom>
             <template v-slot="{ navigate, href, isActive, isExactActive }">
-              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive, 'text-xs': true, 'lg:text-base': true }">Inicio</h2>
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive, 'text-xs': true, 'lg:text-base': true }">Home</h2>
             </template>
           </router-link>
 
           <router-link v-for="item in subscriptions" :key="item.label" :to="item.to" custom>
             <template v-slot="{ navigate, href, isActive, isExactActive }">
-              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive, 'text-xs': true, 'lg:text-base': true }">Subscripciones</h2>
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive, 'text-xs': true, 'lg:text-base': true }">Subscriptions</h2>
             </template>
           </router-link>
 
           <router-link v-for="item in createspace" :key="item.label" :to="item.to" custom>
             <template v-slot="{ navigate, href, isActive, isExactActive }">
-              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive, 'text-xs': true, 'lg:text-base': true }" class="nav-link">Publica tu espacio</h2>
+              <h2 :href="href" @click="navigate" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive, 'text-xs': true, 'lg:text-base': true }" class="nav-link">Post Your Space</h2>
             </template>
           </router-link>
         </div>
@@ -72,14 +72,14 @@
     <template #end>
       <div v-if="!isLoggedIn" class="hidden md:flex text-center items-center md:text-xs lg:text-base md:space-x-2 lg:space-x-4">
         <router-link to="/register"></router-link>
-        <pv-button @click="openLogin" class="custom-button md:text-xs lg:text-base" label="Inicia sesión">Iniciar Sesión</pv-button>
+        <pv-button @click="openLogin" class="custom-button md:text-xs lg:text-base" label="Log In">Log In</pv-button>
       </div>
       <div v-else class="user-display md:flex items-center hidden">
         <span class="font-bold mr-3">{{ user.name }}</span>
         <div class="relative">
           <i class="pi pi-bars text-red-600 cursor-pointer" @click="toggleDropdown"></i>
           <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
-            <router-link v-for="item in items" :key="item.label" :to="item.to" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" @click.native="item.label === 'Cerrar sesión' ? logout() : ''">{{ item.label }}</router-link>
+            <router-link v-for="item in items" :key="item.label" :to="item.to" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" @click.native="item.label === 'Log Out' ? logout() : ''">{{ item.label }}</router-link>
           </div>
         </div>
       </div>
@@ -117,15 +117,15 @@ export default {
       },
       items: [
         {
-          label: 'Mis propiedades',
-          to: '/mis-propiedades'
+          label: 'My Properties',
+          to: '/my-properties'
         },
         {
-          label: 'Cuenta',
+          label: 'Account',
           to: '/user-edit'
         },
         {
-          label: 'Cerrar sesión',
+          label: 'Log Out',
           to: '/login'
         }
       ],
@@ -216,6 +216,8 @@ export default {
 h2:hover, .router-link-active, .router-link-exact-active {
   cursor: pointer;
   color: red;
+  transform: scale(1.1);
+  transition: color 0.3s, transform 0.3s;
 }
 
 h2 {
@@ -263,11 +265,12 @@ h2 {
   color: gold;
   font-size: 1rem;
   font-weight: bold;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .nav-link:hover, .router-link-active, .router-link-exact-active {
   color: red;
+  transform: scale(1.1);
 }
 
 .custom-button {
@@ -279,12 +282,13 @@ h2 {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .custom-button:hover {
   background-color: red;
   color: white;
+  transform: scale(1.1);
 }
 
 .text-black {
@@ -295,6 +299,11 @@ h2 {
   border: 2px solid red;
   padding: 8px 20px;
   border-radius: 0.5rem;
+  transition: transform 0.3s;
+}
+
+.user-display:hover {
+  transform: scale(1.05);
 }
 
 .pi.pi-bars::before {

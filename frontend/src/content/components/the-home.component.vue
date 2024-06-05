@@ -1,13 +1,30 @@
+<template>
+  <pv-card class="home-card" v-for="card in cards" :key="card.id">
+    <template #content>
+      <router-link :to="`/home-detail/${card.id}`" class="router-link">
+        <div class="container-img-home">
+          <img :src="card.imgUrl" alt="home" class="img-home">
+        </div>
+        <div class="container-text-home">
+          <div style="color: black;">
+            <p>{{ card.title }}</p>
+            <p class="text-gray-500">{{ card.description }}</p>
+            <p><strong>S/. {{ card.price }} </strong> per night</p>
+          </div>
+        </div>
+      </router-link>
+    </template>
+  </pv-card>
+</template>
+
 <script>
 import { CardEndpoint } from "../services/card-endpoint.service.json.js";
 import card from "primevue/card/Card.vue";
 
 export default {
   name: "the-home",
-  computed: {
-    card() {
-      return card;
-    }
+  components: {
+    card
   },
   data() {
     return {
@@ -24,35 +41,20 @@ export default {
 };
 </script>
 
-<template>
-  <pv-card class="home-card" v-for="card in cards" :key="card.id">
-    <template #content>
-      <router-link to="/home-detail" class="router-link">
-        <div class="container-img-home">
-          <img :src="card.imgUrl" alt="home" class="img-home">
-        </div>
-        <div class="container-text-home">
-          <div style="color: black;">
-            <p>{{ card.title }}</p>
-            <p class="text-gray-500">{{ card.description }}</p>
-            <p><strong>S/. {{ card.price }} </strong> por noche</p>
-          </div>
-        </div>
-      </router-link>
-    </template>
-  </pv-card>
-</template>
-
-
 <style>
 .home-card {
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
   margin: 20px 0;
   display: inline-flex;
   flex-direction: column;
   width: auto;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
+.home-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
 }
 
 .container-img-home {
@@ -90,14 +92,39 @@ a {
 a:hover {
   text-decoration: none;
 }
-
-@media (min-width: 1200px) {
-
+@media (min-width: 1201px) {
   .home-card {
     display: inline-flex;
     width: auto;
     max-width: 270px;
-    max-height: 370px;
+    max-height: 375px;
+  }
+
+  .container-img-home {
+    width: 100%;
+  }
+
+  .img-home {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .container-text-home {
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    margin: 0 auto;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .home-card {
+    display: inline-flex;
+    width: auto;
+    max-width: 270px;
+    max-height: 345px;
   }
 
   .container-img-home {
@@ -120,12 +147,12 @@ a:hover {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-
   .home-card {
+    border-radius: 13px;
     display: inline-flex;
     width: auto;
-    max-width: 170px;
-    max-height: 270px;
+    max-width: 190px;
+    max-height: 280px;
   }
 
   .container-img-home {
@@ -148,12 +175,12 @@ a:hover {
 }
 
 @media (min-width: 601px) and (max-width: 768px) {
-
   .home-card {
+    border-radius: 13px;
     display: inline-flex;
     width: auto;
     max-width: 210px;
-    max-height: 270px;
+    max-height: 300px;
   }
 
   .container-img-home {
@@ -176,12 +203,12 @@ a:hover {
 }
 
 @media (max-width: 600px) {
-
   .home-card {
+    border-radius: 13px;
     display: inline-flex;
     width: auto;
     max-width: 150px;
-    max-height: 200px;
+    max-height: 210px;
   }
 
   .container-img-home {
@@ -202,5 +229,4 @@ a:hover {
     font-size: 10px;
   }
 }
-
 </style>

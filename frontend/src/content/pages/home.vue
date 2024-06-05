@@ -1,3 +1,23 @@
+<template>
+  <div class="search-container">
+    <div class="search-bar">
+      <label for="search" class="search-label">Where</label>
+      <div class="search-input-container">
+        <input type="text" id="search" class="search-input" v-model="query" placeholder="Enter the location" />
+        <button @click="search" class="search-button">
+          <i class="pi pi-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      <TheHome class="home-card"></TheHome>
+    </div>
+  </div>
+</template>
+
 <script>
 import { defineComponent } from "vue";
 import TheHome from "../components/the-home.component.vue";
@@ -11,32 +31,12 @@ export default defineComponent({
   },
   methods: {
     search() {
-      // Lógica para manejar la búsqueda con Axios
+      // Logic to handle the search with Axios
       console.log("Searching for:", this.query);
     }
   }
 });
 </script>
-
-<template>
-  <div class="search-container">
-    <div class="search-bar">
-      <label for="search" class="search-label">Donde</label>
-      <div class="search-input-container">
-        <input type="text" id="search" class="search-input" v-model="query" placeholder="Solo ingresa el lugar" />
-        <button @click="search" class="search-button">
-          <i class="pi pi-search"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="grid">
-      <the-home class="home-card"></the-home>
-    </div>
-  </div>
-</template>
 
 <style scoped>
 * {
@@ -114,32 +114,7 @@ export default defineComponent({
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-@media (min-width: 1200px) {
-  .search-bar {
-    max-width: 500px;
-    padding: 8px;
-  }
-
-  .search-input {
-    margin-left: 10px;
-  }
-
-  .search-button i {
-    font-size: 1em;
-  }
-
-  .search-button {
-    width: 35px;
-    height: 35px;
-    margin-left: 5px;
-  }
-  .grid {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 45px;
-  }
+  gap: 45px;
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -165,7 +140,6 @@ export default defineComponent({
     grid-template-columns: repeat(4, 1fr);
     gap: 45px;
   }
-
 }
 
 @media (min-width: 601px) and (max-width: 768px) {

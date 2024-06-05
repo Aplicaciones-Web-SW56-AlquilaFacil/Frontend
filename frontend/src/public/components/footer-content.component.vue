@@ -11,25 +11,25 @@
         <a href="https://www.instagram.com/tatoooft/" target="_blank"><pv-inputicon class="pi pi-instagram text-2xl" aria-label="Link to Instagram"/></a>
         <pv-inputicon class="pi pi-youtube text-2xl" aria-label="Link to Youtube" />
       </div>
-      <div aria-label="Enlaces de navegación del pie de página" class="flex md:gap-5 gap-3 footer-links flex md:flex-row flex-column md:items-center items-start">
+      <div aria-label="Footer navigation links" class="flex md:gap-5 gap-3 footer-links flex md:flex-row flex-column md:items-center items-start">
 
-        <p>Acerca de</p>
+        <p>About</p>
         <router-link to="/home">
-        <p>Inicio</p>
+          <p>Home</p>
         </router-link>
 
         <router-link to="/type-subscription">
-        <p>Subscripciones</p>
+          <p>Subscriptions</p>
         </router-link>
 
         <router-link to="/start">
-        <p>Publica tu espacio</p>
+          <p>Post your space</p>
         </router-link>
 
       </div>
     </div>
     <div  class="copyright mt-3" aria-label="Copyright Information">
-      <p> Copyright &copy; 2024 AlquilaFácil. Todos los derechos reservados </p>
+      <p> Copyright &copy; 2024 AlquilaFácil. All rights reserved </p>
     </div>
   </footer>
 </template>
@@ -47,10 +47,20 @@ export default {
 
 .footer-links p {
   cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.footer-links p:hover {
+  transform: scale(1.1);
 }
 
 .footer-logo {
   font-size: 0.9rem;
+  transition: transform 0.3s;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
 }
 
 .footer-logo {
