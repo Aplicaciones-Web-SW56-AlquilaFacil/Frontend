@@ -7,9 +7,9 @@ export default {
 <template>
   <div class="container-add-photo">
     <div class="text-center">
-      <h2 class="text-4xl font-bold mb-4">Agrega algunas fotos de tu espacio</h2>
-      <p class="text-gray-500 mb-4">Para empezar, necesitarás cuatro fotos. Después podrás
-        <br>agregar más o hacer cambios.</p>
+      <h2 class="text-4xl font-bold mb-4">Add some photos of your space</h2>
+      <p class="text-gray-500 mb-4">To start, you will need four photos. Afterwards, you can
+        <br>add more or make changes.</p>
     </div>
   </div>
   <div class="container-add-photo">
@@ -17,24 +17,25 @@ export default {
       <div class="border-container">
         <img src="../../assets/add-photo-icon.png" alt="icon" class="w-14 h-14 mb-2 mx-auto justify-start">
         <div class="border-container">
-          <p class="mb-2 font-bold text-center">Arrastra las fotos</p>
-          <p class="mb-2 text-gray-500">Elege por lo menos 5 fotos</p>
+          <p class="mb-2 font-bold text-center">Drag the photos</p>
+          <p class="mb-2 text-gray-500">Choose at least 5 photos</p>
         </div>
       </div>
-      <p class="justify-end text-center mb-2 underline">Sube fotos desde tu dispositivo</p>
+      <p class="justify-end text-center mb-2 underline">Upload photos from your device</p>
     </div>
   </div>
 
   <hr>
   <router-link to="/stand-out">
-    <pv-button class="back-next" style="left: 0%; margin-left:6%;">Atrás</pv-button>
+    <pv-button class="back-next" style="left: 0%; margin-left:6%;">Back</pv-button>
   </router-link>
 
   <router-link to="title">
-  <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Siguiente</pv-button>
+    <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Next</pv-button>
   </router-link>
 
 </template>
+
 
 <style>
 

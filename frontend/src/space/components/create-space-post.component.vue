@@ -8,20 +8,20 @@
     <div class="container-dir">
       <div class="left-column-confirm">
         <div>
-          <h2 class="mb-12 font-bold">Paso 3</h2>
-          <h1 class="text-4xl mb-12 font-bold">Terminar y publicar</h1>
-          <p class= "text-gray-500 mb-12">Por último, vas a elegir el precio y publicitar tu espacio</p>
+          <h2 class="mb-12 font-bold">Step 3</h2>
+          <h1 class="text-4xl mb-12 font-bold">Finish and publish</h1>
+          <p class="text-gray-500 mb-12">Finally, you will choose the price and advertise your space.</p>
         </div>
       </div>
       <div class="right-column-confirm">
-        <img src="../../assets/image-step3.jpg" alt="Descripción de la imagen" class="img-confirm-dir">
+        <img src="../../assets/image-step3.jpg" alt="Image description" class="img-confirm-dir">
       </div>
     </div>
     <router-link to="/title">
-      <pv-button class="back-next" style="left: 0%; margin-left:6%;">Atrás</pv-button>
+      <pv-button class="back-next" style="left: 0%; margin-left:6%;">Back</pv-button>
     </router-link>
 
     <router-link to="/price">
-      <pv-button class="back-next " style="left: 80%;  margin-left:-11%;">Siguiente</pv-button>
+      <pv-button class="back-next " style="left: 80%;  margin-left:-11%;">Next</pv-button>
     </router-link>
   </template>

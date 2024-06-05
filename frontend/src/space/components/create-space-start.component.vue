@@ -10,43 +10,42 @@ export default {
   emits: ['update:showCreateSpace'],
 }
 </script>
-
 <template>
   <div class="container-dir">
     <div class="left-column-confirm">
-      <h1 class="text-4xl font-bold">Empezar a usar<br>AlquilaFácil es muy<br>sencillo</h1>
+      <h1 class="text-4xl font-bold">Starting to use<br>AlquilaFacil is very<br>simple</h1>
     </div>
 
     <div class="right-column-confirm">
       <div class="enum-start">
         <div>
-          <h2 class="font-bold">1 Describe tu espacio</h2>
-          <p class="text-gray-500">Comparte algunos datos básicos.</p>
+          <h2 class="font-bold">1 Describe your space</h2>
+          <p class="text-gray-500">Share some basic details.</p>
         </div>
-        <img src="../../assets/icon-step1.png" alt="Paso 1" class="img-start">
+        <img src="../../assets/icon-step1.png" alt="Step 1" class="img-start">
       </div>
       <div class="enum-start">
         <div>
-          <h2 class="font-bold">2 Haz que destaque</h2>
-          <p class="text-gray-500">Agregar al menos 4 fotos, un título y una <br> descripción. Lo demás nos encargamos <br> nosotros.</p>
+          <h2 class="font-bold">2 Make it stand out</h2>
+          <p class="text-gray-500">Add at least 4 photos, a title, and a <br> description. We'll take care of the rest.</p>
         </div>
-        <img src="../../assets/icon-step2.png" alt="Paso 2" class="img-start">
+        <img src="../../assets/icon-step2.png" alt="Step 2" class="img-start">
       </div>
       <div class="enum-start">
         <div>
-          <h2 class="font-bold">3 Terminar y publicar</h2>
-          <p class="text-gray-500">Agrega las últimas configuraciones y publica tu espacio.</p>
+          <h2 class="font-bold">3 Finish and publish</h2>
+          <p class="text-gray-500">Add the final settings and publish your space.</p>
         </div>
-        <img src="../../assets/icon-step3.png" alt="Paso 3" class="img-start">
+        <img src="../../assets/icon-step3.png" alt="Step 3" class="img-start">
       </div>
     </div>
   </div>
   <hr>
   <router-link to="/describe">
-    <pv-button class="back-next" style="left: 80%; margin-left:0%;">Comencemos</pv-button>
+    <pv-button class="back-next" style="left: 80%; margin-left:0%;">Let's get started</pv-button>
   </router-link>
-
 </template>
+
 
 <style>
 .img-start {

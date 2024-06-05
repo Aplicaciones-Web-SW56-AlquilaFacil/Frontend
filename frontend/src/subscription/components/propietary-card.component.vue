@@ -8,35 +8,34 @@ export default {
   data() {
     return {
       premiumPlan: {
-        planName: "Coorporativo",
-        price: "S/39.90/mes",
+        planName: "Corporate",
+        price: "S/44.90/month",
         benefits: [
-          "Listado ilimitados de espacios.",
-          "Destaque de listados en los resultados de búsqueda.",
-          "Acceso a herramientas analíticas básicas.",
+          "Additional discounts on premium space rental rates.",
+          "Priority access to exclusive and popular spaces.",
+          "Priority access to exclusive and popular spaces.",
         ],
       },
       standarPlan: {
-        planName: "Estandar",
-        price: "S/19.90/mes",
+        planName: "Standard",
+        price: "S/24.90/month",
         benefits: [
-          "Listado de hasta 5 espacios.",
-          "Funcionalidades avanzadas de reservas.",
-          "Inclusión de imágenes por espacio.",
+          "Unlimited search and reservations of spaces.",
+          "Exclusive discounts on selected space rental rates.",
         ],
       },
-
       basicPlan: {
-        planName: "Basico",
+        planName: "Basic",
         price: "Free",
         benefits: [
-          "Listado de hasta 2 espacios.",
-          "Perfil de propietario con información básica del espacio.",
+          "Reservations of up to 2 spaces per month.",
+          "Access to ratings and reviews of spaces.",
         ],
       }
     };
   },
 };
+
 
 </script>
 
@@ -56,7 +55,7 @@ export default {
         </ul>
       </template>
       <template #footer>
-        <pv-button class="choose-plan" style="margin-top: 21%">Elegir plan</pv-button>
+        <pv-button class="choose-plan" style="margin-top: 21%">Choose Plan</pv-button>
       </template>
     </pv-card>
 
@@ -73,7 +72,7 @@ export default {
         </ul>
       </template>
       <template #footer>
-        <pv-button class="choose-plan">Elegir plan</pv-button>
+        <pv-button class="choose-plan">Choose Plan</pv-button>
       </template>
     </pv-card>
 
@@ -90,7 +89,7 @@ export default {
         </ul>
       </template>
       <template #footer>
-        <pv-button class="choose-plan">Elegir plan</pv-button>
+        <pv-button class="choose-plan">Choose Plan</pv-button>
       </template>
     </pv-card>
   </div>

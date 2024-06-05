@@ -11,50 +11,50 @@ export default {
 }
 </script>
 <template>
-  <h1 style="margin: 2% 5% auto 5%">Cuenta</h1>
-  <h3 style="margin: 2% 5% auto 5%; font-weight: normal;">Cambia la informacion de tu cuenta y la configuracion de privacidad</h3>
+  <h1 style="margin: 2% 5% auto 5%">Account</h1>
+  <h3 style="margin: 2% 5% auto 5%; font-weight: normal;">Change your account information and privacy settings</h3>
   <pv-card  class="edit-profile-card">
     <template #content>
       <div class="edit-profile-container">
         <div class="edit-profile-props">
-          <label>Nombre de usuario</label>
+          <label>User Name</label>
           <label>juan_perez01</label>
-          <label>Cambiar</label>
+          <label>Change</label>
         </div>
       </div>
       <div class="edit-profile-container">
         <div class="edit-profile-props">
-          <label>Contraseña</label>
+          <label>Password</label>
           <label>*******</label>
-          <label>Cambiar</label>
+          <label>Change</label>
         </div>
       </div>
       <div class="edit-profile-container">
         <div class="edit-profile-props">
-          <label>Correo electronico</label>
+          <label>Email</label>
           <label>juanperez@gmail.com</label>
-          <label>Cambiar</label>
+          <label>Change</label>
         </div>
       </div>
       <div class="edit-profile-container">
         <div class="edit-profile-props">
-          <label>Suscripcion</label>
-          <label>Propietario</label>
-          <label>Cambiar</label>
+          <label>Suscription</label>
+          <label>Propietary</label>
+          <label>Change</label>
         </div>
       </div>
       <div class="edit-profile-container">
         <div class="edit-profile-props">
-          <label>Tipo</label>
+          <label>Type</label>
           <label>Estandar</label>
-          <label>Cambiar</label>
-          <label>Cancelar</label>
+          <label>Change</label>
+          <label>Cancel</label>
         </div>
       </div>
     </template>
   </pv-card>
   <router-link to="/home">
-  <pv-button class="forpass-button">Actualizar</pv-button>
+  <pv-button class="forpass-button">Update</pv-button>
   </router-link>
 </template>
 

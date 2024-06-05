@@ -6,19 +6,19 @@ export default {
 
 <template>
   <div class="container-add-photo">
-    <h2 class="text-2xl font-medium mb-6">¿Cuál de estas opciones describe mejor tu espacio?</h2>
+    <h2 class="text-2xl font-medium mb-6">Which of these options best describes your space?</h2>
   </div>
   <div class="container-add-photo">
     <div class="container-describe-option">
       <div class="">
         <pv-button class="options-button">
           <img src="../../assets/describe-option-icon1.png" class="img-option-button" alt="icon1" />
-          Casa de playa</pv-button>
+          Beach House</pv-button>
       </div>
       <div class="">
         <pv-button class="options-button">
           <img src="../../assets/describe-option-icon2.png" class="img-option-button" alt="icon2" />
-          Casa Urbana</pv-button>
+          Urban House</pv-button>
       </div>
     </div>
   </div>
@@ -27,23 +27,23 @@ export default {
       <div class="">
         <pv-button class="options-button">
           <img src="../../assets/describe-option-icon3.png" class="img-option-button" alt="icon3" />
-          Salones elegantes</pv-button>
+          Elegant Halls</pv-button>
       </div>
       <div class="">
         <pv-button class="options-button">
           <img src="../../assets/describe-option-icon4.png" class="img-option-button" alt="icon4" />
-          Casa de campo
+          Country House
         </pv-button>
       </div>
     </div>
   </div>
   <hr>
   <router-link to="/describe">
-    <pv-button class="back-next" style="left: 0%; margin-left:6%;">Atrás</pv-button>
+    <pv-button class="back-next" style="left: 0%; margin-left:6%;">Back</pv-button>
   </router-link>
 
   <router-link to="/confirm-direction">
-    <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Siguiente</pv-button>
+    <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Next</pv-button>
   </router-link>
 </template>
 

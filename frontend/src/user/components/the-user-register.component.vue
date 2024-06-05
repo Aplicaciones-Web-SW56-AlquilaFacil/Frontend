@@ -48,28 +48,28 @@ export default {
       <h4>Registro</h4>
       <div class="register-form pl-6 pt-4">
         <div class="flex flex-column gap-3">
-          <label class="uppercase" for="email">CORREO ELECTRÓNICO*</label>
+          <label class="uppercase" for="email">EMAIL*</label>
           <pv-inputtext :invalid="!isEmailValid" v-model="email" class="input-text" id="email" :placeholder="'Ingresa tu correo electrónico'" aria-label="Correo electrónico"/>
-          <small v-if="!isEmailValid" class="text-red-500" aria-label="">Correo electrónico inválido</small>
+          <small v-if="!isEmailValid" class="text-red-500" aria-label="">Invalid Email</small>
 
-          <label class="uppercase" for="password">CONTRASEÑA*</label>
-          <pv-password :input-style="password_input_style" :invalid="!isPasswordValid" id="password" toggle-mask :placeholder="'Ingresa tu contraseña (6-16 caracteres)'" v-model="password"
-                       :prompt-label="'Ingresa tu contraseña (6-16 caracteres)'" :weak-label="'Ingresa tu contraseña (6-16 caracteres)'" :medium-label="'Ingresa tu contraseña (6-16 caracteres)'" :strong-label="'Ingresa tu contraseña (6-16 caracteres)'" aria-label="Contraseña"/>
-          <small v-if="!isPasswordValid" class="text-red-500">Contraseña inválida</small>
+          <label class="uppercase" for="password">PASSWORD*</label>
+          <pv-password :input-style="password_input_style" :invalid="!isPasswordValid" id="password" toggle-mask :placeholder="'Enter your password (6-16 characters)'" v-model="password"
+                       :prompt-label="'Enter your password (6-16 characters)'" :weak-label="'Enter your password (6-16 characters)'" :medium-label="'Enter your password (6-16 characters)'" :strong-label="'Enter your password (6-16 characters)'" aria-label="Password"/>
+          <small v-if="!isPasswordValid" class="text-red-500">Invalid Password</small>
 
-          <label class="uppercase" for="confirm-password">ESCRIBA NUEVAMENTE LA CONTRASEÑA*</label>
-          <pv-password :input-style="password_input_style" :invalid="!isConfirmPasswordValid" class="password" id="confirm-password" toggle-mask :placeholder="'Ingresa tu contraseña (6-16 caracteres)'" v-model="confirm_password" :feedback="false" aria-label="Confirmar contraseña"/>
-          <small v-if="!isConfirmPasswordValid" class="text-red-500">Ingresa tu contraseña (6-16 caracteres)</small>
+          <label class="uppercase" for="confirm-password">PLEASE TYPE PASSWORD AGAIN*</label>
+          <pv-password :input-style="password_input_style" :invalid="!isConfirmPasswordValid" class="password" id="confirm-password" toggle-mask :placeholder="'Enter your password (6-16 characters)'" v-model="confirm_password" :feedback="false" aria-label="Confirma password"/>
+          <small v-if="!isConfirmPasswordValid" class="text-red-500">Enter your password (6-16 characters)</small>
 
           <div class="flex align-items-center">
             <pv-checkbox v-model="artist" inputId="is_artist" :binary="true" aria-label="Artista"/>
-            <label for="is_artist" class="ml-2"> Al registrarme, acepto los Términos de uso y la Política de privacidad de AlquilaFacil</label>
+            <label for="is_artist" class="ml-2"> By registering, I accept the Terms of Use and Privacy Policy of AlquilaFacil</label>
           </div>
 
-          <h4>AlquilaFacil recopila y procesa su dirección de correo electrónico con fines de marketing. Puede darse de baja fácilmente en cualquier momento a través del enlace de exclusión en los correos electrónicos de marketing.</h4>
+          <h4>AlquilaFacil collects and processes your email address for marketing purposes. You can easily unsubscribe at any time via the opt-out link in the marketing emails.</h4>
 
           <div class="flex justify-content-center gap-2 mt-3 mb-3">
-            <pv-button class="register-button w-full w-12rem" @click="register" :label="'Regístrate ahora'" plain text aria-label="Botón de registro" :disabled="!isFormValid" />
+            <pv-button class="register-button w-full w-12rem" @click="register" :label="'Sign Up now'" plain text aria-label="Botón de registro" :disabled="!isFormValid" />
           </div>
 
         </div>
