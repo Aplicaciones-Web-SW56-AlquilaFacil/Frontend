@@ -18,13 +18,13 @@ export default {
       <img src="../../assets/image-step1.jpg" alt="Descripción de la imagen" class="img-confirm-dir">
     </div>
   </div>
-<hr>
+  <hr>
   <router-link to="/start">
     <pv-button class="back-next" style="left: 0%; margin-left:6%;">Atrás</pv-button>
   </router-link>
 
   <router-link to="/describe-option">
-  <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Siguiente</pv-button>
+    <pv-button class="back-next" style="left: 80%; margin-left:-11%;">Siguiente</pv-button>
   </router-link>
 
 </template>

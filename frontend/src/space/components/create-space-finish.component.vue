@@ -17,8 +17,8 @@ export default {
   <pv-card class="finish-card">
     <template #content>
       <div class="container-add-photo">
-        <div class="border border-gray-300 rounded-lg p-4 mb-12 shadow-xl">
-          <img src="../../assets/final-image.jpg" alt="Descripción de la imagen" class="w-64 h-64 mb-4">
+        <div class="border border-gray-300 rounded-lg p-3 mb-12 shadow-xl">
+          <img src="../../assets/final-image.jpg" alt="Descripción de la imagen" style="width: 100%">
           <div>
             <p class="mb-2">Miraflores, Lima</p>
             <p class="mb-2 text-gray-500">Casa de playa</p>
@@ -37,11 +37,11 @@ export default {
 
 <style>
 .finish-card {
-  width: 650px;
+  width: 40%;
+  min-width: 290px;
   border: 1px solid #faefef;
   border-radius: 23px;
   box-shadow: 0 0 51px rgba(0, 0, 0, 0.25);
-  height: 750px;
-  margin: 40px auto 80px auto;
+  margin: 40px auto 50px auto;
 }
 </style>

@@ -112,7 +112,9 @@ export default defineComponent({
 }
 
 .grid {
-  display: grid;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   grid-template-columns: repeat(4, 1fr);
   gap: 45px;
 }
