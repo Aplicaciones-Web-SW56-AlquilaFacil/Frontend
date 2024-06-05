@@ -1,9 +1,9 @@
 <template>
   <div class="search-container">
     <div class="search-bar">
-      <label for="search" class="search-label">Where</label>
+      <label for="search" class="search-label">Find</label>
       <div class="search-input-container">
-        <input type="text" id="search" class="search-input" v-model="query" placeholder="Enter the location" />
+        <input type="text" id="search" class="search-input" v-model="query" placeholder="Enter the title" />
         <button @click="search" class="search-button">
           <i class="pi pi-search"></i>
         </button>
@@ -12,9 +12,7 @@
   </div>
 
   <div class="container">
-    <div class="grid">
-      <TheHome class="home-card"></TheHome>
-    </div>
+    <TheHome :query="query" class="home-card"></TheHome>
   </div>
 </template>
 
@@ -31,7 +29,6 @@ export default defineComponent({
   },
   methods: {
     search() {
-      // Logic to handle the search with Axios
       console.log("Searching for:", this.query);
     }
   }
@@ -107,14 +104,58 @@ export default defineComponent({
 
 .container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 45px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+}
+
+.img-home {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container-text-home {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.router-link {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -136,6 +177,7 @@ export default defineComponent({
     height: 35px;
     margin-left: 5px;
   }
+
   .grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 45px;
@@ -162,6 +204,7 @@ export default defineComponent({
     height: 35px;
     margin-left: 1px;
   }
+
   .grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;

@@ -1,20 +1,28 @@
 <template>
-  <pv-card class="home-card" v-for="card in cards" :key="card.id">
-    <template #content>
-      <router-link :to="`/home-detail/${card.id}`" class="router-link">
-        <div class="container-img-home">
-          <img :src="card.imgUrl" alt="home" class="img-home">
-        </div>
-        <div class="container-text-home">
-          <div style="color: black;">
-            <p>{{ card.title }}</p>
-            <p class="text-gray-500">{{ card.description }}</p>
-            <p><strong>S/. {{ card.price }} </strong> per night</p>
+  <div v-if="filteredCards.length > 0" class="grid">
+    <pv-card class="home-card" v-for="card in filteredCards" :key="card.id">
+      <template #content>
+        <router-link :to="`/home-detail/${card.id}`" class="router-link">
+          <div class="container-img-home">
+            <img :src="card.imgUrl" alt="home" class="img-home">
           </div>
-        </div>
-      </router-link>
-    </template>
-  </pv-card>
+          <div class="container-text-home">
+            <div style="color: black;">
+              <p>{{ card.title }}</p>
+              <p class="text-gray-500">{{ card.description }}</p>
+              <p><strong>S/. {{ card.price }} </strong> per night</p>
+            </div>
+          </div>
+        </router-link>
+      </template>
+    </pv-card>
+  </div>
+  <div v-if="filteredCards.length === 0" class="no-results">
+    <p>No results found for "{{ query }}"</p>
+    <img class="card-image"
+         src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/main/frontend/src/assets/placeholder.png?raw=true"
+         alt="PlaceHolder">
+  </div>
 </template>
 
 <script>
@@ -26,11 +34,24 @@ export default {
   components: {
     card
   },
+  props: {
+    query: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
-      cards: null,
+      cards: [],
       cardApi: new CardEndpoint()
     };
+  },
+  computed: {
+    filteredCards() {
+      return this.cards.filter(card =>
+          card.title.toLowerCase().includes(this.query.toLowerCase())
+      );
+    }
   },
   created() {
     this.cardApi.getAll().then(response => {
@@ -62,6 +83,18 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
 }
 
 .img-home {
@@ -117,9 +150,18 @@ a:hover {
     margin: 0 auto;
     font-size: 15px;
   }
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    display: grid;
+  }
+  .card-image {
+    width: 90%;
+    height: auto;
+  }
 }
 
-@media (min-width: 1024px) and (max-width: 1200px) {
+@media (min-width: 1025px) and (max-width: 1200px) {
   .home-card {
     display: inline-flex;
     width: auto;
@@ -143,6 +185,15 @@ a:hover {
     text-align: left;
     margin: 0 auto;
     font-size: 15px;
+  }
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    display: grid;
+  }
+  .card-image {
+    width: 70%;
+    height: auto;
   }
 }
 
@@ -172,6 +223,15 @@ a:hover {
     margin: 0 auto;
     font-size: 13px;
   }
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    display: grid;
+  }
+  .card-image {
+    width: 60%;
+    height: auto;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 768px) {
@@ -200,6 +260,15 @@ a:hover {
     margin: 0 auto;
     font-size: 13px;
   }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    display: grid;
+  }
+  .card-image {
+    width: 60%;
+    height: auto;
+  }
 }
 
 @media (max-width: 600px) {
@@ -227,6 +296,15 @@ a:hover {
     text-align: left;
     margin: 0 auto;
     font-size: 10px;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    display: grid;
+  }
+  .card-image {
+    width: 50%; /* Ajusta este valor para cambiar el tamaño de la imagen */
+    height: auto;
   }
 }
 </style>
