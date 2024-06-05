@@ -85,7 +85,7 @@
       </div>
     </template>
   </pv-toolbar>
-  <hr class="border-1 shadow-1 border-gray-200">
+  <hr class="border-1 shadow-2 border-gray-300">
 
   <TheUserLogin :showLogin="showLogin" @login-success="handleLoginSuccess" @update:showLogin="handleCloseLogin"/>
 </template>

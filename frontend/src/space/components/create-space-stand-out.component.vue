@@ -1,8 +1,3 @@
-<script>
-export default {
-  name: "create-space-stand-out.component"
-}
-</script>
 <template>
   <div class="container-dir">
     <div class="left-column-confirm">
@@ -15,10 +10,10 @@ export default {
       </div>
     </div>
     <div class="right-column-confirm">
-      <img src="../../assets/image-step2.png" alt="step2" class="img-confirm-dir">
+      <img src="../../assets/image-step2.png" alt="step2" class="img-confirm-dir small-img">
     </div>
   </div>
-  <hr>
+  <hr class="border-1 shadow-2 border-gray-300">
   <router-link to="/confirm-direction">
     <pv-button class="back-next" style="left: 0%; margin-left:6%;">Back</pv-button>
   </router-link>
@@ -28,3 +23,37 @@ export default {
   </router-link>
 </template>
 
+<script>
+export default {
+  name: "create-space-stand-out.component"
+}
+</script>
+
+<style scoped>
+.container-dir {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.left-column-confirm {
+  flex: 1;
+}
+
+.right-column-confirm {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-confirm-dir {
+  max-width: 100%;
+  height: auto;
+}
+
+.small-img {
+  max-width: 60%; /* Ajusta el tamaño según sea necesario */
+}
+</style>

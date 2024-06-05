@@ -1,43 +1,66 @@
 <script>
 export default {
-  name: "create.space-describe-option.component"
+  name: "create-space-describe-option.component",
+  data() {
+    return {
+      selectedOption: null
+    };
+  },
+  methods: {
+    selectOption(option) {
+      this.selectedOption = option;
+    }
+  }
 }
 </script>
 
 <template>
-  <div class="container-add-photo">
-    <h2 class="text-2xl font-medium mb-6">Which of these options best describes your space?</h2>
-  </div>
-  <div class="container-add-photo">
-    <div class="container-describe-option">
-      <div class="">
-        <pv-button class="options-button">
+  <div class="container">
+    <div class="container-add-photo">
+      <h2 class="text-2xl font-medium mb-6">Which of these options best describes your space?</h2>
+    </div>
+    <div class="container-add-photo">
+      <div class="container-describe-option">
+        <pv-button
+            class="options-button"
+            :class="{ 'selected': selectedOption === 'beach-house' }"
+            @click="selectOption('beach-house')"
+        >
           <img src="../../assets/describe-option-icon1.png" class="img-option-button" alt="icon1" />
-          Beach House</pv-button>
-      </div>
-      <div class="">
-        <pv-button class="options-button">
+          Beach House
+        </pv-button>
+        <pv-button
+            class="options-button"
+            :class="{ 'selected': selectedOption === 'urban-house' }"
+            @click="selectOption('urban-house')"
+        >
           <img src="../../assets/describe-option-icon2.png" class="img-option-button" alt="icon2" />
-          Urban House</pv-button>
+          Urban House
+        </pv-button>
       </div>
     </div>
-  </div>
-  <div class="container-add-photo">
-    <div class="container-describe-option">
-      <div class="">
-        <pv-button class="options-button">
+    <div class="container-add-photo">
+      <div class="container-describe-option">
+        <pv-button
+            class="options-button"
+            :class="{ 'selected': selectedOption === 'elegant-halls' }"
+            @click="selectOption('elegant-halls')"
+        >
           <img src="../../assets/describe-option-icon3.png" class="img-option-button" alt="icon3" />
-          Elegant Halls</pv-button>
-      </div>
-      <div class="">
-        <pv-button class="options-button">
+          Elegant Halls
+        </pv-button>
+        <pv-button
+            class="options-button"
+            :class="{ 'selected': selectedOption === 'country-house' }"
+            @click="selectOption('country-house')"
+        >
           <img src="../../assets/describe-option-icon4.png" class="img-option-button" alt="icon4" />
           Country House
         </pv-button>
       </div>
     </div>
   </div>
-  <hr>
+  <hr class="border-1 shadow-2 border-gray-300">
   <router-link to="/describe">
     <pv-button class="back-next" style="left: 0%; margin-left:6%;">Back</pv-button>
   </router-link>
@@ -47,9 +70,11 @@ export default {
   </router-link>
 </template>
 
-<style>
+<style scoped>
 .container-describe-option {
   display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .options-button {
@@ -57,14 +82,35 @@ export default {
   color: black;
   border-radius: 8px;
   padding: 10px 20px;
-  border-color: grey;
-  border-width: 2px;
+  border: 2px solid grey;
   width: 150px;
   height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto 50px 30% auto;
+  justify-content: center;
+  margin: 0 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 70vh;
+  justify-content: center;
+}
+
+.options-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: #D13333;
+  background-color: #f9f9f9;
+}
+
+.options-button.selected {
+  border-color: #D13333;
+  background-color: #f9f9f9;
 }
 
 .img-option-button {
@@ -73,4 +119,17 @@ export default {
   margin-bottom: 15px;
 }
 
+.back-next {
+  background-color: #D13333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-next:hover {
+  background-color: #b02929;
+}
 </style>

@@ -18,7 +18,7 @@ export default {
       <img src="../../assets/image-step1.jpg" alt="Image description" class="img-confirm-dir">
     </div>
   </div>
-  <hr>
+  <hr class="border-1 shadow-2 border-gray-300">
   <router-link to="/start">
     <pv-button class="back-next" style="left: 0%; margin-left:6%;">Back</pv-button>
   </router-link>
