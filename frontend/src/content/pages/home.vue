@@ -3,7 +3,7 @@
     <div class="search-bar">
       <label for="search" class="search-label">Find</label>
       <div class="search-input-container">
-        <input type="text" id="search" class="search-input" v-model="query" placeholder="Enter the title" />
+        <input type="text" id="search" class="search-input" v-model="query" placeholder="Enter the title"/>
         <button @click="search" class="search-button">
           <i class="pi pi-search"></i>
         </button>

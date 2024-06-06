@@ -17,9 +17,8 @@ export default {
     };
   },
   computed: {
-    //las propiedades Computed son funciones que se ejecutan cada vez que una de las propiedades que utiliza cambia. Lo que permite actualizar el estado de la aplicación en tiempo real.
     isEmailValid() {
-      const re = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/; //Expresión regular para validar el correo electrónico. Referencia: https://regexr.com/3e48o
+      const re = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
       return re.test(this.email);
     },
 

@@ -13,7 +13,9 @@
       </div>
       <div aria-label="Footer navigation links" class="flex md:gap-5 gap-3 footer-links flex md:flex-row flex-column md:items-center items-start">
 
-        <p>About</p>
+        <router-link to="/about">
+          <p>About</p>
+        </router-link>
         <router-link to="/home">
           <p>Home</p>
         </router-link>

@@ -2,7 +2,7 @@
   <div v-if="filteredCards.length > 0" class="grid">
     <pv-card class="home-card" v-for="card in filteredCards" :key="card.id">
       <template #content>
-        <router-link :to="`/home-detail/${card.id}`" class="router-link">
+        <router-link :to="`/home-detail`" class="router-link">
           <div class="container-img-home">
             <img :src="card.imgUrl" alt="home" class="img-home">
           </div>
@@ -303,7 +303,7 @@ a:hover {
     display: grid;
   }
   .card-image {
-    width: 50%; /* Ajusta este valor para cambiar el tamaño de la imagen */
+    width: 50%;
     height: auto;
   }
 }

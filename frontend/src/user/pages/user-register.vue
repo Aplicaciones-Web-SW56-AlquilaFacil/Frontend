@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 
-import NavbarContent from "../../public/components/navbar-content.component.vue";
-import FooterContent from "../../public/components/footer-content.component.vue";
 import TheUserRegister from "../components/the-user-register.component.vue";
 
 

@@ -1,9 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 
-import NavbarContent from "../../public/components/navbar-content.component.vue";
-import FooterContent from "../../public/components/footer-content.component.vue";
-
 import TheUserForgotPassword from "../components/the-user-forgot-password.component.vue";
 
 const showLogin = ref(false);
