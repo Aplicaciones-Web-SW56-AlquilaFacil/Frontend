@@ -45,7 +45,7 @@
           <div v-else class="user-display flex items-center border-rounded">
             <span class="font-bold">{{ user.name }}</span>
             <div class="relative">
-              <i class="pi pi-bars text-red-600 cursor-pointer ml-5" @click="toggleDropdown"></i>
+              <i class="pi pi-bars text-red-600 cursor-pointer toggle-icon" @click="toggleDropdown"></i>
               <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
                 <router-link v-for="item in items" :key="item.label" :to="item.to" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" @click.native="item.label === 'Log Out' ? logout() : ''">{{ item.label }}</router-link>
               </div>
@@ -318,4 +318,13 @@ h2 {
 .relative {
   position: relative;
 }
+.toggle-icon {
+  padding: 10px;
+  font-size: 30px;
+}
+
+.toggle-icon:hover {
+  transform: scale(1.2);
+}
+
 </style>
