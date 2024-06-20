@@ -19,6 +19,7 @@ import UserForgotPassword from "../user/pages/user-forgot-password.vue";
 import UserRegister from "../user/pages/user-register.vue";
 import PropertyDetail from "../content/pages/property-detail.vue";
 import About from "../content/pages/about.vue";
+import MyProperties from "../content/pages/my-properties.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -44,6 +45,7 @@ const router = createRouter({
         {path: '/user-edit', component: UserEditProfile, meta: {title: 'Edit Profile'},},
         {path: '/forgot-password', component: UserForgotPassword, meta: {title: 'Forgot Password'},},
         {path: '/register', component: UserRegister, meta: {title: 'Register'},},
+        {path: '/my-properties', component: MyProperties, meta: {title: 'My properties'},},
         {path:'/about',component:About,meta:{title:'About'}},
 
 
