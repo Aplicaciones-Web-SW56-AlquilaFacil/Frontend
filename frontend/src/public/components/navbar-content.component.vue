@@ -127,7 +127,7 @@ export default {
         },
         {
           label: 'Account',
-          to: '/user-edit'
+          to: '/register'
         },
         {
           label: 'Log Out',

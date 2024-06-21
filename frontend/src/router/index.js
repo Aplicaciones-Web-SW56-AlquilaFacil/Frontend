@@ -14,7 +14,6 @@ import CreateSpaceStandOutComponent from "../space/components/create-space-stand
 import CreateSpaceStartComponent from "../space/components/create-space-start.component.vue";
 import CreateSpaceTitleComponent from "../space/components/create-space-title.component.vue";
 import CreateSpaceConfirmDirectionComponent from "../space/components/create-space-confirm-direction.component.vue";
-import UserEditProfile from "../user/pages/user-edit-profile.vue";
 import UserForgotPassword from "../user/pages/user-forgot-password.vue";
 import UserRegister from "../user/pages/user-register.vue";
 import PropertyDetail from "../content/pages/property-detail.vue";
@@ -42,7 +41,6 @@ const router = createRouter({
         {path: '/start', component: CreateSpaceStartComponent, meta: {title: 'Create'},},
         {path: '/title', component: CreateSpaceTitleComponent, meta: {title: 'Title'},},
 
-        {path: '/user-edit', component: UserEditProfile, meta: {title: 'Edit Profile'},},
         {path: '/forgot-password', component: UserForgotPassword, meta: {title: 'Forgot Password'},},
         {path: '/register', component: UserRegister, meta: {title: 'Register'},},
         {path: '/my-properties', component: MyProperties, meta: {title: 'My properties'},},
