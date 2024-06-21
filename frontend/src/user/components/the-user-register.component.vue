@@ -16,6 +16,7 @@ export default {
         mother_name: '',
         birth_date: '',
         phone_number: '',
+        document_number: '',
         artist: false
       })
     }
@@ -31,6 +32,7 @@ export default {
       mother_name: this.userData.mother_name,
       birth_date: this.userData.birth_date,
       phone_number: this.userData.phone_number,
+      document_number: this.userData.document_number,
       artist: this.userData.artist,
       password_input_style: {
         border: 'none',
@@ -64,6 +66,9 @@ export default {
       const re = /^\+?\d{10,15}$/;
       return re.test(this.phone_number);
     },
+    isDocumentNumberValid() {
+      return this.document_number.length >= 1;
+    },
     isPasswordValid() {
       return this.isEdit || (this.password.length >= 6 && this.password.length <= 16);
     },
@@ -85,6 +90,7 @@ export default {
           mother_name: this.mother_name,
           birth_date: this.birth_date,
           phone_number: this.phone_number,
+          document_number: this.document_number,
           artist: this.artist,
         });
       } else {
@@ -97,6 +103,7 @@ export default {
           mother_name: this.mother_name,
           birth_date: this.birth_date,
           phone_number: this.phone_number,
+          document_number: this.document_number,
           artist: this.artist,
         });
       }
@@ -116,10 +123,22 @@ export default {
                         placeholder="Enter your email" aria-label="Correo electrónico"/>
           <small v-if="!isEmailValid" class="text-red-500">Invalid Email</small>
 
-          <label class="uppercase" for="username">USER NAME*</label>
-          <pv-inputtext :invalid="!isUsernameValid" v-model="username" class="input-text" id="username"
-                        placeholder="Enter your username" aria-label="Nombre de usuario"/>
-          <small v-if="!isUsernameValid" class="text-red-500">Invalid Username</small>
+          <div v-if="!isEdit" class="flex flex-column gap-3">
+            <label class="uppercase" for="password">PASSWORD*</label>
+            <pv-password :input-style="password_input_style" :invalid="!isPasswordValid" id="password" toggle-mask
+                         placeholder="Enter your password (6-16 characters)" v-model="password"
+                         :prompt-label="'Enter your password (6-16 characters)'"
+                         :weak-label="'Enter your password (6-16 characters)'"
+                         :medium-label="'Enter your password (6-16 characters)'"
+                         :strong-label="'Enter your password (6-16 characters)'" aria-label="Password"/>
+            <small v-if="!isPasswordValid" class="text-red-500">Invalid Password</small>
+
+            <label class="uppercase" for="confirm-password">PLEASE TYPE PASSWORD AGAIN*</label>
+            <pv-password :input-style="password_input_style" :invalid="!isConfirmPasswordValid" class="password"
+                         id="confirm-password" toggle-mask placeholder="Enter your password (6-16 characters)"
+                         v-model="confirm_password" :feedback="false" aria-label="Confirma password"/>
+            <small v-if="!isConfirmPasswordValid" class="text-red-500">Enter your password (6-16 characters)</small>
+          </div>
 
           <label class="uppercase" for="first_name">FIRST NAME*</label>
           <pv-inputtext :invalid="!isFirstNameValid" v-model="first_name" class="input-text" id="first_name"
@@ -146,22 +165,10 @@ export default {
                         placeholder="Enter your phone number" aria-label="Número de teléfono"/>
           <small v-if="!isPhoneNumberValid" class="text-red-500">Invalid Phone Number</small>
 
-          <div v-if="!isEdit" class="flex flex-column gap-3">
-            <label class="uppercase" for="password">PASSWORD*</label>
-            <pv-password :input-style="password_input_style" :invalid="!isPasswordValid" id="password" toggle-mask
-                         placeholder="Enter your password (6-16 characters)" v-model="password"
-                         :prompt-label="'Enter your password (6-16 characters)'"
-                         :weak-label="'Enter your password (6-16 characters)'"
-                         :medium-label="'Enter your password (6-16 characters)'"
-                         :strong-label="'Enter your password (6-16 characters)'" aria-label="Password"/>
-            <small v-if="!isPasswordValid" class="text-red-500">Invalid Password</small>
-
-            <label class="uppercase" for="confirm-password">PLEASE TYPE PASSWORD AGAIN*</label>
-            <pv-password :input-style="password_input_style" :invalid="!isConfirmPasswordValid" class="password"
-                         id="confirm-password" toggle-mask placeholder="Enter your password (6-16 characters)"
-                         v-model="confirm_password" :feedback="false" aria-label="Confirma password"/>
-            <small v-if="!isConfirmPasswordValid" class="text-red-500">Enter your password (6-16 characters)</small>
-          </div>
+          <label class="uppercase" for="document_number">DOCUMENT NUMBER*</label>
+          <pv-inputtext :invalid="!isDocumentNumberValid" v-model="document_number" class="input-text" id="document_number"
+                        placeholder="Enter your document number" aria-label="Número de documento"/>
+          <small v-if="!isDocumentNumberValid" class="text-red-500">Invalid Document Number</small>
 
           <div class="flex align-items-center">
             <pv-checkbox v-model="artist" inputId="is_artist" :binary="true" aria-label="Artista"/>
