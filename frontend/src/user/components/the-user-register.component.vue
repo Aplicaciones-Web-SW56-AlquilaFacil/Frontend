@@ -1,7 +1,11 @@
 <script>
+import {useAuthenticationStore} from "../services/authentication.store.js";
+import {SignUpRequest} from "../model/sign-up.request.js";
+
+
 export default {
-  name: "the-user-form",
-  props: {
+  name: "sign-up",
+  /*props: {
     isEdit: {
       type: Boolean,
       default: false
@@ -17,16 +21,16 @@ export default {
         birth_date: '',
         phone_number: '',
         document_number: '',
-        artist: false
       })
     }
-  },
+  },*/
   data() {
     return {
-      email: this.userData.email,
-      username: this.userData.username,
-      password: '',
-      confirm_password: '',
+      authenticationStore: useAuthenticationStore(),
+      //email: this.userData.email,
+      username: "",
+      password: "",
+      /*confirm_password: '',
       first_name: this.userData.first_name,
       father_name: this.userData.father_name,
       mother_name: this.userData.mother_name,
@@ -38,10 +42,10 @@ export default {
         border: 'none',
         borderBottom: '1px solid #d1d1d1',
         width: '100%',
-      },
+      },*/
     };
   },
-  computed: {
+  /*computed: {
     isEmailValid() {
       const re = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
       return re.test(this.email);
@@ -63,7 +67,7 @@ export default {
       return re.test(this.birth_date);
     },
     isPhoneNumberValid() {
-      const re = /^\+?\d{10,15}$/;
+      const re = /^\+?\d{9,15}$/;
       return re.test(this.phone_number);
     },
     isDocumentNumberValid() {
@@ -78,8 +82,12 @@ export default {
     isFormValid() {
       return this.isEmailValid && this.isUsernameValid && this.isFirstNameValid && this.isFatherNameValid && this.isMotherNameValid && this.isBirthDateValid && this.isPhoneNumberValid && this.isPasswordValid && this.isConfirmPasswordValid;
     },
-  },
+  },*/
   methods: {
+    onSignUp() {
+      let signUpRequest = new SignUpRequest(this.username, this.password);
+      this.authenticationStore.signUp(signUpRequest, this.$router);
+    }/*,
     submitForm() {
       if (this.isEdit) {
         this.$emit('update-profile', {
@@ -107,7 +115,7 @@ export default {
           artist: this.artist,
         });
       }
-    }
+    }*/
   }
 }
 </script>
@@ -115,9 +123,18 @@ export default {
 <template>
   <section class="flex justify-content-center align-items-center" aria-label="User Form">
     <div class="form-container pt-7 pb-7">
-      <h4>{{ isEdit ? 'Edit Profile' : 'Register' }}</h4>
-      <div class="form pl-6 pt-4">
-        <div class="flex flex-column gap-3">
+      <!--<h4>{{ isEdit ? 'Edit Profile' : 'Register' }}</h4>-->
+      <form class="form pl-6 pt-4" @submit.prevent="onSignUp">
+
+        <label for="username">Username</label>
+        <pv-inputtext id="username" v-model="username" :class="{'p-invalid': !username}"/>
+        <small v-if="!username" class="p-invalid">Username is required.</small>
+
+        <label for="password">Password</label>
+        <pv-inputtext id="password" v-model="password" :class="{'p-invalid': !password}" type="password"/>
+        <small v-if="!password" class="p-invalid">Password is required.</small>
+
+        <!--<div class="flex flex-column gap-3">
           <label class="uppercase" for="email">EMAIL*</label>
           <pv-inputtext :invalid="!isEmailValid" v-model="email" class="input-text" id="email"
                         placeholder="Enter your email" aria-label="Correo electrónico"/>
@@ -180,12 +197,15 @@ export default {
             at any time via the opt-out link in the marketing emails.</h4>
 
           <div class="flex justify-content-center gap-2 mt-3 mb-3">
-            <pv-button class="form-button w-full w-12rem" @click="submitForm"
-                       :label="isEdit ? 'Update Profile' : 'Sign Up now'" plain text aria-label="Botón de registro"
-                       :disabled="!isFormValid"/>
+            <pv-button class="form-button w-full w-12rem" :label="isEdit ? 'Update Profile'
+            : 'Sign Up now'" plain text aria-label="Botón de registro" type="submit"/>
           </div>
+        </div>-->
+        <div class="flex justify-content-center gap-2 mt-3 mb-3">
+          <pv-button class="form-button w-full w-12rem" type="submit"/>
+          <pv-button type="submit">Sign Up</pv-button>
         </div>
-      </div>
+      </form>
     </div>
   </section>
 </template>

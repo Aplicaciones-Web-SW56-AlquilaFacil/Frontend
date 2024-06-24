@@ -29,9 +29,12 @@ import router from "./router/index.js";
 import DialogService from "primevue/dialogservice";
 import ConfirmationService from "primevue/confirmationservice";
 import ToastService from "primevue/toastservice";
+import {createPinia} from "pinia";
 
+const pinia = createPinia();
 
 const app = createApp(App);
+app.use(pinia);
 app.use(PrimeVue);
 app.use(router)
 app.use(DialogService)
