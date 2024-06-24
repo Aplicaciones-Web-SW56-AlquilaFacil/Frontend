@@ -5,26 +5,26 @@
         <h4 class="text-center font-bold px-8">Sign In</h4>
       </template>
       <template #content>
-        <div class="card flex justify-content-center w-full">
+        <form class="card flex justify-content-center w-full"  @submit.prevent="onSignIn">
           <div class="flex flex-column w-full px-4">
             <label class="text-sm mb-1" for="email">Email</label>
-            <pv-inputtext v-model="email" class="text-sm mb-2 w-full" id="email" placeholder="Ingresa tu correo" aria-label="Correo electrónico"/>
+            <pv-inputtext v-model="username" id="username" class="text-sm mb-2 w-full" placeholder="Ingresa tu correo" aria-label="Correo electrónico"/>
 
             <label class="text-sm mb-1" for="password">Password</label>
-            <pv-inputtext v-model="password" class="text-sm mb-2 w-full" id="password" placeholder="Ingresar contraseña" aria-label="Contraseña">
+            <pv-inputtext v-model="password" id="password" class="text-sm mb-2 w-full" placeholder="Ingresar contraseña" aria-label="Contraseña">
               <template #prepend>
                 <i class="pi pi-lock"></i>
               </template>
             </pv-inputtext>
 
             <div class="flex justify-content-center mt-4 w-full">
-              <pv-button class="styled-button text-sm w-full" label="Sign In" plain text aria-label="Iniciar sesión" @click="login"/>
+              <pv-button class="styled-button text-sm w-full" label="Sign In" plain text aria-label="Iniciar sesión" type="submit"/>
             </div>
             <router-link to="/forgot-password" class="mt-2">
               <h5 class="text-center m-1" @click="closeLogin">Forgot your password?</h5>
             </router-link>
           </div>
-        </div>
+        </form>
         <hr class="border-white mt-4">
       </template>
       <template #footer>
@@ -42,6 +42,9 @@
 </template>
 
 <script>
+import {SignInRequest} from "../model/sign-in.request.js";
+import {useAuthenticationStore} from "../services/authentication.store.js";
+
 export default {
   name: 'the-user-login',
   props: {
@@ -52,11 +55,19 @@ export default {
   },
   data() {
     return {
-      email: 'italo@web.com',
-      password: '123456',
+      username: "",
+      password: ""
     };
   },
   methods: {
+    onSignIn() {
+      let authenticationStore = useAuthenticationStore();
+      let signInRequest = new SignInRequest(this.username, this.password);
+      authenticationStore.signIn(signInRequest, this.$router);
+      this.$emit('login-success', { username });
+      this.$emit('update:showLogin', false);
+
+    },
     closeLogin() {
       this.$emit('update:showLogin', false);
     },
