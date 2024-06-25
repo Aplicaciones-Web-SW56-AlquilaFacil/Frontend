@@ -23,14 +23,14 @@ export default {
 </script>
 
 <template>
-  <h1 class="type-tittle">Primero elige el tipo de premium</h1>
+  <h1 class="type-tittle">First of all choose your premium type</h1>
   <div class="card-container">
 
     <pv-card class="subscription-card">
       <template #content>
         <img class="card-image"
              src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/develop/frontend/src/assets/organizer-image.png?raw=true"
-             alt="Propietario">
+             alt="Propietary">
       </template>
       <template #footer>
         <router-link v-for="item in items1" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
@@ -46,7 +46,7 @@ export default {
       <template #content>
         <img class="card-image"
              src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/develop/frontend/src/assets/proprietary-image.png?raw=true"
-             alt="Organizador">
+             alt="Organizator">
       </template>
       <template #footer>
         <router-link v-for="item in items2" :key="item.label" v-slot="{ navigate, href}" :to="item.to" custom>
@@ -70,4 +70,5 @@ export default {
     width: 150px;
   }
 }
+
 </style>

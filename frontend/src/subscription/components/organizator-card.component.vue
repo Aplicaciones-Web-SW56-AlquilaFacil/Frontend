@@ -9,34 +9,35 @@ export default {
   data() {
     return {
       premiumPlan: {
-        planName: "Coorporativo",
-        price: "S/44.90/mes",
+        planName: "Corporate",
+        price: "S/39.90/month",
         benefits: [
-          "Descuentos adicionales en tarifas de alquiler de espacios premium.",
-          "Acceso prioritario a espacios exclusivos y populares.",
-          "Acceso prioritario a espacios exclusivos y populares.",
+          "Unlimited space listings.",
+          "Highlight listings in search results.",
+          "Access to basic analytical tools.",
         ],
       },
       standarPlan: {
-        planName: "Estandar",
-        price: "S/24.90/mes",
+        planName: "Standard",
+        price: "S/19.90/month",
         benefits: [
-          "Búsqueda y reservas ilimitadas de espacios.",
-          "Descuentos exclusivos en tarifas de alquiler de espacios seleccionados.",
+          "Listing of up to 5 spaces.",
+          "Advanced booking functionalities.",
+          "Inclusion of images per space.",
         ],
       },
-
       basicPlan: {
-        planName: "Basico",
+        planName: "Basic",
         price: "Free",
         benefits: [
-          "Reservas de hasta 2 espacios por mes.",
-          "Acceso a calificaciones y comentarios sobre los espacios.",
+          "Listing of up to 2 spaces.",
+          "Owner profile with basic space information.",
         ],
       }
     };
   },
 };
+
 </script>
 
 <template>
@@ -55,7 +56,7 @@ export default {
         </ul>
       </template>
       <template #footer>
-        <pv-button class="choose-plan" style="margin-top: 21%">Elegir plan</pv-button>
+        <pv-button class="choose-plan" style="margin-top: 21%">Choose Plan</pv-button>
       </template>
     </pv-card>
 
@@ -72,7 +73,7 @@ export default {
         </ul>
       </template>
       <template #footer>
-        <pv-button class="choose-plan">Elegir plan</pv-button>
+        <pv-button class="choose-plan">Choose Plan</pv-button>
       </template>
     </pv-card>
 
@@ -89,7 +90,7 @@ export default {
         </ul>
       </template>
       <template #footer>
-        <pv-button class="choose-plan">Elegir plan</pv-button>
+        <pv-button class="choose-plan">Choose Plan</pv-button>
       </template>
     </pv-card>
   </div>
@@ -110,10 +111,12 @@ export default {
 .card-container{
   display: flex;
   flex-grow: 1;
+  flex-wrap: wrap;
 }
 
 .subscription-card {
   width: 400px;
+  min-width: 400px;
   margin: 0 auto 9vh auto;
   padding: 1rem;
   border: 1px solid #faefef;
@@ -150,7 +153,24 @@ export default {
   justify-content: center;
   font-weight: bold;
   font-size: 30px;
+}
 
+@media (max-width: 768px) {
+  .subscription-card {
+    width: 200px;
+    height: 400px;
+    margin-top: 5%;
+  }
+  .choose-plan {
+    width: 100%;
+    padding: 10px 10px;
+    margin-top: 0;
+  }
+  .benefits {
+    font-size: 8px;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
 }
 
 

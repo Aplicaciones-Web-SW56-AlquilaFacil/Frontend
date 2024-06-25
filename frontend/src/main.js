@@ -12,11 +12,15 @@ import Password from 'primevue/password';
 import Checkbox from 'primevue/checkbox'
 import Card from "primevue/card";
 import Toast from "primevue/toast";
+import  SplitButton  from 'primevue/splitbutton';
+
 import i18n from "./locale/i18n.js";
 
 
 import 'primeflex/primeflex.css';
-import 'primevue/resources/themes/aura-light-green/theme.css'
+import 'primevue/resources/themes/md-light-indigo/theme.css';
+import 'primevue/resources/primevue.min.css';
+import 'primeicons/primeicons.css';
 import 'primeicons/primeicons.css'
 import 'primevue/resources/primevue.min.css'
 import Divider from "primevue/divider";
@@ -25,9 +29,12 @@ import router from "./router/index.js";
 import DialogService from "primevue/dialogservice";
 import ConfirmationService from "primevue/confirmationservice";
 import ToastService from "primevue/toastservice";
+import {createPinia} from "pinia";
 
+const pinia = createPinia();
 
 const app = createApp(App);
+app.use(pinia);
 app.use(PrimeVue);
 app.use(router)
 app.use(DialogService)
@@ -46,6 +53,7 @@ app.component('pv-toast', Toast);
 app.component('pv-sidebar', Sidebar);
 app.component('pv-divider', Divider);
 app.component('pv-autocomplete', AutoComplete);
+app.component('pv-splitbutton', SplitButton);
 
 app.use(i18n);
 

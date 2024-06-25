@@ -1,104 +1,225 @@
 <script>
+import {useAuthenticationStore} from "../services/authentication.store.js";
+import {SignUpRequest} from "../model/sign-up.request.js";
+
+
 export default {
-  name: "the-user-register",
+  name: "sign-up",
+  /*props: {
+    isEdit: {
+      type: Boolean,
+      default: false
+    },
+    userData: {
+      type: Object,
+      default: () => ({
+        email: '',
+        username: '',
+        first_name: '',
+        father_name: '',
+        mother_name: '',
+        birth_date: '',
+        phone_number: '',
+        document_number: '',
+      })
+    }
+  },*/
   data() {
     return {
-      // userServices: new UserEndpointService(),
-      email: '',
-      username: '',
-      password: '',
-      confirm_password: '',
-      artist: false,
+      authenticationStore: useAuthenticationStore(),
+      //email: this.userData.email,
+      username: "",
+      password: "",
+      /*confirm_password: '',
+      first_name: this.userData.first_name,
+      father_name: this.userData.father_name,
+      mother_name: this.userData.mother_name,
+      birth_date: this.userData.birth_date,
+      phone_number: this.userData.phone_number,
+      document_number: this.userData.document_number,
+      artist: this.userData.artist,
       password_input_style: {
         border: 'none',
         borderBottom: '1px solid #d1d1d1',
         width: '100%',
-      },
+      },*/
     };
   },
-  computed: {
-    //las propiedades Computed son funciones que se ejecutan cada vez que una de las propiedades que utiliza cambia. Lo que permite actualizar el estado de la aplicación en tiempo real.
+  /*computed: {
     isEmailValid() {
-      const re = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/; //Expresión regular para validar el correo electrónico. Referencia: https://regexr.com/3e48o
+      const re = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
       return re.test(this.email);
     },
-
-    isPasswordValid() {
-      return this.password.length >= 6 && this.password.length <= 16;
-    },
-
-    isConfirmPasswordValid() {
-      return this.password === this.confirm_password;
-    },
-
     isUsernameValid() {
       return this.username.length <= 20 && this.username.length >= 1;
     },
-
-    isFormValid() {
-      return this.isEmailValid && this.isPasswordValid && this.isConfirmPasswordValid;
+    isFirstNameValid() {
+      return this.first_name.length >= 1;
     },
-  },
+    isFatherNameValid() {
+      return this.father_name.length >= 1;
+    },
+    isMotherNameValid() {
+      return this.mother_name.length >= 1;
+    },
+    isBirthDateValid() {
+      const re = /^\d{4}-\d{2}-\d{2}$/;
+      return re.test(this.birth_date);
+    },
+    isPhoneNumberValid() {
+      const re = /^\+?\d{9,15}$/;
+      return re.test(this.phone_number);
+    },
+    isDocumentNumberValid() {
+      return this.document_number.length >= 1;
+    },
+    isPasswordValid() {
+      return this.isEdit || (this.password.length >= 6 && this.password.length <= 16);
+    },
+    isConfirmPasswordValid() {
+      return this.isEdit || (this.password === this.confirm_password);
+    },
+    isFormValid() {
+      return this.isEmailValid && this.isUsernameValid && this.isFirstNameValid && this.isFatherNameValid && this.isMotherNameValid && this.isBirthDateValid && this.isPhoneNumberValid && this.isPasswordValid && this.isConfirmPasswordValid;
+    },
+  },*/
+  methods: {
+    onSignUp() {
+      let signUpRequest = new SignUpRequest(this.username, this.password);
+      this.authenticationStore.signUp(signUpRequest, this.$router);
+    }/*,
+    submitForm() {
+      if (this.isEdit) {
+        this.$emit('update-profile', {
+          email: this.email,
+          username: this.username,
+          first_name: this.first_name,
+          father_name: this.father_name,
+          mother_name: this.mother_name,
+          birth_date: this.birth_date,
+          phone_number: this.phone_number,
+          document_number: this.document_number,
+          artist: this.artist,
+        });
+      } else {
+        this.$emit('register', {
+          email: this.email,
+          username: this.username,
+          password: this.password,
+          first_name: this.first_name,
+          father_name: this.father_name,
+          mother_name: this.mother_name,
+          birth_date: this.birth_date,
+          phone_number: this.phone_number,
+          document_number: this.document_number,
+          artist: this.artist,
+        });
+      }
+    }*/
+  }
 }
 </script>
 
 <template>
-  <section class="flex justify-content-center align-items-center" aria-label="Registro de usuario">
-    <div class="register-container pt-7 pb-7">
-      <h4>Registro</h4>
-      <div class="register-form pl-6 pt-4">
-        <div class="flex flex-column gap-3">
-          <label class="uppercase" for="email">CORREO ELECTRÓNICO*</label>
-          <pv-inputtext :invalid="!isEmailValid" v-model="email" class="input-text" id="email" :placeholder="'Ingresa tu correo electrónico'" aria-label="Correo electrónico"/>
-          <small v-if="!isEmailValid" class="text-red-500" aria-label="">Correo electrónico inválido</small>
+  <section class="flex justify-content-center align-items-center" aria-label="User Form">
+    <div class="form-container pt-7 pb-7">
+      <!--<h4>{{ isEdit ? 'Edit Profile' : 'Register' }}</h4>-->
+      <form class="form pl-6 pt-4" @submit.prevent="onSignUp">
 
-          <label class="uppercase" for="password">CONTRASEÑA*</label>
-          <pv-password :input-style="password_input_style" :invalid="!isPasswordValid" id="password" toggle-mask :placeholder="'Ingresa tu contraseña (6-16 caracteres)'" v-model="password"
-                       :prompt-label="'Ingresa tu contraseña (6-16 caracteres)'" :weak-label="'Ingresa tu contraseña (6-16 caracteres)'" :medium-label="'Ingresa tu contraseña (6-16 caracteres)'" :strong-label="'Ingresa tu contraseña (6-16 caracteres)'" aria-label="Contraseña"/>
-          <small v-if="!isPasswordValid" class="text-red-500">Contraseña inválida</small>
+        <label for="username">Username</label>
+        <pv-inputtext id="username" v-model="username" :class="{'p-invalid': !username}"/>
+        <small v-if="!username" class="p-invalid">Username is required.</small>
 
-          <label class="uppercase" for="confirm-password">ESCRIBA NUEVAMENTE LA CONTRASEÑA*</label>
-          <pv-password :input-style="password_input_style" :invalid="!isConfirmPasswordValid" class="password" id="confirm-password" toggle-mask :placeholder="'Ingresa tu contraseña (6-16 caracteres)'" v-model="confirm_password" :feedback="false" aria-label="Confirmar contraseña"/>
-          <small v-if="!isConfirmPasswordValid" class="text-red-500">Ingresa tu contraseña (6-16 caracteres)</small>
+        <label for="password">Password</label>
+        <pv-inputtext id="password" v-model="password" :class="{'p-invalid': !password}" type="password"/>
+        <small v-if="!password" class="p-invalid">Password is required.</small>
+
+        <!--<div class="flex flex-column gap-3">
+          <label class="uppercase" for="email">EMAIL*</label>
+          <pv-inputtext :invalid="!isEmailValid" v-model="email" class="input-text" id="email"
+                        placeholder="Enter your email" aria-label="Correo electrónico"/>
+          <small v-if="!isEmailValid" class="text-red-500">Invalid Email</small>
+
+          <div v-if="!isEdit" class="flex flex-column gap-3">
+            <label class="uppercase" for="password">PASSWORD*</label>
+            <pv-password :input-style="password_input_style" :invalid="!isPasswordValid" id="password" toggle-mask
+                         placeholder="Enter your password (6-16 characters)" v-model="password"
+                         :prompt-label="'Enter your password (6-16 characters)'"
+                         :weak-label="'Enter your password (6-16 characters)'"
+                         :medium-label="'Enter your password (6-16 characters)'"
+                         :strong-label="'Enter your password (6-16 characters)'" aria-label="Password"/>
+            <small v-if="!isPasswordValid" class="text-red-500">Invalid Password</small>
+
+            <label class="uppercase" for="confirm-password">PLEASE TYPE PASSWORD AGAIN*</label>
+            <pv-password :input-style="password_input_style" :invalid="!isConfirmPasswordValid" class="password"
+                         id="confirm-password" toggle-mask placeholder="Enter your password (6-16 characters)"
+                         v-model="confirm_password" :feedback="false" aria-label="Confirma password"/>
+            <small v-if="!isConfirmPasswordValid" class="text-red-500">Enter your password (6-16 characters)</small>
+          </div>
+
+          <label class="uppercase" for="first_name">FIRST NAME*</label>
+          <pv-inputtext :invalid="!isFirstNameValid" v-model="first_name" class="input-text" id="first_name"
+                        placeholder="Enter your first name" aria-label="Nombre"/>
+          <small v-if="!isFirstNameValid" class="text-red-500">Invalid First Name</small>
+
+          <label class="uppercase" for="father_name">FATHER'S NAME*</label>
+          <pv-inputtext :invalid="!isFatherNameValid" v-model="father_name" class="input-text" id="father_name"
+                        placeholder="Enter your father's name" aria-label="Nombre del padre"/>
+          <small v-if="!isFatherNameValid" class="text-red-500">Invalid Father's Name</small>
+
+          <label class="uppercase" for="mother_name">MOTHER'S NAME*</label>
+          <pv-inputtext :invalid="!isMotherNameValid" v-model="mother_name" class="input-text" id="mother_name"
+                        placeholder="Enter your mother's name" aria-label="Nombre de la madre"/>
+          <small v-if="!isMotherNameValid" class="text-red-500">Invalid Mother's Name</small>
+
+          <label class="uppercase" for="birth_date">BIRTH DATE (YYYY-MM-DD)*</label>
+          <pv-inputtext :invalid="!isBirthDateValid" v-model="birth_date" class="input-text" id="birth_date"
+                        placeholder="Enter your birth date" aria-label="Fecha de nacimiento"/>
+          <small v-if="!isBirthDateValid" class="text-red-500">Invalid Birth Date</small>
+
+          <label class="uppercase" for="phone_number">PHONE NUMBER*</label>
+          <pv-inputtext :invalid="!isPhoneNumberValid" v-model="phone_number" class="input-text" id="phone_number"
+                        placeholder="Enter your phone number" aria-label="Número de teléfono"/>
+          <small v-if="!isPhoneNumberValid" class="text-red-500">Invalid Phone Number</small>
+
+          <label class="uppercase" for="document_number">DOCUMENT NUMBER*</label>
+          <pv-inputtext :invalid="!isDocumentNumberValid" v-model="document_number" class="input-text" id="document_number"
+                        placeholder="Enter your document number" aria-label="Número de documento"/>
+          <small v-if="!isDocumentNumberValid" class="text-red-500">Invalid Document Number</small>
 
           <div class="flex align-items-center">
             <pv-checkbox v-model="artist" inputId="is_artist" :binary="true" aria-label="Artista"/>
-            <label for="is_artist" class="ml-2"> Al registrarme, acepto los Términos de uso y la Política de privacidad de AlquilaFacil</label>
+            <label for="is_artist" class="ml-2"> By registering, I accept the Terms of Use and Privacy Policy of
+              AlquilaFacil</label>
           </div>
 
-          <h4>AlquilaFacil recopila y procesa su dirección de correo electrónico con fines de marketing. Puede darse de baja fácilmente en cualquier momento a través del enlace de exclusión en los correos electrónicos de marketing.</h4>
+          <h4>AlquilaFacil collects and processes your email address for marketing purposes. You can easily unsubscribe
+            at any time via the opt-out link in the marketing emails.</h4>
 
           <div class="flex justify-content-center gap-2 mt-3 mb-3">
-            <pv-button class="register-button w-full w-12rem" @click="register" :label="'Regístrate ahora'" plain text aria-label="Botón de registro" :disabled="!isFormValid" />
+            <pv-button class="form-button w-full w-12rem" :label="isEdit ? 'Update Profile'
+            : 'Sign Up now'" plain text aria-label="Botón de registro" type="submit"/>
           </div>
-
-          <pv-divider align="center" type="solid" >
-            <b>Regístrate ahora</b>
-          </pv-divider>
-
-          <div class="flex justify-content-center gap-5">
-            <i class="pi pi-google text-7xl cursor-pointer" aria-label="Google"></i>
-            <i class="pi pi-facebook text-7xl cursor-pointer" aria-label="Facebook"></i>
-            <i class="pi pi-twitter text-7xl cursor-pointer" aria-label="Twitter"></i>
-          </div>
-
+        </div>-->
+        <div class="flex justify-content-center gap-2 mt-3 mb-3">
+          <pv-button class="form-button w-full w-12rem" type="submit"/>
+          <pv-button type="submit">Sign Up</pv-button>
         </div>
-      </div>
+      </form>
     </div>
   </section>
 </template>
 
 <style scoped>
-
-.register-container {
+.form-container {
   width: 80%;
 }
 
-.register-button{
+.form-button {
   background-color: #c53030;
 }
 
-.input-text{
+.input-text {
   width: 100%;
   border: none;
   border-bottom: 1px solid #d1d1d1;
@@ -106,21 +227,22 @@ export default {
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .register-container {
+  .form-container {
     width: 90%;
   }
-  .input-text, .register-button {
+
+  .input-text, .form-button {
     width: 90%;
   }
 }
 
 @media (max-width: 480px) {
-  .register-container {
+  .form-container {
     width: 100%;
   }
-  .input-text, .register-button {
+
+  .input-text, .form-button {
     width: 100%;
   }
 }
-
 </style>

@@ -6,15 +6,15 @@ export default {
 </script>
 
 <template>
-  <h2 style="margin: 2% 5% auto 5%">Recupera tu contraseña</h2>
+  <h2 style="margin: 2% 5% auto 5%">Recover your password</h2>
     <div>
       <img class="forgot-pass-image" src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/feature/bounded-user/frontend/src/assets/forgot-password.png?raw=true" alt="forgot-password">
     </div>
-      <h2 class="strong-subtitle">¿Olvidaste tu contraseña? No te preocupes</h2>
-    <h4 style="text-align: center; font-weight: normal;">Le enviaremos una URL para restablecer su contraseña.
-    Ingrese la dirección de correo electrónico que ha registrado en AlquilaFácil.</h4>
-  <pv-inputtext placeholder="Ingresa tu correo electronico" class="forpass-input"></pv-inputtext>
-  <pv-button class="forpass-button">Enviar</pv-button>
+      <h2 class="strong-subtitle">Forgot your password? Don't worry</h2>
+    <h4 style="text-align: center; font-weight: normal;">We will send you a URL to reset your password.
+      Enter the email address you have registered with AlquilaFácil.</h4>
+  <pv-inputtext placeholder="Enter your email" class="forpass-input"></pv-inputtext>
+  <pv-button class="forpass-button">Send</pv-button>
 </template>
 
 <style>
