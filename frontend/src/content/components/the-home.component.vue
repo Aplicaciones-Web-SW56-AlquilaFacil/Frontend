@@ -1,66 +1,116 @@
+<script>
+
+import { CardEndpoint} from "../services/card-endpoint.service.json.js";
+import { Local } from "../model/local.entity.js"
+import {FilterMatchMode} from "primevue/api";
+
+export default {
+  name: "the-home",
+  data() {
+    return {
+      locals: [],
+      local: null,
+      localsService: null,
+      filters: {},
+    }
+  },
+  created() {
+    this.localsService = new CardEndpoint();
+    this.localsService.getAllLocals()
+        .then(response => {
+          console.log('Response data1:', response.data);
+          this.locals = response.data.map(local => {
+            return {
+              id: local.id,
+              localType: local.localType,
+              nightPrice: local.nightPrice,
+              photoUrl: local.photoUrl,
+              cityPlace: local.cityPlace,
+              streetAddress: local.streetAddress,
+              descriptionMessage: local.descriptionMessage,
+              localCategory: local.localCategory
+            };
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching data1:', error);
+        });
+  }
+  /*created() {
+    this.localsService = new CardEndpoint();
+    this.localsService.getAllLocals()
+        .then(response => {
+          console.log('Response data:', response.data);
+          this.locals = response.data.map(local => {
+            return Local.toDisplayableLocal(local);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    this.initFilters();
+  },
+  methods: {
+    initFilters() {
+      this.filters = {global: {value: null, matchMode: FilterMatchMode.CONTAINS}};
+    },
+  },*/
+
+}
+</script>
+
 <template>
-  <div v-if="filteredCards.length > 0" class="grid">
-    <pv-card class="home-card" v-for="card in filteredCards" :key="card.id">
+  <!--<div v-if="filteredCards.length > 0" class="grid">
+  <div class="grid">
+    <pv-card class="home-card" v-for="card in locals" :key="card.id">
       <template #content>
-        <router-link :to="`/home-detail`" class="router-link">
+        <router-link :to="`/home-detail/${card.id}`" class="router-link">
           <div class="container-img-home">
-            <img :src="card.imgUrl" alt="home" class="img-home">
+            <img :src="card.photo_url_link" alt="home" class="img-home">
           </div>
           <div class="container-text-home">
             <div style="color: black;">
-              <p>{{ card.title }}</p>
+              <p>{{ card.type_local }}</p>
               <p class="text-gray-500">{{ card.description }}</p>
-              <p><strong>S/. {{ card.price }} </strong> per night</p>
+              <p><strong>S/. {{ card.price_night }} </strong> per night</p>
             </div>
           </div>
         </router-link>
       </template>
     </pv-card>
   </div>
-  <div v-if="filteredCards.length === 0" class="no-results">
-    <p>No results found for "{{ query }}"</p>
+  <div v-if="locals.length === 0" class="no-results">
+    <p>No results found for "{{ locals }}"</p>
+    <img class="card-image"
+         src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/main/frontend/src/assets/placeholder.png?raw=true"
+         alt="PlaceHolder">
+  </div>-->
+
+  <div class="grid">
+    <pv-card class="home-card" v-for="local in locals" :key="local.id">
+      <template #content>
+        <router-link :to="`/home-detail/${local.id}`" class="router-link">
+          <div class="container-img-home">
+            <img :src="local.photoUrl" alt="home" class="img-home">
+          </div>
+          <div class="container-text-home">
+            <div style="color: black;">
+              <p>{{ local.localType }}</p>
+              <p class="text-gray-500">{{ local.descriptionMessage }}</p>
+              <p><strong>S/. {{ local.nightPrice }} </strong> per night</p>
+            </div>
+          </div>
+        </router-link>
+      </template>
+    </pv-card>
+  </div>
+  <div v-if="locals.length === 0" class="no-results">
+    <p>No results found for "{{ locals }}"</p>
     <img class="card-image"
          src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/main/frontend/src/assets/placeholder.png?raw=true"
          alt="PlaceHolder">
   </div>
 </template>
-
-<script>
-import { CardEndpoint } from "../services/card-endpoint.service.json.js";
-import card from "primevue/card/Card.vue";
-
-export default {
-  name: "the-home",
-  components: {
-    card
-  },
-  props: {
-    query: {
-      type: String,
-      default: ''
-    }
-  },
-  data() {
-    return {
-      cards: [],
-      cardApi: new CardEndpoint()
-    };
-  },
-  computed: {
-    filteredCards() {
-      return this.cards.filter(card =>
-          card.title.toLowerCase().includes(this.query.toLowerCase())
-      );
-    }
-  },
-  created() {
-    this.cardApi.getAll().then(response => {
-      this.cards = response.data;
-      console.log(this.cards);
-    });
-  }
-};
-</script>
 
 <style>
 .home-card {
