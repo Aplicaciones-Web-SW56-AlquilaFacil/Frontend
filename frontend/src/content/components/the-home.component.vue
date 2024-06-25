@@ -1,8 +1,5 @@
 <script>
-
 import { CardEndpoint} from "../services/card-endpoint.service.json.js";
-import { Local } from "../model/local.entity.js"
-import {FilterMatchMode} from "primevue/api";
 
 export default {
   name: "the-home",
@@ -36,56 +33,10 @@ export default {
           console.error('Error fetching data1:', error);
         });
   }
-  /*created() {
-    this.localsService = new CardEndpoint();
-    this.localsService.getAllLocals()
-        .then(response => {
-          console.log('Response data:', response.data);
-          this.locals = response.data.map(local => {
-            return Local.toDisplayableLocal(local);
-          });
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
-    this.initFilters();
-  },
-  methods: {
-    initFilters() {
-      this.filters = {global: {value: null, matchMode: FilterMatchMode.CONTAINS}};
-    },
-  },*/
-
 }
 </script>
 
 <template>
-  <!--<div v-if="filteredCards.length > 0" class="grid">
-  <div class="grid">
-    <pv-card class="home-card" v-for="card in locals" :key="card.id">
-      <template #content>
-        <router-link :to="`/home-detail/${card.id}`" class="router-link">
-          <div class="container-img-home">
-            <img :src="card.photo_url_link" alt="home" class="img-home">
-          </div>
-          <div class="container-text-home">
-            <div style="color: black;">
-              <p>{{ card.type_local }}</p>
-              <p class="text-gray-500">{{ card.description }}</p>
-              <p><strong>S/. {{ card.price_night }} </strong> per night</p>
-            </div>
-          </div>
-        </router-link>
-      </template>
-    </pv-card>
-  </div>
-  <div v-if="locals.length === 0" class="no-results">
-    <p>No results found for "{{ locals }}"</p>
-    <img class="card-image"
-         src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/main/frontend/src/assets/placeholder.png?raw=true"
-         alt="PlaceHolder">
-  </div>-->
-
   <div class="grid">
     <pv-card class="home-card" v-for="local in locals" :key="local.id">
       <template #content>
@@ -96,7 +47,7 @@ export default {
           <div class="container-text-home">
             <div style="color: black;">
               <p>{{ local.localType }}</p>
-              <p class="text-gray-500">{{ local.descriptionMessage }}</p>
+              <p class="text-gray-500">{{ local.streetAddress }}</p>
               <p><strong>S/. {{ local.nightPrice }} </strong> per night</p>
             </div>
           </div>

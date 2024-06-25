@@ -1,16 +1,71 @@
 <script>
+import {CardEndpoint} from "../services/card-endpoint.service.json.js";
+
 export default {
   name: "the-property-detail",
+  data() {
+    return {
+      locals: [],
+      local: null,
+      localsService: null,
+      filters: {},
+    }
+  },
+  created() {
+    this.localsService = new CardEndpoint();
+    //const localId = this.$route.params.id;
+    this.localsService.getAllLocals()
+        .then(response => {
+          console.log('Response data1:', response.data);
+          this.locals = response.data.map(local => ({
+            id: local.id,
+            localType: local.localType,
+            nightPrice: local.nightPrice,
+            photoUrl: local.photoUrl,
+            cityPlace: local.cityPlace,
+            streetAddress: local.streetAddress,
+            descriptionMessage: local.descriptionMessage,
+            localCategory: local.localCategory
+          }));
+          this.local = this.locals[1];
+          console.log('Selected local:', this.local);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+  }
+  /*created() {
+    this.localsService = new CardEndpoint();
+    this.localsService.getAllLocals()
+        .then(response => {
+          console.log('Response data1:', response.data);
+          this.locals = response.data.map(local => {
+            return {
+              id: local.id,
+              localType: local.localType,
+              nightPrice: local.nightPrice,
+              photoUrl: local.photoUrl,
+              cityPlace: local.cityPlace,
+              streetAddress: local.streetAddress,
+              descriptionMessage: local.descriptionMessage,
+              localCategory: local.localCategory
+            };
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching data1:', error);
+        });
+  }*/
 }
 </script>
 
 <template>
-  <div class="container">
-    <h1>Beach House with yard</h1>
+  <div class="container" v-if="local">
+    <h1>{{ local.localCategory.name }} {{ local.localType }}</h1>
 
     <div class="image-grid">
       <div class="large-image">
-        <img src="../../assets/image-detail.png" alt="Step 1" class="rounded-image">
+        <img :src="local.photoUrl" alt="Step 1" class="rounded-image">
       </div>
 
       <div class="image-column">
@@ -26,18 +81,16 @@ export default {
 
     <div class="details">
       <div class="description">
-        <h2 class="subtitle">Asia, Lima</h2>
+        <h2 class="subtitle">{{ local.cityPlace }}</h2>
+        <p class="info">{{ local.streetAddress }}</p>
         <p class="info">100 Capacity - 3 bedrooms - 3 beds - 2 bathrooms</p>
         <img src="../../assets/italo-photo.png" alt="Italo's Photo">
         <p class="info">Owner: Italo</p>
         <p class="info">Standard Plan</p>
 
         <p class="bold">Description:</p>
-        <p style="width: 90%">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-          eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-          mollit anim id est laborum. </p>
+        <p style="width: 90%">{{ local.descriptionMessage }}</p>
+        <p class="info">Price: S/. {{ local.nightPrice }} per night</p>
       </div>
 
       <div class="contact">
