@@ -1,28 +1,3 @@
-<template>
-  <div v-if="userContacts.length" class="properties-container">
-    <div class="property-card" v-for="contact in userContacts" :key="contact.id">
-      <router-link :to="`/home-detail/${contact.propertyId}`" class="router-link">
-        <div class="property-details">
-          <!--<img :src="card.imgUrl" alt="home" class="property-img">-->
-          <div class="property-info">
-            <!--<h3>{{ contact.nameSurname }}</h3>-->
-            <p class="property-description">{{ contact.email }}</p>
-            <p><strong>{{ contact.phone }} </strong></p>
-            <p class="property-message">{{ contact.message }}</p>
-          </div>
-        </div>
-      </router-link>
-    </div>
-  </div>
-  <div v-if="userContacts.length === 0" class="no-results">
-    <p>No results found for messages</p>
-    <img class="no-results-img"
-         src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/main/frontend/src/assets/placeholder.png?raw=true"
-         alt="PlaceHolder">
-  </div>
-</template>
-
-
 <script>
 import { CardEndpoint } from "../services/card-endpoint.service.json.js";
 import { useAuthenticationStore } from "../../user/services/authentication.store.js";
@@ -67,6 +42,31 @@ export default {
   }
 }
 </script>
+
+
+<template>
+  <div v-if="userContacts.length" class="properties-container">
+    <div class="property-card" v-for="contact in userContacts" :key="contact.id">
+      <router-link :to="`/home-detail/${contact.propertyId}`" class="router-link">
+        <div class="property-details">
+          <!--<img :src="card.imgUrl" alt="home" class="property-img">-->
+          <div class="property-info">
+            <!--<h3>{{ contact.nameSurname }}</h3>-->
+            <p class="property-description">{{ contact.email }}</p>
+            <p><strong>{{ contact.phone }} </strong></p>
+            <p class="property-message">{{ contact.message }}</p>
+          </div>
+        </div>
+      </router-link>
+    </div>
+  </div>
+  <div v-if="userContacts.length === 0" class="no-results">
+    <p>No results found for messages</p>
+    <img class="no-results-img"
+         src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/main/frontend/src/assets/placeholder.png?raw=true"
+         alt="PlaceHolder">
+  </div>-->
+</template>
 
 <style>
 .properties-container {
