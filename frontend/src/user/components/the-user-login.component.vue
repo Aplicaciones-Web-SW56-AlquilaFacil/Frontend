@@ -60,7 +60,6 @@ export default {
 
             <div class="flex justify-content-center mt-4 w-full">
               <pv-button class="styled-button text-sm w-full" label="Sign In" plain text aria-label="Iniciar sesión" type="submit"/>
-              <pv-button class="styled-button text-sm w-full" type="submit">Sign In</pv-button>
             </div>
             <router-link to="/forgot-password" class="mt-2">
               <h5 class="text-center m-1" @click="closeLogin">Forgot your password?</h5>

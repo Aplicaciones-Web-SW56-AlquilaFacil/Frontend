@@ -12,4 +12,8 @@ export class CardEndpoint {
         return http.get(`/locals/${localId}`);
     }
 
+    createContact(contactResource) {
+        return http.post('/contact', contactResource);
+    }
+
 }

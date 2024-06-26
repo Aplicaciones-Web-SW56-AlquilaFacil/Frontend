@@ -1,40 +1,4 @@
 <script>
-/*import {CardEndpoint} from "../services/card-endpoint.service.json.js";
-
-export default {
-  name: "the-property-detail",
-  props:['id'],
-  data() {
-    return {
-      locals: [],
-      local: null,
-      localsService: null,
-      filters: {},
-    }
-  },
-  created() {
-    this.localsService = new CardEndpoint();
-    this.localsService.getAllLocals()
-        .then(response => {
-          console.log('Response data1:', response.data);
-          this.locals = response.data.map(local => ({
-            id: local.id,
-            localType: local.localType,
-            nightPrice: local.nightPrice,
-            photoUrl: local.photoUrl,
-            cityPlace: local.cityPlace,
-            streetAddress: local.streetAddress,
-            descriptionMessage: local.descriptionMessage,
-            localCategory: local.localCategory
-          }));
-          this.local = this.locals[1];
-          console.log('Selected local:', this.local);
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
-  }
-}*/
 import { CardEndpoint } from "../services/card-endpoint.service.json.js";
 
 export default {
@@ -43,11 +7,15 @@ export default {
   data() {
     return {
       local: null,
-      localsService: null,
+      localsService: new CardEndpoint(),
+      name: '',
+      lastName: '',
+      phone: '',
+      email: '',
+      message: '',
     }
   },
   created() {
-    this.localsService = new CardEndpoint();
     this.loadLocal(this.id);
   },
   watch: {
@@ -64,6 +32,24 @@ export default {
           })
           .catch(error => {
             console.error('Error fetching data:', error);
+          });
+    },
+    handleSubmit() {
+      const contactResource = {
+        name: this.name,
+        lastname: this.lastName,
+        phone: this.phone,
+        email: this.email,
+        message: this.message,
+        propertyId: this.local.id,
+      };
+
+      this.localsService.createContact(contactResource)
+          .then(response => {
+            console.log('Contact created:', response.data);
+          })
+          .catch(error => {
+            console.error('Error creating contact:', error);
           });
     }
   }
@@ -104,25 +90,25 @@ export default {
         <p class="info">Price: S/. {{ local.nightPrice }} per night</p>
       </div>
 
-      <div class="contact">
+      <form class="contact">
         <h2 class="contact-title">CONTACT</h2>
 
         <div class="input-group">
-          <input type="text" placeholder="Name" class="input-field">
-          <input type="text" placeholder="Last Name" class="input-field">
-          <input type="text" placeholder="Phone" class="input-field">
+          <input type="text" v-model="name" placeholder="Name" class="input-field">
+          <input type="text" v-model="lastName" placeholder="Last Name" class="input-field">
+          <input type="text" v-model="phone" placeholder="Phone" class="input-field">
         </div>
 
         <div class="input-group">
-          <input type="email" placeholder="Email" class="input-field full-width">
+          <input type="text" v-model="email" placeholder="Email" class="input-field full-width">
         </div>
 
         <div class="input-group">
-          <textarea placeholder="Message (optional)" class="input-field full-width"></textarea>
+          <textarea v-model="message" placeholder="Message (optional)" class="input-field full-width"></textarea>
         </div>
 
-        <button class="button">Book</button>
-      </div>
+        <pv-button class="button" @click="handleSubmit">Book</pv-button>
+      </form>
     </div>
   </div>
   <div v-else>
