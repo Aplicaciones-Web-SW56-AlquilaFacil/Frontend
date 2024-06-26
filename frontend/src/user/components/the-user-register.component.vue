@@ -1,11 +1,10 @@
 <script>
-import {useAuthenticationStore} from "../services/authentication.store.js";
-import {SignUpRequest} from "../model/sign-up.request.js";
-
+import axios from 'axios';
+import {AuthenticationService} from "../services/authentication.service.js";
 
 export default {
   name: "sign-up",
-  /*props: {
+  props: {
     isEdit: {
       type: Boolean,
       default: false
@@ -13,7 +12,6 @@ export default {
     userData: {
       type: Object,
       default: () => ({
-        email: '',
         username: '',
         first_name: '',
         father_name: '',
@@ -23,122 +21,58 @@ export default {
         document_number: '',
       })
     }
-  },*/
+  },
   data() {
     return {
-      authenticationStore: useAuthenticationStore(),
-      //email: this.userData.email,
       username: "",
       password: "",
-      /*confirm_password: '',
-      first_name: this.userData.first_name,
-      father_name: this.userData.father_name,
-      mother_name: this.userData.mother_name,
-      birth_date: this.userData.birth_date,
-      phone_number: this.userData.phone_number,
-      document_number: this.userData.document_number,
-      artist: this.userData.artist,
-      password_input_style: {
-        border: 'none',
-        borderBottom: '1px solid #d1d1d1',
-        width: '100%',
-      },*/
+      first_name: "",
+      father_name: "",
+      mother_name: "",
+      birth_date: "",
+      phone_number: "",
+      document_number: "",
+      authService: new AuthenticationService(),
+
     };
+
   },
-  /*computed: {
-    isEmailValid() {
-      const re = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-      return re.test(this.email);
-    },
-    isUsernameValid() {
-      return this.username.length <= 20 && this.username.length >= 1;
-    },
-    isFirstNameValid() {
-      return this.first_name.length >= 1;
-    },
-    isFatherNameValid() {
-      return this.father_name.length >= 1;
-    },
-    isMotherNameValid() {
-      return this.mother_name.length >= 1;
-    },
-    isBirthDateValid() {
-      const re = /^\d{4}-\d{2}-\d{2}$/;
-      return re.test(this.birth_date);
-    },
-    isPhoneNumberValid() {
-      const re = /^\+?\d{9,15}$/;
-      return re.test(this.phone_number);
-    },
-    isDocumentNumberValid() {
-      return this.document_number.length >= 1;
-    },
-    isPasswordValid() {
-      return this.isEdit || (this.password.length >= 6 && this.password.length <= 16);
-    },
-    isConfirmPasswordValid() {
-      return this.isEdit || (this.password === this.confirm_password);
-    },
-    isFormValid() {
-      return this.isEmailValid && this.isUsernameValid && this.isFirstNameValid && this.isFatherNameValid && this.isMotherNameValid && this.isBirthDateValid && this.isPhoneNumberValid && this.isPasswordValid && this.isConfirmPasswordValid;
-    },
-  },*/
   methods: {
-    onSignUp() {
-      let signUpRequest = new SignUpRequest(this.username, this.password);
-      this.authenticationStore.signUp(signUpRequest, this.$router);
-    }/*,
-    submitForm() {
-      if (this.isEdit) {
-        this.$emit('update-profile', {
-          email: this.email,
-          username: this.username,
-          first_name: this.first_name,
-          father_name: this.father_name,
-          mother_name: this.mother_name,
-          birth_date: this.birth_date,
-          phone_number: this.phone_number,
-          document_number: this.document_number,
-          artist: this.artist,
-        });
-      } else {
-        this.$emit('register', {
-          email: this.email,
-          username: this.username,
-          password: this.password,
-          first_name: this.first_name,
-          father_name: this.father_name,
-          mother_name: this.mother_name,
-          birth_date: this.birth_date,
-          phone_number: this.phone_number,
-          document_number: this.document_number,
-          artist: this.artist,
-        });
+    async submitForm() {
+      const userData = {
+        username: this.username,
+        password: this.password,
+        name: this.first_name,
+        fatherName: this.father_name,
+        motherName: this.mother_name,
+        dateOfBirth: this.birth_date,
+        documentNumber: this.document_number,
+        phone: this.phone_number
+      };
+
+      console.log(JSON.stringify(userData, null, 2)); // This will log the userData object to the console
+
+      try {
+        const response = await this.authService.signUp(userData);
+        console.log("Data sent successfully:", response.data);
+      } catch (error) {
+        console.error("Error sending data:", error);
       }
-    }*/
+    }
   }
-}
+};
 </script>
+
 
 <template>
   <section class="flex justify-content-center align-items-center" aria-label="User Form">
     <div class="form-container pt-7 pb-7">
-      <!--<h4>{{ isEdit ? 'Edit Profile' : 'Register' }}</h4>-->
-      <form class="form pl-6 pt-4" @submit.prevent="onSignUp">
-
-        <label for="username">Username</label>
-        <pv-inputtext id="username" v-model="username" :class="{'p-invalid': !username}"/>
-        <small v-if="!username" class="p-invalid">Username is required.</small>
-
-        <label for="password">Password</label>
-        <pv-inputtext id="password" v-model="password" :class="{'p-invalid': !password}" type="password"/>
-        <small v-if="!password" class="p-invalid">Password is required.</small>
-
-        <!--<div class="flex flex-column gap-3">
+      <form @submit.prevent="submitForm" class="form pl-6 pt-4">
+        <div class="flex flex-column gap-3">
           <label class="uppercase" for="email">EMAIL*</label>
-          <pv-inputtext :invalid="!isEmailValid" v-model="email" class="input-text" id="email"
+          <pv-inputtext :invalid="!isEmailValid" v-model="username" class="input-text" id="email"
                         placeholder="Enter your email" aria-label="Correo electrónico"/>
-          <small v-if="!isEmailValid" class="text-red-500">Invalid Email</small>
+          <small v-if="!username" class="text-red-500">Invalid Email</small>
 
           <div v-if="!isEdit" class="flex flex-column gap-3">
             <label class="uppercase" for="password">PASSWORD*</label>
@@ -149,12 +83,6 @@ export default {
                          :medium-label="'Enter your password (6-16 characters)'"
                          :strong-label="'Enter your password (6-16 characters)'" aria-label="Password"/>
             <small v-if="!isPasswordValid" class="text-red-500">Invalid Password</small>
-
-            <label class="uppercase" for="confirm-password">PLEASE TYPE PASSWORD AGAIN*</label>
-            <pv-password :input-style="password_input_style" :invalid="!isConfirmPasswordValid" class="password"
-                         id="confirm-password" toggle-mask placeholder="Enter your password (6-16 characters)"
-                         v-model="confirm_password" :feedback="false" aria-label="Confirma password"/>
-            <small v-if="!isConfirmPasswordValid" class="text-red-500">Enter your password (6-16 characters)</small>
           </div>
 
           <label class="uppercase" for="first_name">FIRST NAME*</label>
@@ -200,11 +128,8 @@ export default {
             <pv-button class="form-button w-full w-12rem" :label="isEdit ? 'Update Profile'
             : 'Sign Up now'" plain text aria-label="Botón de registro" type="submit"/>
           </div>
-        </div>-->
-        <div class="flex justify-content-center gap-2 mt-3 mb-3">
-          <pv-button class="form-button w-full w-12rem" type="submit"/>
-          <pv-button type="submit">Sign Up</pv-button>
         </div>
+
       </form>
     </div>
   </section>
