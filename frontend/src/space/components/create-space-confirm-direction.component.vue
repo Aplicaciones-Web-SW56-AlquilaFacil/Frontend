@@ -1,6 +1,13 @@
 <script>
+import {inject} from "vue";
+
 export default {
-  name: "create-space-confirm-direction.component"
+  name: "create-space-confirm-direction",
+  setup() {
+    const localStore = inject('formStore');
+
+    return { localStore };
+  }
 }
 </script>
 <template>
@@ -11,28 +18,28 @@ export default {
 
       <div class="mx-auto">
         <div class="flex flex-column gap-2">
-          <label class="label-conf-dir" for="Country/region">Country / region</label>
-          <pv-inputtext id="Country/region" v-model="value" aria-describedby="Country/region-help" class="confirm-dir-input"/>
+          <label class="label-conf-dir" for="country">Country / region</label>
+          <pv-inputtext id="country" v-model="localStore.country" aria-describedby="country" class="confirm-dir-input"/>
         </div>
 
         <div class="flex flex-column gap-2">
-          <label class="label-conf-dir" for="Address">Address</label>
-          <pv-inputtext id="Address" v-model="value" aria-describedby="Address-help" class="confirm-dir-input"/>
+          <label class="label-conf-dir" for="address">Address</label>
+          <pv-inputtext id="address" v-model="localStore.address" aria-describedby="address" class="confirm-dir-input"/>
         </div>
 
         <div class="flex flex-column gap-2">
-          <label class="label-conf-dir" for="Apartment">Apartment, floor, building, condominium, etc.</label>
-          <pv-inputtext id="Apartment" v-model="value" aria-describedby="Apartment" class="confirm-dir-input"/>
+          <label class="label-conf-dir" for="localType">Apartment, floor, building, condominium, etc.</label>
+          <pv-inputtext id="localType" v-model="localStore.localType" aria-describedby="localType" class="confirm-dir-input"/>
         </div>
 
         <div class="flex flex-column gap-2">
-          <label class="label-conf-dir" for="City">City</label>
-          <pv-inputtext id="City" v-model="value" aria-describedby="City" class="confirm-dir-input"/>
+          <label class="label-conf-dir" for="city">City</label>
+          <pv-inputtext id="city" v-model="localStore.city" aria-describedby="city" class="confirm-dir-input"/>
         </div>
 
         <div class="flex flex-column gap-2">
-          <label class="label-conf-dir" for="District/province">District / province</label>
-          <pv-inputtext id="District/province" v-model="value" aria-describedby="District/province" class="confirm-dir-input"/>
+          <label class="label-conf-dir" for="district">District / province</label>
+          <pv-inputtext id="district" v-model="localStore.district" aria-describedby="district" class="confirm-dir-input"/>
         </div>
       </div>
     </div>

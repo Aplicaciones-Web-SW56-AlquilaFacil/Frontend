@@ -1,14 +1,23 @@
 <script>
+import {inject} from "vue";
+import {formStore} from "../services/local.store.js";
+
 export default {
-  name: "create-space-describe-option.component",
+  name: "create-space-describe-option",
+  setup() {
+    const localStore = inject('formStore');
+
+    return { localStore };
+  },
   data() {
     return {
       selectedOption: null
     };
   },
   methods: {
-    selectOption(option) {
+    selectOption(option, id) {
       this.selectedOption = option;
+      this.localStore.localCategoryId = id;
     }
   }
 }
@@ -24,7 +33,7 @@ export default {
         <pv-button
             class="options-button"
             :class="{ 'selected': selectedOption === 'beach-house' }"
-            @click="selectOption('beach-house')"
+            @click="selectOption('beach-house', 1)"
         >
           <img src="../../assets/describe-option-icon1.png" class="img-option-button" alt="icon1" />
           Beach House
@@ -32,7 +41,7 @@ export default {
         <pv-button
             class="options-button"
             :class="{ 'selected': selectedOption === 'urban-house' }"
-            @click="selectOption('urban-house')"
+            @click="selectOption('urban-house', 2)"
         >
           <img src="../../assets/describe-option-icon2.png" class="img-option-button" alt="icon2" />
           Urban House
@@ -44,7 +53,7 @@ export default {
         <pv-button
             class="options-button"
             :class="{ 'selected': selectedOption === 'elegant-halls' }"
-            @click="selectOption('elegant-halls')"
+            @click="selectOption('elegant-halls', 3)"
         >
           <img src="../../assets/describe-option-icon3.png" class="img-option-button" alt="icon3" />
           Elegant Halls
@@ -52,7 +61,7 @@ export default {
         <pv-button
             class="options-button"
             :class="{ 'selected': selectedOption === 'country-house' }"
-            @click="selectOption('country-house')"
+            @click="selectOption('country-house', 4)"
         >
           <img src="../../assets/describe-option-icon4.png" class="img-option-button" alt="icon4" />
           Country House

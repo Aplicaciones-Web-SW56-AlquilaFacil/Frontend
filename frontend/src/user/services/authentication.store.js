@@ -44,7 +44,12 @@ export const useAuthenticationStore = defineStore( {
          * @param state
          * @returns {string}
          */
-        currentUsername: state => state["username"]
+        currentUsername: state => state["username"],
+        /**
+         * Current token
+         * @returns {string} - The current token
+         */
+        currentToken: () => localStorage.getItem('token')
     },
     actions: {
         /**
@@ -110,8 +115,5 @@ export const useAuthenticationStore = defineStore( {
             console.log('Signed out');
             await router.push({name: 'sign-in'});
         }
-
     }
-
-
 })

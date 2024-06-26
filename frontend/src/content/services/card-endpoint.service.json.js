@@ -4,4 +4,8 @@ export class CardEndpoint {
         return http.get('locals')
     }
 
+    createLocal(localResource) {
+        return http.post('/locals', localResource);
+    }
+
 }
