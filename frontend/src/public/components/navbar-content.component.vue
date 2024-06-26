@@ -43,7 +43,7 @@
 
           <pv-button v-if="!isLoggedIn" @click="openLogin" class="custom-button md:hidden" label="Log In">Log In</pv-button>
           <div v-else class="user-display flex items-center border-rounded">
-            <span class="font-bold">{{ user.name }}</span>
+            <span class="font-bold">{{ userName }}</span>
             <div class="relative">
               <i class="pi pi-bars text-red-600 cursor-pointer toggle-icon" @click="toggleDropdown"></i>
               <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
@@ -80,7 +80,7 @@
         <pv-button @click="openLogin" class="custom-button md:text-xs lg:text-base" label="Log In">Log In</pv-button>
       </div>
       <div v-else class="user-display md:flex items-center hidden">
-        <span class="font-bold mr-3">{{ user.name }}</span>
+        <span class="font-bold mr-3">{{ userName }}</span>
         <div class="relative">
           <i class="pi pi-bars text-red-600 cursor-pointer" @click="toggleDropdown"></i>
           <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
@@ -98,9 +98,30 @@
 <script>
 import TheUserLogin from "../../user/components/the-user-login.component.vue";
 import TheUserForgotPasswordComponent from "../../user/components/the-user-forgot-password.component.vue";
+import {useAuthenticationStore} from "../../user/services/authentication.store.js";
+import {computed} from "vue";
+import home from "../../content/pages/home.vue";
+import {useRouter} from "vue-router";
 
 export default {
   name: 'navbar-content',
+  setup() {
+    const authStore = useAuthenticationStore();
+    const router = useRouter();
+
+    const isLoggedIn = computed(() => authStore.isSignedIn);
+    const userName = computed(() => authStore.currentUsername);
+
+    const logout = async () => {
+      await authStore.signOut(router);
+    };
+
+    return {
+      isLoggedIn,
+      userName,
+      logout
+    };
+  },
   components: {
     TheUserLogin,
     TheUserForgotPasswordComponent
@@ -115,7 +136,7 @@ export default {
     return {
       showSplitButton: false,
       isLg: window.innerWidth >= 1024,
-      isLoggedIn: false,
+      //isLoggedIn: false,
       user: {
         name: '',
         email: ''
@@ -131,7 +152,7 @@ export default {
         },
         {
           label: 'Log Out',
-          to: '/login'
+          to: '/home'
         }
       ],
       subscriptions: [
@@ -179,13 +200,13 @@ export default {
     toggleDropdown() {
       this.dropdownOpen = !this.dropdownOpen;
     },
-    logout() {
+    /*logout() {
       localStorage.removeItem('user');
       this.isLoggedIn = false;
       this.user = {name: '', email: ''};
       this.$router.push('/home');
       this.dropdownOpen= false;
-    }
+    }*/
   },
   mounted() {
     this.checkLoginStatus();

@@ -8,4 +8,8 @@ export class CardEndpoint {
         return http.post('/locals', localResource);
     }
 
+    getLocalById(localId) {
+        return http.get(`/locals/${localId}`);
+    }
+
 }

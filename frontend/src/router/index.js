@@ -28,9 +28,9 @@ const router = createRouter({
         {path: '/proprietary', component: PropietaryCardComponent, meta: {title: 'Proprietary'},},
 
         {path: '/home', component: Home, meta: {title: 'Home'},},
-        {path: '/home-detail', component: PropertyDetail, meta: {title: 'Detail'},},
+        { path: '/home-detail/:id', component: PropertyDetail, meta: { title: 'Detail' }, props: true },
 
-        {path: '/add-photo', component: CreateSpaceAddPhotoComponent, meta: {title: 'Add Photo'},},
+        {path: '/add-photo', component: CreateSpaceAddPhotoComponent, meta: {title: 'Add Photo'}, props: true },
         {path: '/confirm-direction', component: CreateSpaceConfirmDirectionComponent, meta: {title: 'Confirm Direction'},},
         {path: '/describe', component: CreateSpaceDescribeComponent, meta: {title: 'Describe'},},
         {path: '/describe-option', component: CreateSpaceDescribeOptionComponent, meta: {title: 'Describe Option'},},
@@ -45,7 +45,6 @@ const router = createRouter({
         {path: '/register', component: UserRegister, meta: {title: 'Register'},},
         {path: '/my-properties', component: MyProperties, meta: {title: 'My properties'},},
         {path:'/about',component:About,meta:{title:'About'}},
-
 
         {path: '/', redirect: 'home'}
     ]

@@ -1,8 +1,9 @@
 <script>
-import {CardEndpoint} from "../services/card-endpoint.service.json.js";
+/*import {CardEndpoint} from "../services/card-endpoint.service.json.js";
 
 export default {
   name: "the-property-detail",
+  props:['id'],
   data() {
     return {
       locals: [],
@@ -13,7 +14,6 @@ export default {
   },
   created() {
     this.localsService = new CardEndpoint();
-    //const localId = this.$route.params.id;
     this.localsService.getAllLocals()
         .then(response => {
           console.log('Response data1:', response.data);
@@ -34,28 +34,39 @@ export default {
           console.error('Error fetching data:', error);
         });
   }
-  /*created() {
+}*/
+import { CardEndpoint } from "../services/card-endpoint.service.json.js";
+
+export default {
+  name: "the-property-detail",
+  props: ['id'],
+  data() {
+    return {
+      local: null,
+      localsService: null,
+    }
+  },
+  created() {
     this.localsService = new CardEndpoint();
-    this.localsService.getAllLocals()
-        .then(response => {
-          console.log('Response data1:', response.data);
-          this.locals = response.data.map(local => {
-            return {
-              id: local.id,
-              localType: local.localType,
-              nightPrice: local.nightPrice,
-              photoUrl: local.photoUrl,
-              cityPlace: local.cityPlace,
-              streetAddress: local.streetAddress,
-              descriptionMessage: local.descriptionMessage,
-              localCategory: local.localCategory
-            };
+    this.loadLocal(this.id);
+  },
+  watch: {
+    id(newId) {
+      this.loadLocal(newId);
+    }
+  },
+  methods: {
+    loadLocal(localId) {
+      this.localsService.getLocalById(localId)
+          .then(response => {
+            this.local = response.data;
+            console.log('Selected local:', this.local);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
           });
-        })
-        .catch(error => {
-          console.error('Error fetching data1:', error);
-        });
-  }*/
+    }
+  }
 }
 </script>
 
@@ -114,7 +125,11 @@ export default {
       </div>
     </div>
   </div>
+  <div v-else>
+    <p>Loading...</p>
+  </div>
 </template>
+
 
 
 <style>
