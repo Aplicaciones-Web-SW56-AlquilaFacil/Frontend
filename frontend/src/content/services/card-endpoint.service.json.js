@@ -16,4 +16,12 @@ export class CardEndpoint {
         return http.post('/contact', contactResource);
     }
 
+    getAllContacts() {
+        return http.get('/contact');
+    }
+
+    /*getContactsByPropertyId(propertyId) {
+        return http.get(`/contact/${propertyId}`);
+    }*/
+
 }

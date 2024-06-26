@@ -1,58 +1,71 @@
 <template>
-  <div v-if="filteredCards.length > 0" class="properties-container">
-    <div class="property-card" v-for="card in filteredCards" :key="card.id">
-      <router-link :to="`/home-detail`" class="router-link">
+  <div v-if="userContacts.length" class="properties-container">
+    <div class="property-card" v-for="contact in userContacts" :key="contact.id">
+      <router-link :to="`/home-detail/${contact.propertyId}`" class="router-link">
         <div class="property-details">
-          <img :src="card.imgUrl" alt="home" class="property-img">
+          <!--<img :src="card.imgUrl" alt="home" class="property-img">-->
           <div class="property-info">
-            <h3>{{ card.title }}</h3>
-            <p class="property-description">{{ card.description }}</p>
-            <p><strong>S/. {{ card.price }} </strong> per night</p>
-            <p class="property-message">{{ card.message }}</p>
+            <!--<h3>{{ contact.nameSurname }}</h3>-->
+            <p class="property-description">{{ contact.email }}</p>
+            <p><strong>{{ contact.phone }} </strong></p>
+            <p class="property-message">{{ contact.message }}</p>
           </div>
         </div>
       </router-link>
     </div>
   </div>
-  <div v-if="filteredCards.length === 0" class="no-results">
-    <p>No results found for "{{ query }}"</p>
+  <div v-if="userContacts.length === 0" class="no-results">
+    <p>No results found for messages</p>
     <img class="no-results-img"
          src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/main/frontend/src/assets/placeholder.png?raw=true"
          alt="PlaceHolder">
   </div>
 </template>
 
+
 <script>
 import { CardEndpoint } from "../services/card-endpoint.service.json.js";
+import { useAuthenticationStore } from "../../user/services/authentication.store.js";
 
 export default {
   name: "the-my-properties",
-  props: {
-    query: {
-      type: String,
-      default: ''
-    }
-  },
   data() {
     return {
-      cards: [],
-      cardApi: new CardEndpoint()
+      locals: [],
+      contacts: [],
+      localsService: new CardEndpoint(),
+      userId: null,
+      userContacts: [],
     };
   },
-  computed: {
-    filteredCards() {
-      return this.cards.filter(card =>
-          card.title.toLowerCase().includes(this.query.toLowerCase())
-      );
-    }
-  },
   created() {
-    this.cardApi.getAll().then(response => {
-      this.cards = response.data;
-      console.log(this.cards);
-    });
+    this.userId = useAuthenticationStore().currentUserId;
+    console.log('Current User ID:', this.userId);
+    this.loadLocalsAndContacts();
+  },
+  methods: {
+    loadLocalsAndContacts() {
+      this.localsService.getAllLocals()
+          .then(response => {
+            console.log('Locals Response:', response.data);
+            this.locals = response.data.filter(local => local.userId === this.userId);
+            console.log('Filtered Locals for User ID:', this.locals);
+            return this.localsService.getAllContacts();
+          })
+          .then(response => {
+            console.log('Contacts Response:', response.data);
+            this.contacts = response.data;
+            this.userContacts = this.contacts.filter(contact =>
+                this.locals.some(local => local.id === contact.propertyId)
+            );
+            console.log('User Contacts:', this.userContacts);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+    }
   }
-};
+}
 </script>
 
 <style>
@@ -126,7 +139,7 @@ export default {
 }
 
 .no-results-img {
-  width: 100%;
+  width: 500px;
   height: auto;
 }
 </style>
