@@ -16,10 +16,32 @@ provide('formStore', formStore);
 </script>
 
 <template>
-  <navbar-content
-      :showLogin="showLogin"
-      @update:showLogin="handleShowLoginUpdate"
-  />
-  <router-view></router-view>
-  <footer-content></footer-content>
+  <div id="app">
+    <navbar-content
+        :showLogin="showLogin"
+        @update:showLogin="handleShowLoginUpdate"
+    />
+    <div class="main-content">
+      <router-view></router-view>
+    </div>
+    <footer-content></footer-content>
+  </div>
 </template>
+
+<style>
+html, body, #app {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+</style>
