@@ -43,15 +43,14 @@ export default {
 }
 </script>
 
-
 <template>
   <div v-if="userContacts.length" class="properties-container">
     <div class="property-card" v-for="contact in userContacts" :key="contact.id">
       <router-link :to="`/home-detail/${contact.propertyId}`" class="router-link">
         <div class="property-details">
-          <!--<img :src="card.imgUrl" alt="home" class="property-img">-->
           <div class="property-info">
-            <!--<h3>{{ contact.nameSurname }}</h3>-->
+            <!--EL TITULO DE LA CARD-->
+         <h3 class="text-black-alpha-90">{{ contact.name }}</h3> <!--no jala el name-->
             <p class="property-description">{{ contact.email }}</p>
             <p><strong>{{ contact.phone }} </strong></p>
             <p class="property-message">{{ contact.message }}</p>
@@ -70,20 +69,20 @@ export default {
 
 <style>
 .properties-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  padding: 100px; /* Adding padding around the container */
 }
 
 .property-card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* Changed to column to allow content to expand */
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
-  width: 100%;
 }
 
 .property-card:hover {
@@ -93,27 +92,22 @@ export default {
 
 .property-details {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* Changed to column to allow content to expand */
   width: 100%;
-}
-
-.property-img {
-  width: 40%;
-  object-fit: cover;
+  height: 100%; /* Ensures it takes the full height of the card */
 }
 
 .property-info {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 60%;
+  justify-content: flex-start; /* Changed to flex-start to align items at the top */
+  flex-grow: 1; /* Allows it to expand and fill the available space */
 }
 
-.property-info h3 {
-  margin: 0;
-  font-size: 1.5em;
-  color: #333;
+.property-info p {
+  margin: 0 0 10px 0;
+  word-break: break-word; /* Ensures long words break to fit within the container */
 }
 
 .property-description {
@@ -136,10 +130,24 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 20px; /* Adding padding around the no-results container */
+}
+
+.no-results p {
+  font-size: 1.2em;
+  color: #888;
 }
 
 .no-results-img {
-  width: 500px;
+  width: 400px;
   height: auto;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .properties-container {
+    padding: 20px; /* Adding padding around the container */
+  }
 }
 </style>
