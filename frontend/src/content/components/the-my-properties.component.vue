@@ -49,8 +49,7 @@ export default {
       <router-link :to="`/home-detail/${contact.propertyId}`" class="router-link">
         <div class="property-details">
           <div class="property-info">
-            <!--EL TITULO DE LA CARD-->
-         <h3 class="text-black-alpha-90">{{ contact.name }}</h3> <!--no jala el name-->
+          <h3 class="text-black-alpha-90">{{ contact.nameSurname }}</h3>
             <p class="property-description">{{ contact.email }}</p>
             <p><strong>{{ contact.phone }} </strong></p>
             <p class="property-message">{{ contact.message }}</p>
