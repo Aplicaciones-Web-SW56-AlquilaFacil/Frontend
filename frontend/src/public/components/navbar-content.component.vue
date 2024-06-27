@@ -90,7 +90,7 @@
       </div>
     </template>
   </pv-toolbar>
-  <hr class="border-1 shadow-2 border-gray-300">
+  <hr class="border-2 w-full shadow-2 border-gray-300">
 
   <TheUserLogin :showLogin="showLogin" @login-success="handleLoginSuccess" @update:showLogin="handleCloseLogin"/>
 </template>
@@ -100,7 +100,6 @@ import TheUserLogin from "../../user/components/the-user-login.component.vue";
 import TheUserForgotPasswordComponent from "../../user/components/the-user-forgot-password.component.vue";
 import {useAuthenticationStore} from "../../user/services/authentication.store.js";
 import {computed} from "vue";
-import home from "../../content/pages/home.vue";
 import {useRouter} from "vue-router";
 
 export default {
@@ -136,7 +135,6 @@ export default {
     return {
       showSplitButton: false,
       isLg: window.innerWidth >= 1024,
-      //isLoggedIn: false,
       user: {
         name: '',
         email: ''
@@ -200,13 +198,6 @@ export default {
     toggleDropdown() {
       this.dropdownOpen = !this.dropdownOpen;
     },
-    /*logout() {
-      localStorage.removeItem('user');
-      this.isLoggedIn = false;
-      this.user = {name: '', email: ''};
-      this.$router.push('/home');
-      this.dropdownOpen= false;
-    }*/
   },
   mounted() {
     this.checkLoginStatus();
