@@ -1,11 +1,18 @@
 <script>
-import { CardEndpoint} from "../services/card-endpoint.service.json.js";
+import { CardEndpoint } from "../services/card-endpoint.service.json.js";
 
 export default {
   name: "the-home",
+  props: {
+    query: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
       locals: [],
+      filteredLocals: [],
       local: null,
       localsService: null,
       filters: {},
@@ -28,17 +35,37 @@ export default {
               localCategory: local.localCategory
             };
           });
+          this.filterLocals();
         })
         .catch(error => {
           console.error('Error fetching data1:', error);
         });
+  },
+  watch: {
+    query() {
+      this.filterLocals();
+    }
+  },
+  methods: {
+    filterLocals() {
+      if (this.query) {
+        const queryLowerCase = this.query.toLowerCase();
+        this.filteredLocals = this.locals.filter(local =>
+            local.localType.toLowerCase().includes(queryLowerCase) ||
+            local.streetAddress.toLowerCase().includes(queryLowerCase) ||
+            local.cityPlace.toLowerCase().includes(queryLowerCase)
+        );
+      } else {
+        this.filteredLocals = this.locals;
+      }
+    }
   }
 }
 </script>
 
 <template>
   <div class="grid">
-    <pv-card class="home-card" v-for="local in locals" :key="local.id">
+    <pv-card class="home-card" v-for="local in filteredLocals" :key="local.id">
       <template #content>
         <router-link :to="`/home-detail/${local.id}`" class="router-link">
           <div class="container-img-home">
@@ -55,8 +82,8 @@ export default {
       </template>
     </pv-card>
   </div>
-  <div v-if="locals.length === 0" class="no-results">
-    <p>No results found for "{{ locals }}"</p>
+  <div v-if="filteredLocals.length === 0" class="no-results">
+    <p>No results found for "{{ query }}"</p>
     <img class="card-image"
          src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/main/frontend/src/assets/placeholder.png?raw=true"
          alt="PlaceHolder">

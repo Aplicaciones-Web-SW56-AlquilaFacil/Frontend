@@ -65,7 +65,7 @@ export default {
     <img class="no-results-img"
          src="https://github.com/Aplicaciones-Web-SW56-AlquilaFacil/Frontend/blob/main/frontend/src/assets/placeholder.png?raw=true"
          alt="PlaceHolder">
-  </div>-->
+  </div>
 </template>
 
 <style>

@@ -1,3 +1,60 @@
+<template>
+  <div class="container" v-if="local">
+    <h1 class="title">{{ local.localCategory.name }} {{ local.localType }}</h1>
+
+    <div class="image-grid">
+      <div class="large-image">
+        <img :src="local.photoUrl" alt="Property Image" class="rounded-image">
+      </div>
+    </div>
+
+    <div class="details">
+      <div class="description">
+        <h2 class="subtitle">{{ local.cityPlace }}</h2>
+        <p class="info"><strong>Address:</strong> {{ local.streetAddress }}</p>
+        <p class="info"><strong>Owner:</strong> Italo</p> <!-- poner nombre real del user -->
+
+        <div class="description-text">
+          <h3 class="bold">Description:</h3>
+          <p>{{ local.descriptionMessage }}</p>
+        </div>
+
+        <p class="info price"><strong>Price:</strong> S/. {{ local.nightPrice }} per night</p>
+      </div>
+
+      <form class="contact" @submit.prevent="handleSubmit">
+        <h2 class="contact-title">Contact</h2>
+
+        <div class="input-group">
+          <input type="text" v-model="name" placeholder="Name" class="input-field">
+        </div>
+
+        <div class="input-group">
+          <input type="text" v-model="lastName" placeholder="Last Name" class="input-field">
+        </div>
+
+        <div class="input-group">
+          <input type="text" v-model="phone" placeholder="Phone" class="input-field">
+        </div>
+
+        <div class="input-group">
+          <input type="email" v-model="email" placeholder="Email" class="input-field">
+        </div>
+
+        <div class="input-group">
+          <textarea v-model="message" placeholder="Message (optional)" class="textarea-field"></textarea>
+        </div>
+
+        <button type="submit" class="button">Book</button>
+      </form>
+    </div>
+  </div>
+  <div v-else class="not-logged-in">
+    <img src="https://png.pngtree.com/png-vector/20230808/ourmid/pngtree-person-waving-vector-png-image_6893930.png" alt="Placeholder" class="placeholder-image">
+    <p class="message">No estás logueado. Por favor, <router-link to="/login" class="login-link">inicia sesión</router-link> para ver los detalles de la propiedad.</p>
+  </div>
+</template>
+
 <script>
 import { CardEndpoint } from "../services/card-endpoint.service.json.js";
 
@@ -56,68 +113,6 @@ export default {
 }
 </script>
 
-<template>
-  <div class="container" v-if="local">
-    <h1>{{ local.localCategory.name }} {{ local.localType }}</h1>
-
-    <div class="image-grid">
-      <div class="large-image">
-        <img :src="local.photoUrl" alt="Step 1" class="rounded-image">
-      </div>
-
-      <div class="image-column">
-        <img src="../../assets/image-detail2.png" alt="Step 2" class="small-image">
-        <img src="../../assets/image-detail2.png" alt="Step 3" class="small-image">
-      </div>
-
-      <div class="image-column">
-        <img src="../../assets/image-detail2.png" alt="Step 2" class="small-image">
-        <img src="../../assets/image-detail2.png" alt="Step 3" class="small-image">
-      </div>
-    </div>
-
-    <div class="details">
-      <div class="description">
-        <h2 class="subtitle">{{ local.cityPlace }}</h2>
-        <p class="info">{{ local.streetAddress }}</p>
-        <p class="info">100 Capacity - 3 bedrooms - 3 beds - 2 bathrooms</p>
-        <img src="../../assets/italo-photo.png" alt="Italo's Photo">
-        <p class="info">Owner: Italo</p>
-        <p class="info">Standard Plan</p>
-
-        <p class="bold">Description:</p>
-        <p style="width: 90%">{{ local.descriptionMessage }}</p>
-        <p class="info">Price: S/. {{ local.nightPrice }} per night</p>
-      </div>
-
-      <form class="contact">
-        <h2 class="contact-title">CONTACT</h2>
-
-        <div class="input-group">
-          <input type="text" v-model="name" placeholder="Name" class="input-field">
-          <input type="text" v-model="lastName" placeholder="Last Name" class="input-field">
-          <input type="text" v-model="phone" placeholder="Phone" class="input-field">
-        </div>
-
-        <div class="input-group">
-          <input type="text" v-model="email" placeholder="Email" class="input-field full-width">
-        </div>
-
-        <div class="input-group">
-          <textarea v-model="message" placeholder="Message (optional)" class="input-field full-width"></textarea>
-        </div>
-
-        <pv-button class="button" @click="handleSubmit">Book</pv-button>
-      </form>
-    </div>
-  </div>
-  <div v-else>
-    <p>Loading...</p>
-  </div>
-</template>
-
-
-
 <style>
 .container {
   display: flex;
@@ -126,108 +121,234 @@ export default {
   margin-bottom: 28px;
 }
 
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 20px 0;
+  text-align: center;
+  color: #333;
+}
+
 .image-grid {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
 }
 
 .large-image {
-  margin-right: 8px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.image-column {
-  display: flex;
-  flex-direction: column;
+.large-image::after {
+  content: '';
+  display: block;
+  padding-bottom: 56.25%; /* Aspect ratio 16:9 */
 }
 
 .large-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 500px;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-}
-
-.small-image {
-  width: 100%;
-  max-width: 250px;
-  height: auto;
-  object-fit: cover;
-  margin-bottom: 4px;
-  margin-right: 4px;
-  border-radius: 8px;
+  border-radius: 15px;
 }
 
 .details {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 2% 16% 2% 16%;
-  width: 70%;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  gap: 20px;
 }
 
 .description {
-  flex: 1;
-  min-width: 300px;
+  width: 100%;
 }
 
 .subtitle {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 10px;
+  color: #555;
 }
 
 .info {
   color: #666;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  font-size: 1rem;
 }
 
 .bold {
+  font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 10px;
+  color: #333;
+}
+
+.description-text {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #d13333;
 }
 
 .contact {
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
   width: 100%;
-  max-width: 400px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact-title {
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .input-group {
   margin-bottom: 16px;
 }
 
-.input-field {
-  border: 2px solid #ccc;
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 8px;
-  margin-right: 8px;
-  width: calc(100% - 16px);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
 }
 
-.full-width {
-  width: 100%;
+.input-field:focus,
+.textarea-field:focus {
+  border-color: #d13333;
+  outline: none;
+}
+
+.textarea-field {
+  min-height: 120px;
+  resize: vertical;
 }
 
 .button {
+  width: 100%;
+  padding: 12px 20px;
   background-color: #d13333;
   color: #fff;
-  font-weight: bold;
-  padding: 8px 16px;
+  border: none;
   border-radius: 8px;
+  font-size: 1.125rem;
+  font-weight: bold;
   cursor: pointer;
-  border: solid #d13333;
+  transition: background-color 0.3s ease;
 }
 
+.button:hover {
+  background-color: #b52b2b;
+}
+
+.not-logged-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.placeholder-image {
+  width: 600px;
+  height: 400px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+@media(max-width: 768px){
+  .details{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+  }
+  .image-grid{
+    max-width: 100%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+
+  .image-grid {
+    max-width: 100%;
+    padding: 10px;
+  }
+  .details{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .description {
+    width: 100%;
+  }
+
+  .info {
+    font-size: 0.875rem;
+  }
+
+  .contact {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .button {
+    padding: 10px 16px;
+  }
+}
+
+.message {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.login-link {
+  color: #d13333;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-link:hover {
+  color: #c12e2e;
+}
 </style>
